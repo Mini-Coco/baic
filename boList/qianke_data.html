@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>潜客数据分析</title>
+    <link rel="stylesheet" href="../css/boList_e.css">
+    <style>
+        .box>div{
+            display: inline-block;
+            width:43.5vw;
+            height:52vh;
+        }
+        .box>div:nth-of-type(1),
+        .box>div:nth-of-type(3){
+            margin-right: 12px;
+        }
+        .box>div:nth-of-type(3),
+        .box>div:nth-of-type(4){
+            height:77vh;
+            margin-bottom: 15px;
+        }
+        .div_box{
+            width:44vw;
+            height:45vh;
+        }
+        #echarts_bar_frozen,
+        #echarts_bar_fail{
+            height:65vh;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <nav style="overflow: hidden;margin-bottom: 10px;">
+        <span style="float:right;">
+            省份：
+            <select name="">
+                <option value="">北京</option>
+                <option value="">天津</option>
+                <option value="">河北</option>
+                <option value="">山西</option>
+            </select>
+            城市：
+            <select name="">
+                <option value="">北京</option>
+                <option value="">天津</option>
+                <option value="">石家庄</option>
+            </select>
+            经销商：
+            <select name="">
+                <option value="">北京盈之宝</option>
+                <option value="">大同绅宝专销</option>
+                <option value="">吉林红宝石</option>
+            </select>
+            年：
+            <select name="">
+                <option value="">2017</option>
+                <option value="">2016</option>
+                <option value="">2015</option>
+            </select>
+            <button onclick="setGraph()">刷新</button>
+            <button>详细报表</button>
+        </span>
+    </nav>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>客户线索图</h5>
+        </div>
+        <div id="echarts_graph" class="div_box"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>销售过程图</h5>
+        </div>
+        <div id="echarts_line" class="div_box"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>冷冻原因图</h5>
+        </div>
+        <div id="echarts_bar_frozen" class="div_box"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>战败原因图</h5>
+        </div>
+        <div id="echarts_bar_fail" class="div_box"></div>
+    </div>
+</div>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/echarts-all.js"></script>
+<script>
+    //柱状图
+    function echarts_graph(data1,data2) {
+        var echarts_graph=echarts.init(document.getElementById('echarts_graph'));
+        var option = {
+//            title:{
+//                text:'客户线索图',
+//                x:'center'
+//            },
+//            grid : {
+//                x:50,
+//                y:40,
+//                x2:20,
+//                y2:30
+//            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['总线索量','有效线索量'],
+                x:'left',
+//                orient:'vertical'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data : ['Q1','Q2','Q3','Q4']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max:3200
+                }
+            ],
+            series : [
+                {
+                    name:'总线索量',
+                    type:'bar',
+                    barWidth:16,
+                    barCategoryGap:'60%',
+                    data:data1,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label: {
+                                show: true
+                            }
+                        }
+                    }
+                },
+                {
+                    name:'有效线索量',
+                    type:'bar',
+                    barWidth:16,
+                    barCategoryGap:'60%',
+                    data:data2,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(69,203,221)',
+                            label: {
+                                show: true
+                            }
+                        }
+                    }
+                }
+            ]
+        };
+        echarts_graph.setOption(option);
+    }
+    //柱状折线图
+    function echarts_line(data1,data2,data3) {
+        var echarts_line=echarts.init(document.getElementById('echarts_line'));
+        var option = {
+//            title:{
+//                text:'销售过程图',
+//                x:'center'
+//            },
+//            grid : {
+//                x:80,
+//                y:80,
+//                x2:80,
+//                y2:60
+//            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            calculable : true,
+            legend: {
+                data:['及时跟进率','到店率','成交率'],
+                x:'left',
+//                orient:'vertical'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data : ['Q1','Q2','Q3','Q4']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max:120,
+                    axisLabel : {
+                        formatter: '{value} %'
+                    }
+                },
+                {
+                    type : 'value',
+                    max:120,
+                    axisLabel : {
+                        formatter: '{value} %'
+                    }
+                }
+            ],
+            series : [
+                {
+                    name:'及时跟进率',
+                    type:'bar',
+                    barWidth:30,
+                    data:data1,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label: {
+                                show: true,
+                                formatter: '{c}%'
+                            }
+                        }
+                    }
+                },
+                {
+                    name:'到店率',
+                    type:'line',
+                    yAxisIndex: 1,
+                    data:data2,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(91,206,162)',
+                            label: {
+                                show: true,
+                                formatter: '{c}%'
+                            }
+                        }
+                    }
+                },
+                {
+                    name:'成交率',
+                    type:'line',
+                    yAxisIndex: 1,
+                    data:data3,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(79,198,107)',
+                            label: {
+                                show: true,
+                                formatter: '{c}%'
+                            }
+                        }
+                    }
+                }
+            ]
+        };
+        echarts_line.setOption(option);
+    }
+    //条形图1
+    function echarts_bar_frozen(data) {
+        var echarts_bar_frozen=echarts.init(document.getElementById('echarts_bar_frozen'));
+        var option = {
+//            title:{
+//                text:'冷冻原因图',
+//                x:'center'
+//            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            grid: {
+                x:200,
+                y:30,
+                x2:80,
+                y2:30
+            },
+//            legend: {
+//                data:['冷冻原因'],
+//                x:'left'
+//            },
+            xAxis : [
+                {
+                    type : 'value',
+                    max:2500,
+                    boundaryGap : [0, 0.01]
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'category',
+                    data : ['无驾照或牌照',
+                        '车型尚未开售，等车时间过长',
+                        '优惠力度不足',
+                        '价格过高',
+                        '关注其他车型，误注册',
+                        '不在本地购车',
+                        '目前没钱',
+                        '无展车或试驾车，客户无到店意向',
+                        '非本人注册',
+                        '离经销店过远',
+                        '不考虑北京汽车',
+                        '半年内不考虑买车',
+                        '随便看一下，无购车计划']
+                }
+            ],
+            series : [
+                {
+                    name:'冷冻原因',
+                    type:'bar',
+                    barWidth:10,
+                    data:data,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label: {
+                                show: true,
+                                textStyle:{
+                                    color:'#000'
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        };
+        echarts_bar_frozen.setOption(option);
+    }
+    //条形图2
+    function echarts_bar_fail(data) {
+        var echarts_bar_fail=echarts.init(document.getElementById('echarts_bar_fail'));
+        var option = {
+//            title:{
+//                text:'战败原因图',
+//                x:'center'
+//            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            grid: {
+                x:100,
+                y:30,
+                x2:80,
+                y2:30
+            },
+//            legend: {
+//                data:['战败原因'],
+//                x:'left'
+//            },
+            xAxis : [
+                {
+                    type : 'value',
+                    max:1200,
+                    boundaryGap : [0, 0.01]
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'category',
+                    data : ['价格偏高',
+                        '促销不力',
+                        '车型缺货',
+                        '交通不便',
+                        '受周围人影响',
+                        '品牌偏好']
+                }
+            ],
+            series : [
+                {
+                    name:'战败原因',
+                    type:'bar',
+                    barWidth:20,
+                    data:data,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label: {
+                                show: true,
+                                textStyle:{
+                                    color:'#000'
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        };
+        echarts_bar_fail.setOption(option);
+    }
+
+    //设置随机数据
+    function setGraph() {
+        var data1_1 = parseInt(Math.random()*3000);
+        var data1_2 = parseInt(Math.random()*3000);
+        var data1_3 = parseInt(Math.random()*3000);
+        var data1_4 = parseInt(Math.random()*3000);
+        var data11=[data1_1,data1_2,data1_3,data1_4];
+        var data1_5 = parseInt(Math.random()*2000);
+        var data1_6 = parseInt(Math.random()*2000);
+        var data1_7 = parseInt(Math.random()*2000);
+        var data1_8 = parseInt(Math.random()*2000);
+        var data12=[data1_5,data1_6,data1_7,data1_8];
+        echarts_graph(data11,data12);
+
+        var data2_1 = parseInt(Math.random()*10000)/100;
+        var data2_2 = parseInt(Math.random()*10000)/100;
+        var data2_3 = parseInt(Math.random()*10000)/100;
+        var data2_4 = parseInt(Math.random()*10000)/100;
+        var data21=[data2_1,data2_2,data2_3,data2_4];
+        var data2_5 = parseInt(Math.random()*10000)/100;
+        var data2_6 = parseInt(Math.random()*10000)/100;
+        var data2_7 = parseInt(Math.random()*10000)/100;
+        var data2_8 = parseInt(Math.random()*10000)/100;
+        var data22=[data2_5,data2_6,data2_7,data2_8];
+        var data2_9 = parseInt(Math.random()*10000)/100;
+        var data2_10 = parseInt(Math.random()*10000)/100;
+        var data2_11 = parseInt(Math.random()*10000)/100;
+        var data2_12 = parseInt(Math.random()*10000)/100;
+        var data23=[data2_9,data2_10,data2_11,data2_12];
+        echarts_line(data21,data22,data23);
+
+        var data3_1 = parseInt(Math.random()*2000);
+        var data3_2 = parseInt(Math.random()*2000);
+        var data3_3 = parseInt(Math.random()*2000);
+        var data3_4 = parseInt(Math.random()*2000);
+        var data3_5 = parseInt(Math.random()*2000);
+        var data3_6 = parseInt(Math.random()*2000);
+        var data3_7 = parseInt(Math.random()*2000);
+        var data3_8 = parseInt(Math.random()*2000);
+        var data3_9 = parseInt(Math.random()*2000);
+        var data3_10 = parseInt(Math.random()*2000);
+        var data3_11 = parseInt(Math.random()*2000);
+        var data3_12 = parseInt(Math.random()*2000);
+        var data3_13 = parseInt(Math.random()*2000);
+        var data3=[data3_1,data3_2,data3_3,data3_4,data3_5,data3_6,data3_7,data3_8,data3_9,data3_10,data3_11,data3_12,data3_13];
+        echarts_bar_frozen(data3);
+
+        var data4_1 = parseInt(Math.random()*1000);
+        var data4_2 = parseInt(Math.random()*1000);
+        var data4_3 = parseInt(Math.random()*1000);
+        var data4_4 = parseInt(Math.random()*1000);
+        var data4_5 = parseInt(Math.random()*1000);
+        var data4_6 = parseInt(Math.random()*1000);
+        var data4=[data4_1,data4_2,data4_3,data4_4,data4_5,data4_6];
+        echarts_bar_fail(data4);
+    }
+    setGraph();
+</script>
+</body>
+</html>

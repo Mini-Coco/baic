@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>客户画像大数据平台</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min93e3.css">
+    <link rel="stylesheet" href="css/semantic.min.css">
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/login.css">
+    <style>
+        .list-icons>li i {
+            position: relative;
+            top: 4px;
+        }
+        #validateCode{
+            width:121px;
+            font-size:20px;
+            color:#000;
+            text-decoration: none;
+            border-left: none;
+            cursor: pointer;
+        }
+        .ui.mini.getcode{
+            width:100px;
+            text-align: center;
+        }
+        .code.message{
+            color:#029be5;
+        }
+    </style>
+</head>
+<body class="page-login layout-full page-dark">
+<!--登录-->
+<div style="" class="page height-full">
+    <div class="page-content height-full">
+        <div class="page-brand-info vertical-align animation-slide-left hidden-xs">
+            <div class="page-brand vertical-align-middle">
+                <div class="smart_logo">Smart Data</div>
+                <div style="font-size: 20px;" class="hidden-sm">Smart Data 汽车行业大数据应用平台</div>
+                <ul class="list-icons hidden-sm">
+                    <li>
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        Smart Data 是一个基于云计算和大数据技术的汽车行业企业级应用平台，可以帮助企业极大的提高工作效率，节省运营成本，提升品牌形象。
+                    </li>
+                    <li>
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        您可以 Smart Data 为基础，广泛应用于企业的市场、营销、客户关系管理等各个业务部门，构建客户大数据的精准营销体系。
+                    <li>
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        Smart Data 紧贴业务特性，封装了可应用于汽车行业的大量业务场景和技术功能，可选择灵活的部署及应用方式，最大程度上帮助企业节省实施成本。
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-login-main animation-fade">
+            <div class="vertical-align">
+                <div class="vertical-align-middle">
+                    <h4 class="hidden-xs" style="font-size: 18px;">登录 Smart Data</h4>
+                    <p class="hidden-xs">Smart Data 在线演示系统</p>
+                    <form action="" class="login-form" method="post" id="loginForm">
+                        <div class="form-group">
+                            <label class="sr-only" for="username">用户名</label>
+                            <input type="text" class="form-control" id="username" name="loginName" placeholder="请输入用户名">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="password">密码</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="password">验证码</label>
+                            <div class="input-group">
+                                <input id="answerCode" type="text" class="form-control" name="validCode" placeholder="请输入验证码" style="padding-right: 45px;">
+                                <a id="validateCode" onclick="refreshCode()" class="input-group-addon padding-0 reload-vify">
+                                    <span id="code_node1" class="code_node"></span>
+                                    <span id="code_node2" class="code_node"></span>
+                                    <span id="code_node3" class="code_node"></span>
+                                    <span id="code_node4" class="code_node"></span>
+                                </a>
+                                <input type="hidden" id="validateCodeValue" />
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="checkbox-custom checkbox-inline checkbox-primary pull-left">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">自动登录</label>
+                            </div>
+                            <div class="pull-right">
+                                <a style="cursor: pointer;" onclick="register()">注册账号</a>
+                                ·
+                                <a style="cursor: pointer;" onclick="forgetpswd()" class="collapsed" data-toggle="collapse" aria-expanded="false" aria-controls="forgetPassword">
+                                    忘记密码
+                                </a>
+                            </div>
+                        </div>
+                        <!--<div class="collapse" id="forgetPassword" aria-expanded="true">-->
+                            <!--<div class="alert alert-warning alert-dismissible" role="alert">-->
+                                <!--请返回官网点击登录按钮找回密码-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <a href="index.html" type="submit"
+                           class="btn btn-primary btn-block margin-top-30"
+                           style="height:40px;line-height: 30px;background-color: #029be5;border: none;">立即登录</a>
+                    </form>
+                </div>
+            </div>
+            <footer class="page-copyright">
+                <p>&copy; Smart Data工作组 版权所有</p>
+            </footer>
+        </div>
+    </div>
+</div>
+<!--黑色罩层-->
+<style>
+    .mask{
+        z-index:10000;
+        position: fixed;
+        top: 0;
+        left:0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.8);
+        display: none;
+    }
+</style>
+<div class="mask"></div>
+<!-- 注册 -->
+<div style="z-index:10001;position: relative;top: -510px;" class="ui small modal signbox" id="regBox">
+    <div class="header" style="font-size: 18px;">注册新账户</div>
+    <div class="content ui dimmable">
+        <div class="ui inverted dimmer">
+            <div class="ui indeterminate text loader"></div>
+        </div>
+        <div class="ui middle aligned very relaxed stackable grid">
+            <div class="ten wide column">
+                <div class="ui form" id="regForm">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <input type="text" name="mobile" placeholder="手机号" />
+                            <i class="fa fa-mobile"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <input type="text" name="mcode" placeholder="验证码" maxlength="6" />
+                            <i class="fa fa-key"></i>
+                        </div>
+                        <button onclick="getCode('reg')" class="ui mini button getcode reg" type="button" style="font-weight: 100;">获取验证码</button>
+                    </div>
+                    <div class="field code message"></div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <input type="password" id="regPad" name="password" placeholder="密码，6-16位数字、字母、符号组合" />
+                            <i class="fa fa-lock"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <input type="password" name="rePassword" placeholder="确认密码" />
+                            <i class="fa fa-lock"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="agreement" id="agreement" checked="checked" />
+                            <label for="agreement">我同意《<a href="about.html" target="_blank">Smart Data 相关条款</a>》</label>
+                        </div>
+                    </div>
+                    <input type="hidden" name="type" value="register" />
+                    <button class="ui blue submit button">
+                        <i class="fa fa-edit"></i>&nbsp;&nbsp;&nbsp;
+                        立即注册
+                    </button>
+                </div>
+            </div>
+            <div class="ui vertical divider" style="left:64%">或</div>
+            <div class="center aligned six wide column">
+                <button style="padding-left: 18px !important;" class="ui blue labeled icon button openlogin" type="button" onclick="goLogin()">
+                    <i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;
+                    直接登录
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 忘记密码 -->
+<div style="z-index:10001;position: relative;top: -510px;" class="ui small modal signbox" id="forgetBox">
+    <div class="header" style="font-size: 18px;">忘记密码</div>
+    <div class="content ui dimmable">
+        <div class="ui inverted dimmer">
+            <div class="ui indeterminate text loader"></div>
+        </div>
+        <div class="ui middle aligned very relaxed stackable grid">
+            <div class="ten wide column">
+                <div class="ui form" id="forgetForm">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <input type="text" name="mobile" placeholder="手机号" />
+                            <i class="fa fa-mobile"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <input type="text" name="mcode" placeholder="验证码" maxlength="6" />
+                            <i class="fa fa-key"></i>
+                        </div>
+                        <button onclick="getCode('pswd')" style="font-weight: 100;" class="ui mini button getcode pswd" type="button">获取验证码</button>
+                    </div>
+                    <div class="field code message"></div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <input type="password" id="forPad" name="password" placeholder="密码，6-16位数字、字母、符号组合" />
+                            <i class="fa fa-lock"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <input type="password" name="rePassword" placeholder="确认密码" />
+                            <i class="fa fa-lock"></i>
+                        </div>
+                    </div>
+                    <input type="hidden" name="type" value="validate" />
+                    <button class="ui blue submit button">重置密码</button>
+                </div>
+            </div>
+            <div class="ui vertical divider" style="left:64%">或</div>
+            <div class="center aligned six wide column">
+                <button style="padding-left: 18px !important;" class="ui blue labeled icon button openlogin" type="button" onclick="goLogin()">
+                    <i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;
+                    直接登录
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    //生成随机验证码
+    function setValidateCode(){
+        var validateCode = '';
+        var chars = [
+            1, 2, 3, 4, 5, 6, 7, 8, 9,
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+        ];
+        for(var i=1; i< 5;i++){
+            var c = parseInt(Math.random() * chars.length);
+            $("#code_node"+i).html(chars[c]);
+//            $("#code_node"+i).css("color",createRgb());
+            validateCode+=chars[c];
+        }
+        $("#validateCodeValue").val(validateCode);
+    }
+    function trim(str){
+        return str.replace(/^\s\s*/, '' ).replace(/\s\s*$/, '' );
+    }
+    //验证验证码
+    function validateCode(){
+        var answerCode = $("#answerCode").val();
+        var validateCode = $("#validateCodeValue").val();
+        answerCode = trim(answerCode).toLowerCase();
+        validateCode = trim(validateCode).toLowerCase();
+        if(answerCode==validateCode){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    //更新验证码
+    function refreshCode(){
+        setValidateCode();
+    }
+    //创建随机颜色
+    function createRgb() {
+        var rgbStr = ['rgb(97, 54, 97)','rgb(30, 27, 27)','rgb(252, 29, 13)',
+            'rgb(248, 106, 15)','rgb(5, 77, 252)','rgb(249, 8, 127)','rgb(0, 0, 0)'];
+        var num = parseInt(Math.random() *7);
+        return rgbStr[num];
+    }
+    setValidateCode();
+    //提交方法
+    function submitForm(){
+        if(!validateCode()){
+            alert('error');
+        }else{
+            alert('success');
+        }
+    }
+
+    //注册
+    function register() {
+        $('.mask').show();
+        $('#regBox').show('slow');
+        $('.getcode').html('获取验证码');
+    }
+    //忘记密码
+    function forgetpswd() {
+        $('.mask').show();
+        $('#forgetBox').show('slow');
+        $('.getcode').html('获取验证码');
+    }
+    //直接登录
+    function goLogin() {
+        $('.mask').hide();
+        $('#regBox').hide('slow');
+        $('#forgetBox').hide('slow');
+        clearInterval(countDown);
+        $('.code.message').html('');
+    }
+    //获取验证码
+    function getCode(flag) {
+        var num=60;
+        var crt=$('.getcode.'+flag);
+        crt.html(num+'s');
+        crt.parent().siblings('.code.message').html('验证码已经发送，请注意查收');
+        countDown=setInterval(countdown,1000);
+        function countdown() {
+            num--;
+            crt.html(num+'s');
+            if(num==-1){
+                crt.parent().siblings('.code.message').html('');
+                crt.html('重新获取');
+                clearInterval(countDown);
+                num=60;
+            }
+        }
+    }
+</script>
+</body>
+</html>

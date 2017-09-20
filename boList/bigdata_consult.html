@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客户咨询内容词频分析</title>
+    <link rel="stylesheet" href="../css/boList_e.css">
+    <style>
+        .box{
+            padding: 10px 10px 0;
+        }
+        .ibox_content{
+            display: inline-block;
+            width:47.3vw;
+            height:53vh;
+        }
+        .ibox_content:nth-of-type(1){
+            width:60vw;
+            height:95vh;
+        }
+        .div_top .ibox_content:nth-of-type(2),
+        .div_top .ibox_content:nth-of-type(3){
+            width:35vw;
+            height:46vh;
+        }
+        #cartype,#car_parts{
+            width:35vw;
+            height:36vh;
+        }
+        #customer,#character_cloud{
+            width:48vw;
+            height:45vh;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="div_top" style="overflow: hidden;margin-bottom: 15px;">
+        <div class="ibox_content" style="float: left;">
+            <div class="ibox_title">
+                <h5>客户咨询区域分布分析</h5>
+            </div>
+            <div id="myChart" style="width: 60vw;height:85vh;"></div>
+        </div>
+        <!--<div id="city"></div>-->
+        <div class="ibox_content" style="float: right;">
+            <div class="ibox_title">
+                <h5>咨询车型分析</h5>
+            </div>
+            <div id="cartype" class="div_box"></div>
+        </div>
+        <div class="ibox_content" style="float: right;margin-top: 15px;">
+            <div class="ibox_title">
+                <h5>咨询车辆配件或故障相关</h5>
+            </div>
+            <div id="car_parts" class="div_box"></div>
+        </div>
+    </div>
+    <div class="ibox_content" style="margin-right: 15px;">
+        <div class="ibox_title">
+            <h5>客户服务咨询分析</h5>
+        </div>
+        <div id="customer" class="div_box"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>咨询内容词频云图</h5>
+        </div>
+        <div id="character_cloud" class="div_box"></div>
+    </div>
+    <footer>
+        注：本分析场景数据样本时间为2017.01.01-2017.06.30
+    </footer>
+</div>
+
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/echarts-all.js"></script>
+<script>
+    function myChart() {
+        var myChart=echarts.init(document.getElementById('myChart'));
+        var option = {
+            tooltip : {
+                trigger: 'item',
+                formatter: function(params) {
+                    var res = params.name+'<br/>';
+                    var myseries = option.series;
+                    for (var i = 0; i < myseries.length; i++) {
+                        for(var j=0;j<myseries[i].data.length;j++){
+                            if(myseries[i].data[j].name==params.name){
+                                res+=myseries[i].name +' : '+myseries[i].data[j].value+'</br>';
+                            }
+                        }
+                    }
+                    return res;
+                }
+            },
+            legend: {
+                orient: 'vertical',
+                x:'left',
+                data:['X35','X65','D50']
+            },
+            color:['rgb(68,172,224)','rgb(69,203,221)','rgb(91,206,162)'],
+            dataRange: {
+                show:false,
+                min: 0,
+                max: 2500,
+                x: 'left',
+                y: 'bottom',
+                text:['高','低'],           // 文本，默认为数值文本
+                calculable : true
+            },
+            series : [
+                {
+                    name: 'X35',
+                    type: 'map',
+                    mapType: 'china',
+                    roam: false,
+                    itemStyle:{
+                        normal:{label:{show:true}},
+                        emphasis:{label:{show:true}}
+                    },
+                    showLegendSymbol: false,
+                    data:[
+                        {name: '北京',value: Math.round(Math.random()*1000)},
+                        {name: '天津',value: Math.round(Math.random()*1000)},
+                        {name: '上海',value: Math.round(Math.random()*1000)},
+                        {name: '重庆',value: Math.round(Math.random()*1000)},
+                        {name: '河北',value: Math.round(Math.random()*1000)},
+                        {name: '河南',value: Math.round(Math.random()*1000)},
+                        {name: '云南',value: Math.round(Math.random()*1000)},
+                        {name: '辽宁',value: Math.round(Math.random()*1000)},
+                        {name: '黑龙江',value: Math.round(Math.random()*1000)},
+                        {name: '湖南',value: Math.round(Math.random()*1000)},
+                        {name: '安徽',value: Math.round(Math.random()*1000)},
+                        {name: '山东',value: Math.round(Math.random()*1000)},
+                        {name: '新疆',value: Math.round(Math.random()*1000)},
+                        {name: '江苏',value: Math.round(Math.random()*1000)},
+                        {name: '浙江',value: Math.round(Math.random()*1000)},
+                        {name: '江西',value: Math.round(Math.random()*1000)},
+                        {name: '湖北',value: Math.round(Math.random()*1000)},
+                        {name: '广西',value: Math.round(Math.random()*1000)},
+                        {name: '甘肃',value: Math.round(Math.random()*1000)},
+                        {name: '山西',value: Math.round(Math.random()*1000)},
+                        {name: '内蒙古',value: Math.round(Math.random()*1000)},
+                        {name: '陕西',value: Math.round(Math.random()*1000)},
+                        {name: '吉林',value: Math.round(Math.random()*1000)},
+                        {name: '福建',value: Math.round(Math.random()*1000)},
+                        {name: '贵州',value: Math.round(Math.random()*1000)},
+                        {name: '广东',value: Math.round(Math.random()*1000)},
+                        {name: '青海',value: Math.round(Math.random()*1000)},
+                        {name: '西藏',value: Math.round(Math.random()*1000)},
+                        {name: '四川',value: Math.round(Math.random()*1000)},
+                        {name: '宁夏',value: Math.round(Math.random()*1000)},
+                        {name: '海南',value: Math.round(Math.random()*1000)},
+                        {name: '台湾',value: Math.round(Math.random()*1000)},
+                        {name: '香港',value: Math.round(Math.random()*1000)},
+                        {name: '澳门',value: Math.round(Math.random()*1000)}
+                    ]
+                },
+                {
+                    name: 'X65',
+                    type: 'map',
+                    mapType: 'china',
+                    itemStyle:{
+                        normal:{label:{show:true}},
+                        emphasis:{label:{show:true}}
+                    },
+                    data:[
+                        {name: '北京',value: Math.round(Math.random()*1000)},
+                        {name: '天津',value: Math.round(Math.random()*1000)},
+                        {name: '上海',value: Math.round(Math.random()*1000)},
+                        {name: '重庆',value: Math.round(Math.random()*1000)},
+                        {name: '河北',value: Math.round(Math.random()*1000)},
+                        {name: '安徽',value: Math.round(Math.random()*1000)},
+                        {name: '新疆',value: Math.round(Math.random()*1000)},
+                        {name: '浙江',value: Math.round(Math.random()*1000)},
+                        {name: '江西',value: Math.round(Math.random()*1000)},
+                        {name: '山西',value: Math.round(Math.random()*1000)},
+                        {name: '内蒙古',value: Math.round(Math.random()*1000)},
+                        {name: '吉林',value: Math.round(Math.random()*1000)},
+                        {name: '福建',value: Math.round(Math.random()*1000)},
+                        {name: '广东',value: Math.round(Math.random()*1000)},
+                        {name: '西藏',value: Math.round(Math.random()*1000)},
+                        {name: '四川',value: Math.round(Math.random()*1000)},
+                        {name: '宁夏',value: Math.round(Math.random()*1000)},
+                        {name: '香港',value: Math.round(Math.random()*1000)},
+                        {name: '澳门',value: Math.round(Math.random()*1000)}
+                    ]
+                },
+                {
+                    name: 'D50',
+                    type: 'map',
+                    mapType: 'china',
+                    itemStyle:{
+                        normal:{label:{show:true}},
+                        emphasis:{label:{show:true}}
+                    },
+                    data:[
+                        {name: '北京',value: Math.round(Math.random()*1000)},
+                        {name: '天津',value: Math.round(Math.random()*1000)},
+                        {name: '上海',value: Math.round(Math.random()*1000)},
+                        {name: '广东',value: Math.round(Math.random()*1000)},
+                        {name: '台湾',value: Math.round(Math.random()*1000)},
+                        {name: '香港',value: Math.round(Math.random()*1000)},
+                        {name: '澳门',value: Math.round(Math.random()*1000)}
+                    ]
+                }
+            ]
+        };
+        myChart.setOption(option);
+    }
+    myChart();
+</script>
+<script>
+    //客户服务相关
+    function customer() {
+        var customer=echarts.init(document.getElementById("customer"));
+        var customer_option = {
+//            title : {
+//                text: '客户服务咨询分析',
+//                x:'center'
+//            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    axisLabel : {
+                        interval:0,
+                        rotate:35
+                    },
+//                    splitArea:{
+//                        show:true,
+//                        areaStyle:{color:'#eee'}
+//                    },
+                    name : '主题词',
+                    nameTextStyle: {
+                        color: ['#000']
+                    },
+                    data : ['售后','客服','网店','处理','购车','厂家','首保','二网',
+                        '经理','区域经理','中农','订购','昊天','京东','投诉']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    name : '词频',
+                    nameTextStyle: {
+                        color: ['#000']
+                    }
+                }
+            ],
+            series : [
+                {
+                    name:'词频',
+                    type:'bar',
+                    barWidth:20,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)'
+                        }
+                    },
+                    data:[0.242302391495, 0.172313841116, 0.0726436771493, 0.0661546484233, 0.0616477283167,
+                        0.0593696261092, 0.0538224403086, 0.0520368617201, 0.0425738447785, 0.0405875498939,
+                        0.0322717482316, 0.0255637613175, 0.025137550597, 0.0228072505648, 0.0171493208817]
+                }
+            ]
+        };
+        customer.setOption(customer_option);
+    }
+    customer();
+    //车辆配件或故障相关
+    function car_parts() {
+        var car_parts=echarts.init(document.getElementById("car_parts"));
+        var car_parts_option = {
+//            title : {
+//                text: '咨询车辆配件或故障相关',
+//                x:'center'
+//            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    axisLabel : {
+                        interval:0,
+                        rotate:65
+                    },
+//                    splitArea:{
+//                        show:true,
+//                        areaStyle:{color:'#eee'}
+//                    },
+                    name : '主题词',
+                    nameTextStyle: {
+                        color: ['#000']
+                    },
+                    data : ['经销商','B40','试乘试驾','救援','拨电话','填写','更换','申请表',
+                        '保养','上市','发动机','转接','有没有','无声','4S店']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    name : '词频',
+                    nameTextStyle: {
+                        color: ['#000']
+                    }
+                }
+            ],
+            series : [
+                {
+                    name:'词频',
+                    type:'bar',
+                    barWidth:10,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)'
+                        }
+                    },
+                    data:[0.888954967428, 0.193735276845, 0.182484902119, 0.179716512754, 0.168625440722,
+                        0.143698672192, 0.0981778212393, 0.092154001658, 0.0900632285218, 0.0886428938922,
+                        0.0506157044853, 0.0475073725627, 0.0419267210935, 0.0414190283959, 0.0411958488618]
+                }
+            ]
+        };
+        car_parts.setOption(car_parts_option);
+    }
+    car_parts();
+    //车型相关
+    function cartype() {
+        var cartype=echarts.init(document.getElementById("cartype"));
+        var cartype_option = {
+//            title : {
+//                text: '咨询车型分析',
+//                x:'center'
+//            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    axisLabel : {
+                        interval:0,
+                        rotate:65
+                    },
+//                    splitArea:{
+//                        show:true,
+//                        areaStyle:{color:'#eee'}
+//                    },
+                    name : '主题词',
+                    nameTextStyle: {
+                        color: ['#000']
+                    },
+                    data : ['306','威旺','绅宝','E150','X65','S50','205','M20',
+                        '新乡','BJ40','90','D50','206','X25','D70']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    name : '词频',
+                    nameTextStyle: {
+                        color: ['#000']
+                    }
+                }
+            ],
+            series : [
+                {
+                    name:'词频',
+                    type:'bar',
+                    barWidth:10,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)'
+                        }
+                    },
+                    data:[0.184360989256, 0.175496866978, 0.00956559958091, 0.0091192049338, 0.00337984518525,
+                        0.00325230385751, 0.00312476252976, 0.00248705589104, 0.00213169499731, 0.00204066124393,
+                        0.00146672526907, 0.00121164261358, 0.00102033062196, 0.000892789294218, 0.000637706638727]
+                }
+            ]
+        };
+        cartype.setOption(cartype_option);
+    }
+    cartype();
+    //投诉区域或城市相关
+    function city() {
+        var city=echarts.init(document.getElementById("city"));
+        var city_option = {
+//            title : {
+//                text: '咨询区域或城市相关',
+//                x:'center'
+//            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    axisLabel : {
+                        interval:0,
+                        rotate:35
+                    },
+//                    splitArea:{
+//                        show:true,
+//                        areaStyle:{color:'#eee'}
+//                    },
+                    name : '主题词',
+                    nameTextStyle: {
+                        color: ['#000']
+                    },
+                    data : ['西安','郑州','深圳','聊城','山东','天津','长沙','株洲',
+                        '济南','成都','河南','苏州','河北','杭州','重庆']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    name : '词频',
+                    nameTextStyle: {
+                        color: ['#000']
+                    }
+                }
+            ],
+            series : [
+                {
+                    name:'词频',
+                    type:'bar',
+                    barWidth:20,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)'
+                        }
+                    },
+                    data:[0.0395803927745, 0.0181412799607, 0.0173804380592, 0.0146974939301, 0.0144486644162,
+                        0.0134736515207, 0.0117120302666, 0.0113238372229, 0.0111081101904, 0.0110263931929,
+                        0.0106602171536, 0.0103539329761, 0.00920510982664, 0.00913007939031, 0.00900705546075]
+                }
+            ]
+        };
+        city.setOption(city_option);
+    }
+//    city();
+    //随机颜色
+    function createRandomItemStyle() {
+        return {
+            normal: {
+                color: 'rgb(' + [
+                    Math.round(Math.random() * 160),
+                    Math.round(Math.random() * 160),
+                    Math.round(Math.random() * 160)
+                ].join(',') + ')'
+            }
+        };
+    }
+    //字符云
+    function character_cloud() {
+        var character_cloud=echarts.init(document.getElementById("character_cloud"));
+        var character_cloud_option = {
+//            title: {
+//                text: '咨询内容词频云图',
+//                x:'center'
+//            },
+            tooltip: {
+                show: true
+            },
+            series: [{
+                name: '咨询内容词频云图',
+                type: 'wordCloud',
+                size: ['100%', '100%'],
+                textRotation : [0, 45, 90, -45],
+                textPadding: 0,
+                autoSize: {
+                    enable: true,
+                    minSize: 14
+                },
+                data: [
+                    {
+                        name: "经销商",
+                        value: 8889,
+                        itemStyle: {
+                            normal: {
+                                color: 'black'
+                            }
+                        }
+                    },
+                    {
+                        name: "售后",
+                        value: 2423,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "B40",
+                        value: 1937,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "306",
+                        value: 1843,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "试乘试驾",
+                        value: 1824,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "救援",
+                        value: 1797,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "威旺",
+                        value: 1754,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "客服",
+                        value: 1723,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "拨电话",
+                        value: 1686,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "填写",
+                        value: 1436,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "更换",
+                        value: 981,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "申请表",
+                        value: 921,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "保养",
+                        value: 900,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "上市",
+                        value: 886,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "网店",
+                        value: 726,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "处理",
+                        value: 661,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "购车",
+                        value: 616,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "厂家",
+                        value: 593,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "首保",
+                        value: 538,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "二网",
+                        value: 520,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "发动机",
+                        value: 506,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "转接",
+                        value: 475,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "经理",
+                        value: 425,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "有没有",
+                        value: 419,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "无声",
+                        value: 414,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "4S店",
+                        value: 411,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "异响",
+                        value: 410,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "区域经理",
+                        value: 405,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "机油",
+                        value: 399,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "西安",
+                        value: 395,
+                        itemStyle: createRandomItemStyle()
+                    }
+                ]
+            }]
+        };
+        character_cloud.setOption(character_cloud_option);
+    }
+    character_cloud();
+</script>
+</body>
+</html>

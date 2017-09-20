@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>客户画像大数据平台</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <style type="text/css">
+        #content-main {
+            height: calc(100% - 70px);
+        }
+        .content-tabs .roll-right.roll-nav.J_tabExit,
+        .content-tabs .roll-right.roll-nav.J_tabExit:hover,
+        .content-tabs .btn-group.roll-right.roll-nav,
+        .content-tabs .btn-group.roll-right.roll-nav:hover{
+            color:#029be5;
+        }
+    </style>
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="min-width: 1200px;overflow: auto;">
+    <div id="wrapper">
+        <!--左侧导航开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="nav-close"><i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+							<span class="smart_logo">
+								Smart Data
+							</span>
+                        </div>
+                        <div class="logo-element">Smart Data</div>
+                    </li>
+                    <li>
+                        <a class="J_menuItem"  addr="index_home.html" href="#">
+                            <i class="fa fa-home"></i>
+                            <span class="nav-label">首页</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="J_menuItem"  addr="boEntrance/boEntrance.html"  href="#">
+                            <i class="fa fa-desktop"></i>
+                            <span class="nav-label">客户画像平台</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" addr="boEntrance/queryInformation.html" href="#">保客全景视图</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" addr="boEntrance/potentialCustomer.html" href="#">潜客全景视图</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa fa-bar-chart-o"></i>
+                            <span class="nav-label">数据分析中心</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" addr="" href="#">
+                                    保有客户分析
+                                    <span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/baoyou_jipan.html" href="#">基盘概况表</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/baoyou_shixiao.html" href="#">实销概况表</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/baoyou_fenyue.html" href="#">分月首保实施情况表</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/baoyou_fenchexing.html" href="#">分车型首保实施情况表</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/baoyou_kehu.html" href="#">客户转化情况表</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" addr="" href="#">
+                                    潜在客户分析
+                                    <span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/qianke_data.html" href="#">潜客数据分析</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" addr="" href="#">
+                                    各车型销售分析
+                                    <span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/chexing_jingxiaoshang.html" href="#">经销商实销情况</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/chexing_shixiao.html" href="#">实销车辆配置内饰颜色分布</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/chexing_chezhu.html" href="#">车主画像</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" addr="" href="#">
+                                    数据质量分析
+                                    <span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/data_DMS.html" href="#">DMS问题数据报表</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/data_CC.html" href="#">CC问题数据报表</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" addr="" href="#">
+                                    CRM业务分析
+                                    <span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/CRM_liushilv.html" href="#">客户流失率分析</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/CRM_care.html" href="#">客户关怀数据查询</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/CRM_tousu.html" href="#">投诉量分析</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/CRM_content.html" href="#">投诉内容分析</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" addr="" href="#">
+                                    大数据分析
+                                    <span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/bigdata_complain.html" href="#">客户投诉内容关键词分析</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/bigdata_consult.html" href="#">客户咨询内容关键词分析</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/bigdata_net.html" href="#">互联网客户口碑分析</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="about.html" target="_blank">
+                            <i class="fa fa-edit"></i>
+                            <span class="nav-label">关于Smart Data</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" addr="account.html" href="#">
+                            <i class="fa fa-wrench"></i>
+                            <span class="nav-label">账户管理</span>
+                        </a>
+                        <!--<ul class="nav nav-second-level">-->
+                            <!--<li><a onclick="showVersionManage()" addr="#" href="#">版本管理</a></li>-->
+                        <!--</ul>-->
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <!--<div class="row">-->
+                <!--<nav class="navbar navbar-static-top" role="navigation" style="min-height: 44px;margin-bottom: 0">-->
+                    <!--<div class="navbar-header">-->
+                        <!--<a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>-->
+                        <!--<div role="search"  class="navbar-form-custom" >-->
+                            <!--<div class="search_wrap">-->
+                                <!--<span class="glyphicon glyphicon-search"></span>-->
+                                <!--<input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" onkeydown="searchResults(event)" id="top-search">-->
+                                <!--<button class="searchBtn btn btn-primary btn-rounded">搜索</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</nav>-->
+            <!--</div>-->
+            <div class="row content-tabs">
+                <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward" style="    position: relative;"></i>
+                </button>
+                <nav class="page-tabs J_menuTabs">
+                    <div class="page-tabs-content">
+                        <a href="javascript:;" class="active J_menuTab" data-id="index_home.html">首页</a>
+                    </div>
+                </nav>
+                <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"  style="    position: relative;"></i>
+                </button>
+                <div class="btn-group roll-nav roll-right" style="border: 1px solid #029be5;margin: 6px 0px 6px 6px;width:60px;">
+                    <button class="dropdown J_tabClose" data-toggle="dropdown" style="position: relative; top: -7px;padding: 0px;">
+                        关闭&nbsp;<span class="fa fa-bars"></span>
+                    </button>
+                    <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                        <li class="J_tabShowActive"><a>定位当前选项卡</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="J_tabCloseAll"><a>关闭全部选项卡</a>
+                        </li>
+                        <li class="J_tabCloseOther"><a>关闭其他选项卡</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="login.html" class="roll-nav roll-right J_tabExit" style="border: 1px solid #029be5;margin: 6px 0px 6px 6px;right: 10px;">
+                    <span style="position: relative; top: -6px;">退出</span>
+                </a>
+            </div>
+            <div class="row J_mainContent" id="content-main">
+                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="index_home.html?v=4.0" frameborder="0" data-id="index_home.html" seamless></iframe>
+            </div>
+            <div class="footer" style="text-align: center;">
+                <div>&copy; Smart Data工作组 版权所有</div>
+            </div>
+        </div>
+        <!--右侧部分结束-->
+    </div>
+    <script src="js/jquery.min.js?v=2.1.4"></script>
+    <script src="js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="js/plugins/layer/layer.min.js"></script>
+    <script src="js/hplus.min.js?v=4.1.0"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+</body>
+
+<script type="text/javascript">
+  /*点击最上面搜索，执行查询*/
+//    function searchResults(event){
+//        var e = event || window.event || arguments.callee.caller.arguments[0];
+//          /*  if(e && e.keyCode==27){ // 按 Esc
+//                //要做的事情
+//              }
+//            if(e && e.keyCode==113){ // 按 F2
+//                 //要做的事情
+//               }      */
+//             if(e && e.keyCode==13){ // enter 键
+//                 //要做的事情
+//                // alert(1);
+//                 $("#search_results").click();
+//            }
+//    }
+//    function showVersionManage(){
+//        $(".versionManage").show();
+//    }
+//    function hideVersionManage(){
+//        $(".versionManage").hide();
+//    }
+</script>
+
+<script type="text/javascript">
+window.onload=function() {
+//$(window).load(function() {
+    function f(l) {
+        var k = 0;
+        $(l).each(function() {
+            k += $(this).outerWidth(true)
+        });
+        return k
+    }
+    function g(n) {
+        var o = f($(n).prevAll()),
+        q = f($(n).nextAll());
+        var l = f($(".content-tabs").children().not(".J_menuTabs"));
+        var k = $(".content-tabs").outerWidth(true) - l;
+        var p = 0;
+        if ($(".page-tabs-content").outerWidth() < k) {
+            p = 0
+        } else {
+            if (q <= (k - $(n).outerWidth(true) - $(n).next().outerWidth(true))) {
+                if ((k - $(n).next().outerWidth(true)) > q) {
+                    p = o;
+                    var m = n;
+                    while ((p - $(m).outerWidth()) > ($(".page-tabs-content").outerWidth() - k)) {
+                        p -= $(m).prev().outerWidth();
+                        m = $(m).prev()
+                    }
+                }
+            } else {
+                if (o > (k - $(n).outerWidth(true) - $(n).prev().outerWidth(true))) {
+                    p = o - $(n).prev().outerWidth(true)
+                }
+            }
+        }
+        $(".page-tabs-content").animate({
+            marginLeft: 0 - p + "px"
+        },"fast");
+    }
+    function a() {
+        var o = Math.abs(parseInt($(".page-tabs-content").css("margin-left")));
+        var l = f($(".content-tabs").children().not(".J_menuTabs"));
+        var k = $(".content-tabs").outerWidth(true) - l;
+        var p = 0;
+        if ($(".page-tabs-content").width() < k) {
+            return false
+        } else {
+            var m = $(".J_menuTab:first");
+            var n = 0;
+            while ((n + $(m).outerWidth(true)) <= o) {
+                n += $(m).outerWidth(true);
+                m = $(m).next()
+            }
+            n = 0;
+            if (f($(m).prevAll()) > k) {
+                while ((n + $(m).outerWidth(true)) < (k) && m.length > 0) {
+                    n += $(m).outerWidth(true);
+                    m = $(m).prev()
+                }
+                p = f($(m).prevAll())
+            }
+        }
+        $(".page-tabs-content").animate({
+            marginLeft: 0 - p + "px"
+        },"fast");
+    }
+    function b() {
+        var o = Math.abs(parseInt($(".page-tabs-content").css("margin-left")));
+        var l = f($(".content-tabs").children().not(".J_menuTabs"));
+        var k = $(".content-tabs").outerWidth(true) - l;
+        var p = 0;
+        if ($(".page-tabs-content").width() < k) {
+            return false
+        } else {
+            var m = $(".J_menuTab:first");
+            var n = 0;
+            while ((n + $(m).outerWidth(true)) <= o) {
+                n += $(m).outerWidth(true);
+                m = $(m).next()
+            }
+            n = 0;
+            while ((n + $(m).outerWidth(true)) < (k) && m.length > 0) {
+                n += $(m).outerWidth(true);
+                m = $(m).next()
+            }
+            p = f($(m).prevAll());
+            if (p > 0) {
+                $(".page-tabs-content").animate({
+                    marginLeft: 0 - p + "px"
+                },"fast");
+            }
+        }
+    }
+    $(".J_menuItem").each(function(k) {
+        if (!$(this).attr("data-index")) {
+            $(this).attr("data-index", k)
+        }
+    });
+    function c() {
+       //  var o = $(this).attr("href");
+        var o = $(this).attr("addr");
+        var m = $(this).data("index");
+        var l = $.trim($(this).text());
+        var k = true;
+        if (o == undefined || $.trim(o).length == 0) {
+            return false
+        }
+        $(".J_menuTab").each(function() {
+            if ($(this).data("id") == o) {
+                if (!$(this).hasClass("active")) {
+                    $(this).addClass("active").siblings(".J_menuTab").removeClass("active");
+                    g(this);
+                    $(".J_mainContent .J_iframe").each(function() {
+                        if ($(this).data("id") == o) {
+                            $(this).show().siblings(".J_iframe").hide();
+                            return false
+                        }
+                    })
+                }
+                k = false;
+                return false
+            }
+        });
+        if (k) {
+           // console.log("o="+o);
+           // console.log("l="+l);
+            var p = '<a href="javascript:;" class="active J_menuTab" data-id="' + o + '">' + l + ' <i class="fa fa-times-circle"></i></a>';
+            $(".J_menuTab").removeClass("active");
+            var n = '<iframe class="J_iframe" name="iframe' + m + '" width="100%" height="100%" src="' + o + '" frameborder="0" data-id="' + o + '" seamless></iframe>';
+            $(".J_mainContent").find("iframe.J_iframe").hide().parents(".J_mainContent").append(n);
+            $(".J_menuTabs .page-tabs-content").append(p);
+            g($(".J_menuTab.active"))
+        }
+        return false
+    }
+    $(".J_menuItem").on("click", c);
+    function h() {
+        var m = $(this).parents(".J_menuTab").data("id");
+        var l = $(this).parents(".J_menuTab").width();
+        if ($(this).parents(".J_menuTab").hasClass("active")) {
+            if ($(this).parents(".J_menuTab").next(".J_menuTab").size()) {
+                var k = $(this).parents(".J_menuTab").next(".J_menuTab:eq(0)").data("id");
+                $(this).parents(".J_menuTab").next(".J_menuTab:eq(0)").addClass("active");
+                $(".J_mainContent .J_iframe").each(function() {
+                    if ($(this).data("id") == k) {
+                        $(this).show().siblings(".J_iframe").hide();
+                        return false
+                    }
+                });
+                var n = parseInt($(".page-tabs-content").css("margin-left"));
+                if (n < 0) {
+                    $(".page-tabs-content").animate({
+                        marginLeft: (n + l) + "px"
+                    },"fast");
+                }
+                $(this).parents(".J_menuTab").remove();
+                $(".J_mainContent .J_iframe").each(function() {
+                    if ($(this).data("id") == m) {
+                        $(this).remove();
+                        return false
+                    }
+                })
+            }
+            if ($(this).parents(".J_menuTab").prev(".J_menuTab").size()) {
+                var k = $(this).parents(".J_menuTab").prev(".J_menuTab:last").data("id");
+                $(this).parents(".J_menuTab").prev(".J_menuTab:last").addClass("active");
+                $(".J_mainContent .J_iframe").each(function() {
+                    if ($(this).data("id") == k) {
+                        $(this).show().siblings(".J_iframe").hide();
+                        return false
+                    }
+                });
+                $(this).parents(".J_menuTab").remove();
+                $(".J_mainContent .J_iframe").each(function() {
+                    if ($(this).data("id") == m) {
+                        $(this).remove();
+                        return false
+                    }
+                })
+            }
+        } else {
+            $(this).parents(".J_menuTab").remove();
+            $(".J_mainContent .J_iframe").each(function() {
+                if ($(this).data("id") == m) {
+                    $(this).remove();
+                    return false
+                }
+            });
+            g($(".J_menuTab.active"))
+        }
+        return false
+    }
+    $(".J_menuTabs").on("click", ".J_menuTab i", h);
+    function i() {
+        $(".page-tabs-content").children("[data-id]").not(":first").not(".active").each(function() {
+            $('.J_iframe[data-id="' + $(this).data("id") + '"]').remove();
+            $(this).remove()
+        });
+        $(".page-tabs-content").css("margin-left", "0")
+    }
+    $(".J_tabCloseOther").on("click", i);
+    function j() {
+        g($(".J_menuTab.active"))
+    }
+    $(".J_tabShowActive").on("click", j);
+    function e() {
+        if (!$(this).hasClass("active")) {
+            var k = $(this).data("id");
+            $(".J_mainContent .J_iframe").each(function() {
+                if ($(this).data("id") == k) {
+                    $(this).show().siblings(".J_iframe").hide();
+                    return false
+                }
+            });
+            $(this).addClass("active").siblings(".J_menuTab").removeClass("active");
+            g(this)
+        }
+    }
+    $(".J_menuTabs").on("click", ".J_menuTab", e);
+    function d() {
+        var l = $('.J_iframe[data-id="' + $(this).data("id") + '"]');
+        var k = l.attr("src")
+    }
+    $(".J_menuTabs").on("dblclick", ".J_menuTab", d);
+    $(".J_tabLeft").on("click", a);
+    $(".J_tabRight").on("click", b);
+    $(".J_tabCloseAll").on("click",
+    function() {
+        $(".page-tabs-content").children("[data-id]").not(":first").each(function() {
+            $('.J_iframe[data-id="' + $(this).data("id") + '"]').remove();
+            $(this).remove()
+        });
+        $(".page-tabs-content").children("[data-id]:first").each(function() {
+            $('.J_iframe[data-id="' + $(this).data("id") + '"]').show();
+            $(this).addClass("active")
+        });
+        $(".page-tabs-content").css("margin-left", "0")
+    })
+};
+</script>
+</html>

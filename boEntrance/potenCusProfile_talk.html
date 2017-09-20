@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="renderer" content="webkit">
+    <title>潜客画像</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/style2.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../css/queryInformation.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/geRenInformation.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/potentialCus.css" rel="stylesheet" type="text/css" />
+    <style>
+        .input_name {
+            width: 115px;
+        }
+        .buyInfo .input_name {
+            width: 160px;
+        }
+        .concernFactors .input_name {
+            width: 220px;
+        }
+        .concernFactors input[type="checkbox"] {
+            position: relative;
+            top:3px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="page-wrapper" class="gray-bg dashbard-1" style="min-height: inherit;">
+        <!--导航条-->
+        <div class="row geRen_nav_content">
+            <div class="col-sm-12" style="margin-left: 15px;">
+                <ul class="geRen_nav">
+                    <li class="">
+                        <a href="potenCusProfile_customer.html"><button type="button" class="btn btn-outline btn-default">客户信息</button></a>
+                    </li>
+                    <li class="">
+                        <a href="potenCusProfile_tag.html"><button type="button" class="btn btn-outline btn-default">标签信息</button></a>
+                    </li>
+                    <li class="">
+                        <a href="potenCusProfile_compete.html"><button type="button" class="btn btn-outline btn-default">竞争信息</button></a>
+                    </li>
+                    <li  class="active">
+                        <a href="javascript:;"><button type="button" class="btn btn-default">沟通信息</button></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--沟通信息-->
+        <div class="wrapper wrapper-content comInfo" style="padding-bottom: 0px;">
+            <h4 class="querySearch_font" style="margin-bottom: 20px;">总览：</h4>
+            <table class="table table-bordered table-striped query_table" style="margin-top: 0px;">
+                <thead>
+                <tr>
+                    <th>沟通次数</th>
+                    <th>主要沟通方式</th>
+                    <th>沟通效果</th>
+                    <th>购车意向</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <style>
+                        .mark{font-size:16px !important;font-weight:600;color:#029be5;}
+                    </style>
+                    <td class="mark">8</td>
+                    <td class="mark">电话</td>
+                    <td>
+                        <img src="../img/star.png" alt="">
+                        <img src="../img/star.png" alt="">
+                        <img src="../img/star.png" alt="">
+                        <img src="../img/star.png" alt="">
+                    </td>
+                    <td>
+                        <img src="../img/star.png" alt="">
+                        <img src="../img/star.png" alt="">
+                        <img src="../img/star.png" alt="">
+                        <img src="../img/star.png" alt="">
+                        <img src="../img/star.png" alt="">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <h4 class="querySearch_font" style="margin: 20px 0px;">沟通过程详情：</h4>
+            <table class="table table-bordered table-striped query_table" style="margin-top: 0px;">
+                <thead>
+                <tr>
+                    <th>沟通时间</th>
+                    <th>沟通方式</th>
+                    <th>联系人</th>
+                    <th>沟通内容</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>2017/3/2</td>
+                    <td>电话</td>
+                    <td>李然</td>
+                    <td>询问其初步购车意向及购车需求</td>
+                </tr>
+                <tr>
+                    <td>2017/3/9</td>
+                    <td>微信</td>
+                    <td>李然</td>
+                    <td>邀请其来门店进行现场体验及试驾</td>
+                </tr>
+                <tr>
+                    <td>2017/4/16</td>
+                    <td>电话</td>
+                    <td>王皓</td>
+                    <td>询问试驾体验后的感受及是否有其他的疑问</td>
+                </tr>
+                <tr>
+                    <td>2017/5/1</td>
+                    <td>门店面谈</td>
+                    <td>王皓</td>
+                    <td>咨询车辆的售价、费用及贷款事宜</td>
+                </tr>
+                <tr>
+                    <td>2017/5/9</td>
+                    <td>电话</td>
+                    <td>李海燕</td>
+                    <td>首次客户电话回访，询问其对销售及售后环节的满意度</td>
+                </tr>
+                <tr>
+                    <td>2017/6/9</td>
+                    <td>电话</td>
+                    <td>李海燕</td>
+                    <td>第二次电话回访，询问其对车辆的使用状况及整体满意度</td>
+                </tr>
+                <tr>
+                    <td>2017/7/15</td>
+                    <td>微信</td>
+                    <td>王皓</td>
+                    <td>邀请客户参加车友俱乐部活动</td>
+                </tr>
+                <tr>
+                    <td>2017/10/18</td>
+                    <td>电话</td>
+                    <td>李海燕</td>
+                    <td>邀请客户进行首次维修保养</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="query_table" style="padding-right:20px;text-align: right;">
+                <a href="../excel/qianke_talk.xlsx" class="showquery_button btn">导出Excel</a>
+            </div>
+            <nav aria-label="Page navigation" style="text-align: center;">
+                <ul class="pagination">
+                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Mainly scripts -->
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/potentialCus.js"></script>
+<script>
+    $('input').attr("readonly",true);
+</script>
+</body>
+
+</html>

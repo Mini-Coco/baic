@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DMS问题数据报表</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/boList_e.css">
+    <style>
+        .box{
+            margin: 0 auto;
+            padding: 20px 0px;
+            width: 95vw;
+        }
+        table>thead>tr>th{
+            text-align: center;
+        }
+        table>thead>tr>th,
+        table>tbody>tr>th{
+            color: #fff;
+            background-color: rgb(68,172,224);
+        }
+        .table-bordered,
+        .table-bordered > thead > tr > th,
+        .table-bordered > tbody > tr > th,
+        .table-bordered > tfoot > tr > th,
+        .table-bordered > thead > tr > td,
+        .table-bordered > tbody > tr > td,
+        .table-bordered > tfoot > tr > td{
+            border: 1px solid rgb(145,201,226);
+        }
+        .table-striped > tbody > tr:nth-of-type(odd){
+            background-color: rgb(242,250,252);
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <nav style="overflow: hidden;margin-bottom: 10px;">
+        <span style="float:right;">
+            年：
+            <select name="">
+                <option value="">2017</option>
+                <option value="">2016</option>
+                <option value="">2015</option>
+            </select>
+            月：
+            <select name="">
+                <option value="">01</option><option value="">02</option>
+                <option value="">03</option><option value="">04</option>
+                <option value="">05</option><option value="">06</option>
+                <option value="">07</option><option value="">08</option>
+                <option value="">09</option><option value="">10</option>
+                <option value="">11</option><option value="">12</option>
+            </select>
+            品牌：
+            <select name="">
+                <option value="">轿车</option>
+                <option value="">12</option>
+                <option value="">1</option>
+            </select>
+            <button onclick="setGraph()">刷新</button>
+            <button>详细报表</button>
+        </span>
+    </nav>
+    <h3 class="text-center">DMS问题数据报表</h3>
+    <table class="table table-responsive table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>DMS问题字段统计</th>
+            <th>职业</th>
+            <th>证件类型</th>
+            <th>证件号码</th>
+            <th>邮编</th>
+            <th>学历</th>
+            <th>性别</th>
+            <th>所在行业</th>
+            <th>适宜联系时间</th>
+            <th>使用者姓名</th>
+            <th>使用者手机</th>
+            <th>生日</th>
+            <th>年龄</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>客户姓名/</td>
+            <td>上班</td>
+            <td>居民身份证</td>
+            <td>410881198701011234</td>
+            <td>459000</td>
+            <td>本科</td>
+            <td>m</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>18212345678</td>
+            <td></td>
+            <td>26-30岁</td>
+        </tr>
+        <tr>
+            <td>客户姓名/</td>
+            <td>上班</td>
+            <td>居民身份证</td>
+            <td>410881198701011234</td>
+            <td>845350</td>
+            <td>本科</td>
+            <td>m</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>18212345678</td>
+            <td></td>
+            <td>31-35岁</td>
+        </tr>
+        <tr>
+            <td>客户姓名/</td>
+            <td>上班</td>
+            <td>居民身份证</td>
+            <td>410881198701011234</td>
+            <td>843000</td>
+            <td>中学</td>
+            <td>f</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>18212345678</td>
+            <td></td>
+            <td>41-45岁</td>
+        </tr>
+        <tr>
+            <td>客户姓名/</td>
+            <td>上班</td>
+            <td>居民身份证</td>
+            <td>410881198701011234</td>
+            <td>842004</td>
+            <td>大专</td>
+            <td>m</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>18212345678</td>
+            <td></td>
+            <td>21-15岁</td>
+        </tr>
+        <tr>
+            <td>客户姓名/</td>
+            <td>个体</td>
+            <td>居民身份证</td>
+            <td>410881198701011234</td>
+            <td>843299</td>
+            <td>大专</td>
+            <td>m</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>18212345678</td>
+            <td></td>
+            <td>26-30岁</td>
+        </tr>
+        <tr>
+            <td>客户姓名/</td>
+            <td>其他</td>
+            <td>居民身份证</td>
+            <td>410881198701011234</td>
+            <td>132000</td>
+            <td>本科</td>
+            <td>m</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>18212345678</td>
+            <td></td>
+            <td>45岁以上</td>
+        </tr>
+        <tr>
+            <td>客户姓名/</td>
+            <td>农民</td>
+            <td>居民身份证</td>
+            <td>410881198701011234</td>
+            <td>30000</td>
+            <td>中学</td>
+            <td>m</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>18212345678</td>
+            <td></td>
+            <td>26-30岁</td>
+        </tr>
+        <tr>
+            <td>客户姓名/</td>
+            <td>农民</td>
+            <td>居民身份证</td>
+            <td>410881198701011234</td>
+            <td>30000</td>
+            <td>中学</td>
+            <td>m</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>18212345678</td>
+            <td></td>
+            <td>26-30岁</td>
+        </tr>
+        <tr>
+            <td>客户姓名/</td>
+            <td>#</td>
+            <td>居民身份证</td>
+            <td>410881198701011234</td>
+            <td>30000</td>
+            <td>中学</td>
+            <td>m</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>18212345678</td>
+            <td></td>
+            <td>26-30岁</td>
+        </tr>
+        <tr>
+            <td>客户姓名/</td>
+            <td>#</td>
+            <td>居民身份证</td>
+            <td>410881198701011234</td>
+            <td>30000</td>
+            <td>中学</td>
+            <td>m</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>18212345678</td>
+            <td></td>
+            <td>26-30岁</td>
+        </tr>
+        <tr>
+            <td>客户姓名/联系地址/</td>
+            <td>上班</td>
+            <td>居民身份证</td>
+            <td>410881198701011234</td>
+            <td>30000</td>
+            <td>中学</td>
+            <td>m</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>18212345678</td>
+            <td></td>
+            <td>26-30岁</td>
+        </tr>
+        <tr>
+            <td>客户姓名/联系地址/</td>
+            <td>上班</td>
+            <td>居民身份证</td>
+            <td>410881198701011234</td>
+            <td>30000</td>
+            <td>中学</td>
+            <td>m</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>18212345678</td>
+            <td></td>
+            <td>26-30岁</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

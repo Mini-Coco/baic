@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<title>客户画像大数据平台</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+	    <link rel="stylesheet" href="css/animate.css">
+	    <link rel="stylesheet" href="css/style2.css">
+		<link rel="stylesheet" href="css/login.css" type="text/css"/>
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		<link rel="stylesheet" href="css/boList.css" type="text/css"/>
+		<link rel="stylesheet" href="css/boEntrance.css" type="text/css"/>
+		<link rel="stylesheet" href="css/index.css" type="text/css"/>
+	</head>
+	<body style="background-color: #fff;">
+		<div class="bolist_body">
+			<div class="bolist_container container">
+				<!--内容部分-->
+				<div class="index_centent row">
+					<!--地图-->
+					<div class="index_centent_left col-xs-8" style="padding: 0px;" >
+						<div class="ibox-title" style="position: relative;">
+							<span style="float: left;padding:9px;">
+								<label>
+									<input id="chooseAll" type="checkbox" checked onclick="chooseAll()">全选
+								</label>
+							</span>
+							<h5>全国实销客户分布图</h5>
+						</div>
+						<div class="terr-echarts1" style="height:480px;" id="terr-echarts1">
+						</div>
+					</div>
+					<div class="index_centent_right col-xs-4" style="padding: 0px;">
+						<div class="index_centent_right_top1">
+							<div class="ibox-title">
+								<h5>各车型销售客户占比</h5>
+							</div>
+							<div class="ibox-content">
+								<div class="terr-echarts9" id="terr-echarts9"
+									 style="height:200px;position:relative;top:-10px;">
+								</div>
+							</div>
+						</div>
+						<div class="index_centent_right_year">
+							<div class="ibox-title">
+								<h5>客户拥车年限统计表</h5>
+							</div>
+							<div class="ibox-content">
+								<div class="terr-echarts10"
+									 style="height:230px;width: 430px;
+									 position: relative;top: -39px;left:-35px;"
+									 id="terr-echarts10">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="index_centent_bottom col-xs-12" style="padding: 0px;">
+						<div class="index_centent_bottom_small">
+							<div class="ibox-title">
+								<h5>各季度销售量、销售趋势</h5>
+							</div>
+							<div class="ibox-content">
+								<div class="terr-echarts5"
+									 style="height:230px;width: 430px;
+									 position: relative;top: -39px;left:-35px;"
+									 id="terr-echarts5">
+								</div>
+							</div>
+						</div>
+						<div class="index_centent_bottom_small index_centent_bottom_marl">
+							<div class="ibox-title">
+								<h5>各大区销售占比</h5>
+							</div>
+							<div class="ibox-content">
+								<div class="terr-echarts6" id="terr-echarts6"
+									 style="height:200px;position:relative;top:-10px;">
+								</div>
+							</div>
+						</div>
+						<div class="index_centent_bottom_small index_centent_bottom_marl">
+							<div class="ibox-title">
+								<h5>年龄分布</h5>
+							</div>
+							<div class="ibox-content">
+								<div class="terr-echarts4"
+									 style="height:230px;width: 430px;
+									 position: relative;top: -39px;left:-30px;"
+									 id="terr-echarts4">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="index_centent_bottom col-xs-12" style="padding: 0px;">
+						<div class="index_centent_bottom_small">
+							<div class="ibox-title">
+								<h5>学历分布</h5>
+							</div>
+							<div class="ibox-content">
+								<div class="terr-echarts3" id="terr-echarts3"
+									 style="height:200px;position:relative;top:-10px;">
+								</div>
+							</div>
+						</div>
+						<div class="index_centent_bottom_small index_centent_bottom_marl">
+							<div class="ibox-title">
+								<h5>职业分布</h5>
+							</div>
+							<div class="ibox-content">
+								<div class="terr-echarts7" id="terr-echarts7"
+									 style="height:200px;position:relative;top:-10px;">
+								</div>
+							</div>
+						</div>
+						<div class="index_centent_bottom_small index_centent_bottom_marl">
+							<div class="ibox-title">
+								<h5>客户类型</h5>
+							</div>
+							<div class="ibox-content">
+								<div class="terr-echarts8" id="terr-echarts8"
+									 style="height:200px;position:relative;top:-10px;">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+ 	<script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/echarts-all.js"></script>
+	<script type="text/javascript">
+			 var flag_map=true;
+
+             var myChart1;
+		 function myChart_1(){}
+			myChart1 = echarts.init(document.getElementById('terr-echarts1'));
+			var option = {
+		        tooltip : {
+		            trigger: 'item',
+//                    position:function(p){   //其中p为当前鼠标的位置
+//						if(p[1]>250){
+//                            return [p[0], p[1] - 200];
+//						}
+//                    },
+                    formatter: function(params) {
+                        var res = params.name+'<br/>';
+                        var myseries = option.series;
+                        for (var i = 0; i < myseries.length; i++) {
+                            for(var j=0;j<myseries[i].data.length;j++){
+                                if(myseries[i].data[j].name==params.name){
+                                    res+=myseries[i].name +' : '+myseries[i].data[j].value+'</br>';
+                                }
+                            }
+                        }
+                        return res;
+                    }
+                },
+		        legend: {
+		            orient: 'vertical',
+		            x:'left',
+		            data:['X35','X65','D50']
+		        },
+				color:['rgb(68,172,224)','rgb(69,203,221)','rgb(91,206,162)'],
+		        dataRange: {
+		            show:false,
+		            min: 0,
+		            max: 2500,
+		            x: 'left',
+		            y: 'bottom',
+		            text:['高','低'],           // 文本，默认为数值文本
+		            calculable : true
+		        },
+		        series : [
+		            {
+		                name: 'X35',
+		                type: 'map',
+		                mapType: 'china',
+		                roam: false,
+		                itemStyle:{
+		                    normal:{label:{show:true}},
+		                    emphasis:{label:{show:true}}
+		                },
+                    	showLegendSymbol: false,
+		                data:[
+		                    {name: '北京',value: Math.round(Math.random()*1000)},
+		                    {name: '天津',value: Math.round(Math.random()*1000)},
+		                    {name: '上海',value: Math.round(Math.random()*1000)},
+		                    {name: '重庆',value: Math.round(Math.random()*1000)},
+		                    {name: '河北',value: Math.round(Math.random()*1000)},
+		                    {name: '河南',value: Math.round(Math.random()*1000)},
+		                    {name: '云南',value: Math.round(Math.random()*1000)},
+		                    {name: '辽宁',value: Math.round(Math.random()*1000)},
+		                    {name: '黑龙江',value: Math.round(Math.random()*1000)},
+		                    {name: '湖南',value: Math.round(Math.random()*1000)},
+		                    {name: '安徽',value: Math.round(Math.random()*1000)},
+		                    {name: '山东',value: Math.round(Math.random()*1000)},
+		                    {name: '新疆',value: Math.round(Math.random()*1000)},
+		                    {name: '江苏',value: Math.round(Math.random()*1000)},
+		                    {name: '浙江',value: Math.round(Math.random()*1000)},
+		                    {name: '江西',value: Math.round(Math.random()*1000)},
+		                    {name: '湖北',value: Math.round(Math.random()*1000)},
+		                    {name: '广西',value: Math.round(Math.random()*1000)},
+		                    {name: '甘肃',value: Math.round(Math.random()*1000)},
+		                    {name: '山西',value: Math.round(Math.random()*1000)},
+		                    {name: '内蒙古',value: Math.round(Math.random()*1000)},
+		                    {name: '陕西',value: Math.round(Math.random()*1000)},
+		                    {name: '吉林',value: Math.round(Math.random()*1000)},
+		                    {name: '福建',value: Math.round(Math.random()*1000)},
+		                    {name: '贵州',value: Math.round(Math.random()*1000)},
+		                    {name: '广东',value: Math.round(Math.random()*1000)},
+		                    {name: '青海',value: Math.round(Math.random()*1000)},
+		                    {name: '西藏',value: Math.round(Math.random()*1000)},
+		                    {name: '四川',value: Math.round(Math.random()*1000)},
+		                    {name: '宁夏',value: Math.round(Math.random()*1000)},
+		                    {name: '海南',value: Math.round(Math.random()*1000)},
+		                    {name: '台湾',value: Math.round(Math.random()*1000)},
+		                    {name: '香港',value: Math.round(Math.random()*1000)},
+		                    {name: '澳门',value: Math.round(Math.random()*1000)}
+		                ]
+		            },
+		            {
+		                name: 'X65',
+		                type: 'map',
+		                mapType: 'china',
+		                itemStyle:{
+		                    normal:{label:{show:true}},
+		                    emphasis:{label:{show:true}}
+		                },
+		                data:[
+		                    {name: '北京',value: Math.round(Math.random()*1000)},
+		                    {name: '天津',value: Math.round(Math.random()*1000)},
+		                    {name: '上海',value: Math.round(Math.random()*1000)},
+		                    {name: '重庆',value: Math.round(Math.random()*1000)},
+		                    {name: '河北',value: Math.round(Math.random()*1000)},
+		                    {name: '安徽',value: Math.round(Math.random()*1000)},
+		                    {name: '新疆',value: Math.round(Math.random()*1000)},
+		                    {name: '浙江',value: Math.round(Math.random()*1000)},
+		                    {name: '江西',value: Math.round(Math.random()*1000)},
+		                    {name: '山西',value: Math.round(Math.random()*1000)},
+		                    {name: '内蒙古',value: Math.round(Math.random()*1000)},
+		                    {name: '吉林',value: Math.round(Math.random()*1000)},
+		                    {name: '福建',value: Math.round(Math.random()*1000)},
+		                    {name: '广东',value: Math.round(Math.random()*1000)},
+		                    {name: '西藏',value: Math.round(Math.random()*1000)},
+		                    {name: '四川',value: Math.round(Math.random()*1000)},
+		                    {name: '宁夏',value: Math.round(Math.random()*1000)},
+		                    {name: '香港',value: Math.round(Math.random()*1000)},
+		                    {name: '澳门',value: Math.round(Math.random()*1000)}
+		                ]
+		            },
+		            {
+		                name: 'D50',
+		                type: 'map',
+		                mapType: 'china',
+		                itemStyle:{
+		                    normal:{label:{show:true}},
+		                    emphasis:{label:{show:true}}
+		                },
+		                data:[
+		                    {name: '北京',value: Math.round(Math.random()*1000)},
+		                    {name: '天津',value: Math.round(Math.random()*1000)},
+		                    {name: '上海',value: Math.round(Math.random()*1000)},
+		                    {name: '广东',value: Math.round(Math.random()*1000)},
+		                    {name: '台湾',value: Math.round(Math.random()*1000)},
+		                    {name: '香港',value: Math.round(Math.random()*1000)},
+		                    {name: '澳门',value: Math.round(Math.random()*1000)}
+		                ]
+		            }
+		        ]
+		    };
+             myChart1.setOption(option);
+             //联动
+             var ecConfig = echarts.config;
+             myChart1.on(ecConfig.EVENT.CLICK, function (params){
+                 setGraph();
+             });
+
+             //获取所有图例选中状态
+             var legendList=myChart1.component.legend.getSelectedMap();
+             //设置所有图例数量、选中图例数量、不选图例数量
+             var legendSum=0,legendSumT=0,legendSumF=0;
+             //图例点击事件
+             myChart1.on(ecConfig.EVENT.LEGEND_SELECTED, function (param){
+                 //遍历
+                 for(var i in legendList){
+                     //获取某个图例选中状态
+                     var legendFlag=myChart1.component.legend.isSelected(i);
+                     console.log(legendFlag)
+                     if(legendFlag){
+                         ++legendSumT;
+                         ++legendSum;
+					 }else{
+                         ++legendSumF;
+                         ++legendSum;
+					 }
+                 }
+                 //通过当前图例状态设置checked属性
+                 if(legendSumT==legendSum){
+					 $('#chooseAll').prop("checked",true);
+				 }else{
+                     $('#chooseAll').prop("checked",false);
+                 }
+                 //数量置0
+                 legendSum=0,legendSumT=0,legendSumF=0;
+
+                 var selected = param.selected;
+//                 console.log(selected)
+                 var arr=[],str='';
+                 for(var i in selected){
+                     str = selected[i];
+                     arr.push(str);
+                 }
+//                 console.log(arr);
+                 for(var i=0,len=arr.length;i<len-1;i++){
+                     flag_map=arr[i]||arr[i+1];
+//                     console.log(i+'='+arr[i],(i+1)+'='+arr[i+1],flag_map);
+                     arr[i+1]=flag_map;
+				 }
+                 setGraph();
+             });
+//             全选
+             function chooseAll() {
+                 if($('#chooseAll').is(':checked')){
+                     for(var i in legendList){
+                         myChart1.component.legend.setSelected(i,true);
+                     }
+				 }else{
+                     for(var i in legendList){
+                         myChart1.component.legend.setSelected(i,false);
+                     }
+				 }
+             }
+		</script>
+		<script>
+            var myChart2;
+		function myChart_2(data){
+			var per = Math.round((data[0]/(data[0]+data[1]))*100);
+			myChart2 = echarts.init(document.getElementById('terr-echarts2'));
+			var option = {
+                series: [
+                    {
+                        name:'访问来源',
+                        type:'pie',
+                        radius: ['60%', '80%'],
+                        avoidLabelOverlap: false,
+						itemStyle: {
+							normal: {
+								label: {
+									show: false
+								},
+								labelLine: {
+									show: false
+								}
+							},
+							emphasis: {
+								label: {
+									show: true,
+										position: 'center',
+										textStyle: {
+										fontSize: '20',
+											fontWeight: 'bold'
+									}
+								}
+							}
+						},
+                        label: {
+                            normal: {
+                                show: false,
+                                position: 'center'
+                            },
+                            emphasis: {
+                                show: true,
+                                textStyle: {
+                                    fontSize: '30',
+                                    fontWeight: 'bold'
+                                }
+                            }
+                        },
+                        labelLine: {
+                            normal: {
+                                show: false
+                            }
+                        },
+                        data:[
+                            {value:data[0], name:'男'},
+                            {value:data[1], name:'女'}
+                        ]
+                    }
+                ]
+            };
+			myChart2.setOption(option);
+		}
+		</script>
+		<script>
+            var myChart3;
+		function myChart_3(data){
+			myChart3 = echarts.init(document.getElementById('terr-echarts3'));
+//			var per = Math.round((data[0]/(data[0]+data[1]+data[2]))*100);
+			var option = {
+			    color:['rgb(68,172,224)','rgb(69,203,221)','rgb(91,206,162)'],
+                series: [
+                    {
+                        name:'访问来源',
+                        type:'pie',
+                        radius: ['0%', '40%'],
+                        avoidLabelOverlap: false,
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    show: true,
+                                    formatter: '{b} : {c} \n ({d}%)'
+                                },
+                                labelLine: {
+                                    show: true
+                                }
+                            },
+                            emphasis: {
+                                label: {
+                                    show: false,
+                                    position: 'center',
+                                    textStyle: {
+                                        fontSize: '15',
+                                        fontWeight: 'bold'
+                                    }
+                                }
+                            }
+                        },
+                        label: {
+                            normal: {
+                                show: false,
+                                position: 'center'
+                            },
+                            emphasis: {
+                                show: false,
+                                textStyle: {
+                                    fontSize: '30',
+                                    fontWeight: 'bold'
+                                }
+                            }
+                        },
+                        labelLine: {
+                            normal: {
+                                show: false
+                            }
+                        },
+                        data: [{
+                            value: data[0],
+                            name: '高中'
+                        },{
+                            value: data[1],
+                            name: '大专及本科'
+                        },{
+                            value: data[2],
+                            name: '硕士以上'
+                        }]
+                    }
+                ]
+            };
+			myChart3.setOption(option);
+		}
+		</script>
+		<script>
+            var myChart4;
+		function myChart_4(data){
+			myChart4= echarts.init(document.getElementById('terr-echarts4'));
+			var option = {
+					tooltip : {
+						trigger: 'axis',
+                        position:function(p){   //其中p为当前鼠标的位置
+                            return [p[0] - 70, p[1] + 30];
+                        }
+					},
+                	color: ['rgb(68,172,224)'],
+                	calculable : false,
+					xAxis : [
+						{
+							type : 'category',
+							data : ['未知','20岁以下','21-25岁','26-30岁','31-35岁','36-40岁','41-45岁','45岁以上'],
+                            axisLabel:{
+                                interval:0,
+                                rotate:35
+                            }
+						}
+					],
+					yAxis : [
+						{
+							type : 'value'
+						}
+					],
+					series : [
+						{
+							name:'数量分布',
+							type:'bar',
+							data:data,
+							barWidth:12,
+							itemStyle: {
+								normal: {
+									label: {
+										show: false,
+										textStyle: {
+											color: '#800080'
+										}
+									}
+								}
+							}
+						}
+					]
+				};
+				myChart4.setOption(option);
+			}
+		</script>
+		<script>
+            var myChart5;
+            function myChart_5(data){
+                myChart5= echarts.init(document.getElementById('terr-echarts5'));
+                var option = {
+                    tooltip : {
+                        trigger: 'axis',
+                        position:function(p){   //其中p为当前鼠标的位置
+                            return [p[0] - 70, p[1] + 30];
+                        }
+                    },
+                    color: ['rgb(68,172,224)'],
+                    calculable : false,
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : ['2015Q1','2015Q2','2015Q3','2015Q4','2016Q1','2016Q2','2016Q3','2016Q4','2017Q1'],
+                            axisLabel:{
+                                interval:0,
+                                rotate:25,
+								textStyle:{
+                                    align:'center'
+                                }
+							}
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value'
+                        }
+                    ],
+					dataZoom: [
+                        {
+                            type: 'inside'
+                        }
+                    ],
+                    series : [
+                        {
+                            name:'数量分布',
+                            type:'bar',
+                            data:data,
+							barWidth:12
+                        }
+                    ]
+                };
+                myChart5.setOption(option);
+            }
+		</script>
+		<script>
+            var myChart6;
+			function myChart_6(data) {
+                myChart6= echarts.init(document.getElementById('terr-echarts6'));
+                var option = {
+                    color:['rgb(68,172,224)','rgb(69,203,221)','rgb(91,206,162)','rgb(79,198,107)','rgb(120,120,214)','rgb(239,215,72)'],
+                    series: [
+                        {
+                            name:'访问来源',
+                            type:'pie',
+                            radius: ['0%', '40%'],
+                            avoidLabelOverlap: false,
+                            itemStyle: {
+                                normal: {
+                                    label: {
+                                        show: true,
+                                        formatter: '{b} : {c} \n ({d}%)'
+                                    },
+                                    labelLine: {
+                                        show: true
+                                    }
+                                },
+                                emphasis: {
+                                    label: {
+                                        show: false,
+                                        position: 'center',
+                                        textStyle: {
+                                            fontSize: '15',
+                                            fontWeight: 'bold'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: false,
+                                    position: 'center'
+                                },
+                                emphasis: {
+                                    show: false,
+                                    textStyle: {
+                                        fontSize: '30',
+                                        fontWeight: 'bold'
+                                    }
+                                }
+                            },
+                            labelLine: {
+                                normal: {
+                                    show: false
+                                }
+                            },
+                            data:[
+                                {value:data[0], name:'北一战区'},
+                                {value:data[1], name:'北二战区'},
+                                {value:data[2], name:'东一战区'},
+                                {value:data[3], name:'东二战区'},
+                                {value:data[4], name:'南一战区'},
+                                {value:data[5], name:'南二战区'}
+                            ]
+                        }
+                    ]
+                };
+                myChart6.setOption(option);
+            }
+		</script>
+		<script>
+            var myChart7;
+            function myChart_7(data){
+                myChart7 = echarts.init(document.getElementById('terr-echarts7'));
+                var option = {
+                    color:['rgb(68,172,224)','rgb(69,203,221)','rgb(91,206,162)','rgb(79,198,107)','rgb(120,120,214)','rgb(239,215,72)','rgb(224,151,63)'],
+                    series: [
+                        {
+                            name:'访问来源',
+                            type:'pie',
+                            radius: ['0%', '40%'],
+                            avoidLabelOverlap: false,
+                            itemStyle: {
+                                normal: {
+                                    label: {
+                                        show: true,
+                                        formatter: '{b} : {c} \n ({d}%)'
+                                    },
+                                    labelLine: {
+                                        show: true
+                                    }
+                                },
+                                emphasis: {
+                                    label: {
+                                        show: false,
+                                        position: 'center',
+                                        textStyle: {
+                                            fontSize: '15',
+                                            fontWeight: 'bold'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: false,
+                                    position: 'center'
+                                },
+                                emphasis: {
+                                    show: false,
+                                    textStyle: {
+                                        fontSize: '30',
+                                        fontWeight: 'bold'
+                                    }
+                                }
+                            },
+                            labelLine: {
+                                normal: {
+                                    show: false
+                                }
+                            },
+                            data:[
+                                {value:data[0], name:'企业职员'},
+                                {value:data[1], name:'企业管理人员'},
+                                {value:data[2], name:'政府人员'},
+                                {value:data[3], name:'个体工商'},
+                                {value:data[4], name:'自由职业'},
+                                {value:data[5], name:'农民'},
+                                {value:data[6], name:'其他'}
+                            ]
+                        }
+                    ]
+                };
+                myChart7.setOption(option);
+            }
+		</script>
+		<script>
+            var myChart8;
+            function myChart_8(data){
+                myChart8 = echarts.init(document.getElementById('terr-echarts8'));
+                var per = Math.round((data[0]/(data[0]+data[1]))*100);
+                var option = {
+                    color:['rgb(68,172,224)','rgb(69,203,221)','rgb(91,206,162)','rgb(79,198,107)'],
+                    series: [
+                        {
+                            name:'访问来源',
+                            type:'pie',
+                            radius: ['0%', '40%'],
+                            avoidLabelOverlap: false,
+                            itemStyle: {
+                                normal: {
+                                    label: {
+                                        show: true,
+                                        formatter: '{b} : {c} \n ({d}%)'
+                                    },
+                                    labelLine: {
+                                        show: true
+                                    }
+                                },
+                                emphasis: {
+                                    label: {
+                                        show: false,
+                                        position: 'center',
+                                        textStyle: {
+                                            fontSize: '15',
+                                            fontWeight: 'bold'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: false,
+                                    position: 'center'
+                                },
+                                emphasis: {
+                                    show: false,
+                                    textStyle: {
+                                        fontSize: '30',
+                                        fontWeight: 'bold'
+                                    }
+                                }
+                            },
+                            labelLine: {
+                                normal: {
+                                    show: false
+                                }
+                            },
+                            data:[
+                                {value:data[0], name:'企业法人'},
+                                {value:data[1], name:'自然人'},
+                                {value:data[2], name:'政府机构'},
+                                {value:data[3], name:'事业单位'}
+                            ]
+                        }
+                    ]
+                };
+                myChart8.setOption(option);
+            }
+		</script>
+		<script>
+            var myChart9;
+            function myChart_9(data){
+                myChart9 = echarts.init(document.getElementById('terr-echarts9'));
+//			var per = Math.round((data[0]/(data[0]+data[1]+data[2]))*100);
+                var option = {
+                    color:['rgb(68,172,224)','rgb(69,203,221)','rgb(91,206,162)'],
+                    series: [
+                        {
+                            name:'访问来源',
+                            type:'pie',
+                            radius: ['0%', '40%'],
+                            avoidLabelOverlap: false,
+
+                            itemStyle: {
+                                normal: {
+                                    label: {
+                                        show: true,
+                                        formatter: '{b} : {c} \n ({d}%)'
+                                    },
+                                    labelLine: {
+                                        show: true
+                                    }
+                                },
+                                emphasis: {
+                                    label: {
+                                        show: false,
+                                        position: 'center',
+                                        textStyle: {
+                                            fontSize: '15',
+                                            fontWeight: 'bold'
+                                        }
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: false,
+                                    position: 'center'
+                                },
+                                emphasis: {
+                                    show: false,
+                                    textStyle: {
+                                        fontSize: '30',
+                                        fontWeight: 'bold'
+                                    }
+                                }
+                            },
+                            labelLine: {
+                                normal: {
+                                    show: false
+                                }
+                            },
+                            data: [{
+                                value: data[0],
+                                name: 'X35'
+                            },{
+                                value: data[1],
+                                name: 'X65'
+                            },{
+                                value: data[2],
+                                name: 'D50'
+                            }]
+                        }
+                    ]
+                };
+                myChart9.setOption(option);
+            }
+		</script>
+		<script>
+            var myChart10;
+            function myChart_10(data){
+                myChart10= echarts.init(document.getElementById('terr-echarts10'));
+                var option = {
+                    tooltip : {
+                        trigger: 'axis',
+                        position:function(p){   //其中p为当前鼠标的位置
+                            return [p[0] - 70, p[1] + 30];
+                        }
+                    },
+                    color: ['rgb(68,172,224)'],
+                    calculable : false,
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : ['0-1年','1-2年','2-3年','3-5年','5年以上'],
+                            axisLabel:{
+                                interval:0,
+//                                rotate:35
+                            }
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value'
+                        }
+                    ],
+                    series : [
+                        {
+                            name:'数量分布',
+                            type:'bar',
+                            data:data,
+                            barWidth:12,
+                            itemStyle: {
+                                normal: {
+                                    label: {
+                                        show: false,
+                                        textStyle: {
+                                            color: '#800080'
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                };
+                myChart10.setOption(option);
+            }
+		</script>
+		
+ <script type="text/javascript">
+function setGraph(){
+	var data2_1 = Math.random()*100;
+	var data2_2 = Math.random()*100;
+	var data2 = [data2_1,data2_2];
+
+	var data3_1 = parseInt(Math.random()*100);
+	var data3_2 = parseInt(Math.random()*100);
+    var data3_3 = parseInt(Math.random()*100);
+	var data3 = [data3_1,data3_2,data3_3];
+
+	var data4_1 = parseInt(Math.random()*400000);
+	var data4_2 = parseInt(Math.random()*400000);
+	var data4_3 = parseInt(Math.random()*400000);
+	var data4_4 = parseInt(Math.random()*400000);
+	var data4_5 = parseInt(Math.random()*400000);
+	var data4_6 = parseInt(Math.random()*400000);
+	var data4_7 = parseInt(Math.random()*400000);
+	var data4_8 = parseInt(Math.random()*400000);
+	var data4 = [data4_1,data4_2,data4_3,data4_4, data4_5,data4_6,data4_7,data4_8];
+
+    var data5_1 = parseInt(Math.random()*400);
+    var data5_2 = parseInt(Math.random()*400);
+    var data5_3 = parseInt(Math.random()*400);
+    var data5_4 = parseInt(Math.random()*400);
+    var data5_5 = parseInt(Math.random()*400);
+    var data5_6 = parseInt(Math.random()*400);
+    var data5_7 = parseInt(Math.random()*400);
+    var data5_8 = parseInt(Math.random()*400);
+    var data5_9 = parseInt(Math.random()*400);
+    var data5_10 = parseInt(Math.random()*400);
+    var data5 = [data5_1,data5_2,data5_3,data5_4,data5_5,data5_6,data5_7,data5_8,data5_9,data5_10];
+
+    var data6_1 = parseInt(Math.random()*400);
+    var data6_2 = parseInt(Math.random()*400);
+    var data6_3 = parseInt(Math.random()*400);
+    var data6_4 = parseInt(Math.random()*400);
+    var data6_5 = parseInt(Math.random()*400);
+    var data6_6 = parseInt(Math.random()*400);
+    var data6_7 = parseInt(Math.random()*400);
+    var data6 = [data6_1,data6_2,data6_3,data6_4,data6_5,data6_6,data6_7];
+
+    var data7_1 = parseInt(Math.random()*100);
+    var data7_2 = parseInt(Math.random()*100);
+    var data7_3 = parseInt(Math.random()*100);
+    var data7_4 = parseInt(Math.random()*100);
+    var data7_5 = parseInt(Math.random()*100);
+    var data7_6 = parseInt(Math.random()*100);
+    var data7_7 = parseInt(Math.random()*100);
+    var data7 = [data7_1,data7_2,data7_3,data7_4,data7_5,data7_6,data7_7];
+
+    var data8_1 = parseInt(Math.random()*100);
+    var data8_2 = parseInt(Math.random()*100);
+    var data8_3 = parseInt(Math.random()*100);
+    var data8_4 = parseInt(Math.random()*100);
+    var data8 = [data8_1,data8_2,data8_3,data8_4];
+
+    var data9_1 = parseInt(Math.random()*400);
+    var data9_2 = parseInt(Math.random()*400);
+    var data9_3 = parseInt(Math.random()*400);
+    var data9 = [data9_1,data9_2,data9_3];
+
+    var data10_1 = parseInt(Math.random()*400);
+    var data10_2 = parseInt(Math.random()*400);
+    var data10_3 = parseInt(Math.random()*400);
+    var data10_4 = parseInt(Math.random()*400);
+    var data10_5 = parseInt(Math.random()*400);
+    var data10_6 = parseInt(Math.random()*400);
+    var data10_7 = parseInt(Math.random()*400);
+    var data10_8 = parseInt(Math.random()*400);
+    var data10_9 = parseInt(Math.random()*400);
+    var data10_10 = parseInt(Math.random()*400);
+    var data10 = [data10_1,data10_2,data10_3,data10_4,data10_5,data10_6,data10_7,data10_8,data10_9,data10_10];
+
+    if(!flag_map){
+        data2 = [0,0];
+        data3 = [0,0,0];
+        data4 = [0,0,0,0,0,0,0,0,0,0];
+        data5 = [0,0,0,0,0,0,0,0,0,0];
+        data6 = [0,0,0,0,0,0];
+        data7 = [0,0,0,0,0,0,0];
+        data8 = [0,0,0,0];
+        data9 = [0,0,0];
+        data10 = [0,0,0,0,0,0,0,0,0,0];
+	}
+    myChart_1();
+//	myChart_2(data2);
+	myChart_3(data3);
+	myChart_4(data4);
+    myChart_5(data5);
+    myChart_6(data6);
+    myChart_7(data7);
+    myChart_8(data8);
+    myChart_9(data9);
+    myChart_10(data10);
+}
+
+$(window).resize(function(event) {
+	myChart1.resize();
+//	myChart2.resize();
+	myChart3.resize();
+	myChart4.resize();
+	myChart5.resize();
+	myChart6.resize();
+	myChart7.resize();
+	myChart8.resize();
+    myChart9.resize();
+    myChart10.resize();
+});
+setGraph();
+
+</script>
+
+	</body>
+</html>

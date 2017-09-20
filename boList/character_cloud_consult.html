@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客户咨询内容关键词分析</title>
+    <link rel="stylesheet" href="../css/boList_e.css">
+</head>
+<body>
+<div>
+    <div id="character_cloud" style="margin: 50px auto;width: 80vw;height: 80vh;"></div>
+</div>
+
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/echarts-all.js"></script>
+<script>
+    //随机颜色
+    function createRandomItemStyle() {
+        return {
+            normal: {
+                color: 'rgb(' + [
+                    Math.round(Math.random() * 160),
+                    Math.round(Math.random() * 160),
+                    Math.round(Math.random() * 160)
+                ].join(',') + ')'
+            }
+        };
+    }
+    //字符云
+    function character_cloud() {
+        var character_cloud=echarts.init(document.getElementById("character_cloud"));
+        var character_cloud_option = {
+            title: {
+                text: '咨询内容词频云图',
+                x:'center'
+            },
+            tooltip: {
+                show: true
+            },
+            series: [{
+                name: '咨询内容词频云图',
+                type: 'wordCloud',
+                size: ['80%', '80%'],
+                textRotation : [0, 45, 90, -45],
+                textPadding: 0,
+                autoSize: {
+                    enable: true,
+                    minSize: 14
+                },
+                data: [
+                    {
+                        name: "经销商",
+                        value: 8889,
+                        itemStyle: {
+                            normal: {
+                                color: 'black'
+                            }
+                        }
+                    },
+                    {
+                        name: "售后",
+                        value: 2423,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "B40",
+                        value: 1937,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "306",
+                        value: 1843,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "试乘试驾",
+                        value: 1824,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "救援",
+                        value: 1797,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "威旺",
+                        value: 1754,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "客服",
+                        value: 1723,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "拨电话",
+                        value: 1686,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "填写",
+                        value: 1436,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "更换",
+                        value: 981,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "申请表",
+                        value: 921,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "保养",
+                        value: 900,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "上市",
+                        value: 886,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "网店",
+                        value: 726,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "处理",
+                        value: 661,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "购车",
+                        value: 616,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "厂家",
+                        value: 593,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "首保",
+                        value: 538,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "二网",
+                        value: 520,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "发动机",
+                        value: 506,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "转接",
+                        value: 475,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "经理",
+                        value: 425,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "有没有",
+                        value: 419,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "无声",
+                        value: 414,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "4S店",
+                        value: 411,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "异响",
+                        value: 410,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "区域经理",
+                        value: 405,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "机油",
+                        value: 399,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "西安",
+                        value: 395,
+                        itemStyle: createRandomItemStyle()
+                    }
+                ]
+            }]
+        };
+        character_cloud.setOption(character_cloud_option);
+    }
+    character_cloud();
+</script>
+</body>
+</html>

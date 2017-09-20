@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基盘概况</title>
+    <link rel="stylesheet" href="../css/boList_e.css">
+    <style>
+        .box>div{
+            display: inline-block;
+            width:43.5vw;
+            height:53vh;
+        }
+        .box>div:nth-of-type(1),
+        .box>div:nth-of-type(3){
+            margin-right: 12px;
+        }
+        .div_box{
+            width:44vw;
+            height:45vh;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <nav style="overflow: hidden;margin-bottom: 10px;">
+        <span style="float:right;">
+            年：
+            <select name="">
+                <option value="">2017</option>
+                <option value="">2016</option>
+                <option value="">2015</option>
+            </select>
+            月：
+            <select name="">
+                <option value="">01</option><option value="">02</option>
+                <option value="">03</option><option value="">04</option>
+                <option value="">05</option><option value="">06</option>
+                <option value="">07</option><option value="">08</option>
+                <option value="">09</option><option value="">10</option>
+                <option value="">11</option><option value="">12</option>
+            </select>
+            品牌：
+            <select name="">
+                <option value="">轿车</option>
+                <option value="">12</option>
+                <option value="">1</option>
+            </select>
+            <button onclick="setGraph()">刷新</button>
+            <button>详细报表</button>
+        </span>
+    </nav>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>截至2017年07月基盘数据一览</h5>
+        </div>
+        <div id="shujuyilan" class="div_box"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>各战区累计购车客户</h5>
+        </div>
+        <div id="zhanquleiji" class="div_box"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>近半年把握率月趋势</h5>
+        </div>
+        <div id="bawolv" class="div_box"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>近半年购车客户月趋势</h5>
+        </div>
+        <div id="gouchekehu" class="div_box"></div>
+    </div>
+</div>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/echarts-all.js"></script>
+<script>
+    function shujuyilan(data) {
+        var shujuyilan=echarts.init(document.getElementById('shujuyilan'));
+        var shujuyilan_option={
+//            title : {
+//                text: '截至2017年07月基盘数据一览',
+//                x:'center'
+//            },
+            grid: {
+                y:30
+            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['购车客户统计'],
+                x:'left',
+                show:false
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data : ['购车客户','售后客户','保持客户','忠诚客户']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max : 80000
+                }
+            ],
+            series : [
+                {
+                    name:'购车客户统计',
+                    type:'bar',
+                    barWidth:30,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{
+                                    color:'#000'
+                                }
+                            }
+                        }
+                    },
+                    data:data
+                }
+            ]
+        };
+        shujuyilan.setOption(shujuyilan_option);
+    }
+
+    function zhanquleiji(data) {
+        var zhanquleiji=echarts.init(document.getElementById('zhanquleiji'));
+        var zhanquleiji_option={
+//            title : {
+//                text: '各战区累计购车客户',
+//                x:'center'
+//            },
+            grid: {
+                y:30
+            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['购车客户统计'],
+                x:'left',
+                show:false
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data : ['东一战区','东二战区','北一战区','北二战区','南一战区','南二战区','其他']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max : 80000
+                }
+            ],
+            series : [
+                {
+                    name:'购车客户统计',
+                    type:'bar',
+                    barWidth:30,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{
+                                    color:'#000'
+                                }
+                            }
+                        }
+                    },
+                    data:data
+                }
+            ]
+        };
+        zhanquleiji.setOption(zhanquleiji_option);
+    }
+
+    function bawolv(data) {
+        var bawolv=echarts.init(document.getElementById('bawolv'));
+        var bawolv_option = {
+//            title : {
+//                text: '近半年把握率月趋势',
+//                x:'center'
+//            },
+            grid: {
+                y:30
+            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    axisLabel:{
+                        rotate:15
+                    },
+                    boundaryGap : true,
+                    data : ['02.2017','03.2017','04.2017','05.2017','06.2017','07.2017']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max : 120,
+                    axisLabel : {
+                        formatter: '{value} %'
+                    }
+                }
+            ],
+            series : [
+                {
+                    name:'百分比',
+                    type:'line',
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                                label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{color:'#000'},
+                                formatter: '{c} %'
+                            }
+                        }
+                    },
+                    data:data
+                }
+            ]
+        };
+        bawolv.setOption(bawolv_option);
+    }
+
+    function gouchekehu(data) {
+        var gouchekehu=echarts.init(document.getElementById('gouchekehu'));
+        var gouchekehu_option = {
+//            title : {
+//                text: '近半年购车客户月趋势',
+//                x:'center'
+//            },
+            grid: {
+                y:30
+            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    axisLabel:{
+                        rotate:15
+                    },
+                    boundaryGap : true,
+                    data : ['02.2017','03.2017','04.2017','05.2017','06.2017','07.2017']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max : 80000
+                }
+            ],
+            series : [
+                {
+                    name:'百分比',
+                    type:'line',
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{color:'#000'}
+                            }
+                        }
+                    },
+                    data:data
+                }
+            ]
+        };
+        gouchekehu.setOption(gouchekehu_option);
+    }
+
+    //设置随机数据
+    function setGraph() {
+        var data1_1 = parseInt(Math.random()*60000);
+        var data1_2 = parseInt(Math.random()*60000);
+        var data1_3 = parseInt(Math.random()*60000);
+        var data1_4 = parseInt(Math.random()*10000);
+        var data1=[data1_1,data1_2,data1_3,data1_4];
+        shujuyilan(data1);
+
+        var data2_1 = parseInt(Math.random()*60000);
+        var data2_2 = parseInt(Math.random()*60000);
+        var data2_3 = parseInt(Math.random()*60000);
+        var data2_4 = parseInt(Math.random()*60000);
+        var data2_5 = parseInt(Math.random()*60000);
+        var data2_6 = parseInt(Math.random()*60000);
+        var data2_7 = parseInt(Math.random()*10000);
+        var data2=[data2_1,data2_2,data2_3,data2_4,data2_5,data2_6,data2_7];
+        zhanquleiji(data2);
+
+        var data3_1 = parseInt(Math.random()*10000)/100;
+        var data3_2 = parseInt(Math.random()*10000)/100;
+        var data3_3 = parseInt(Math.random()*10000)/100;
+        var data3_4 = parseInt(Math.random()*10000)/100;
+        var data3_5 = parseInt(Math.random()*10000)/100;
+        var data3_6 = parseInt(Math.random()*10000)/100;
+        var data3=[data3_1,data3_2,data3_3,data3_4,data3_5,data3_6];
+        bawolv(data3);
+
+        var data4_1 = parseInt(Math.random()*60000);
+        var data4_2 = parseInt(Math.random()*60000);
+        var data4_3 = parseInt(Math.random()*60000);
+        var data4_4 = parseInt(Math.random()*60000);
+        var data4_5 = parseInt(Math.random()*60000);
+        var data4_6 = parseInt(Math.random()*60000);
+        var data4=[data4_1,data4_2,data4_3,data4_4,data4_5,data4_6];
+        gouchekehu(data4);
+    }
+    setGraph();
+</script>
+</body>
+</html>

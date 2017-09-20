@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客户关怀数据查询</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/boList_e.css">
+    <style>
+        .box{
+            margin: 0 auto;
+            padding: 20px 0px;
+            width: 90vw;
+        }
+        table>thead>tr>th{
+            text-align: center;
+        }
+        table>thead>tr>th,
+        table>tbody>tr>th{
+            color: #fff;
+            background-color: rgb(68,172,224);
+        }
+        .table-bordered,
+        .table-bordered > thead > tr > th,
+        .table-bordered > tbody > tr > th,
+        .table-bordered > tfoot > tr > th,
+        .table-bordered > thead > tr > td,
+        .table-bordered > tbody > tr > td,
+        .table-bordered > tfoot > tr > td{
+            border: 1px solid rgb(145,201,226);
+        }
+        .table-striped > tbody > tr:nth-of-type(odd){
+            background-color: rgb(242,250,252);
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <nav style="overflow: hidden;margin-bottom: 10px;">
+        <span style="float:right;">
+            年：
+            <select name="">
+                <option value="">2017</option>
+                <option value="">2016</option>
+                <option value="">2015</option>
+            </select>
+            月：
+            <select name="">
+                <option value="">01</option><option value="">02</option>
+                <option value="">03</option><option value="">04</option>
+                <option value="">05</option><option value="">06</option>
+                <option value="">07</option><option value="">08</option>
+                <option value="">09</option><option value="">10</option>
+                <option value="">11</option><option value="">12</option>
+            </select>
+            品牌：
+            <select name="">
+                <option value="">轿车</option>
+                <option value="">12</option>
+                <option value="">1</option>
+            </select>
+            <button onclick="setGraph()">刷新</button>
+            <button>详细报表</button>
+        </span>
+    </nav>
+    <h3 class="text-center">客户维系数据查询－客户关怀</h3>
+    <table class="table table-responsive table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>日期</th>
+            <th>客户姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>联系人电话</th>
+            <th>系列车型对应</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>01.08.2017</td>
+            <td>丁小同</td>
+            <td>男</td>
+            <td>31-35岁</td>
+            <td>13912341234</td>
+            <td>M系</td>
+        </tr>
+        <tr>
+            <td>01.08.2017</td>
+            <td>丁志轩</td>
+            <td>男</td>
+            <td>41-45岁</td>
+            <td>13112341234</td>
+            <td>3系</td>
+        </tr>
+        <tr>
+            <td>01.08.2017</td>
+            <td>丁周舟</td>
+            <td>男</td>
+            <td>26-30岁</td>
+            <td>13812341234</td>
+            <td>BJ40L</td>
+        </tr>
+        <tr>
+            <td>01.08.2017</td>
+            <td>上海易鑫融资租赁有限公司昆明分公司</td>
+            <td>#</td>
+            <td>26-30岁</td>
+            <td>#</td>
+            <td>绅宝X65</td>
+        </tr>
+        <tr>
+            <td>01.08.2017</td>
+            <td>言犹怜</td>
+            <td>女</td>
+            <td>26-30岁</td>
+            <td>13912341234</td>
+            <td>BJ40L</td>
+        </tr>
+        <tr>
+            <td>01.08.2017</td>
+            <td>中国人民保险集团股份有限公司周口支公司</td>
+            <td>#</td>
+            <td>26-30岁</td>
+            <td>18312341234</td>
+            <td>绅宝D50</td>
+        </tr>
+        <tr>
+            <td>01.08.2017</td>
+            <td>丰存仁</td>
+            <td>男</td>
+            <td>26-30岁</td>
+            <td>18912341234</td>
+            <td>BJ20</td>
+        </tr>
+        <tr>
+            <td>01.08.2017</td>
+            <td>于孝义</td>
+            <td>男</td>
+            <td>41-45岁</td>
+            <td>13312341234</td>
+            <td>S50</td>
+        </tr>
+        <tr>
+            <td>01.08.2017</td>
+            <td>于敏</td>
+            <td>女</td>
+            <td>26-30岁</td>
+            <td>15912341234</td>
+            <td>M系</td>
+        </tr>
+        <tr>
+            <td>01.08.2017</td>
+            <td>于飞</td>
+            <td>女</td>
+            <td>21-25岁</td>
+            <td>18912341234</td>
+            <td>BJ20</td>
+        </tr>
+        <tr>
+            <td>01.08.2017</td>
+            <td>付宏杰</td>
+            <td>男</td>
+            <td>31-35岁</td>
+            <td>18912341234</td>
+            <td>绅宝X35</td>
+        </tr>
+        <tr>
+            <td>01.08.2017</td>
+            <td>付星星</td>
+            <td>男</td>
+            <td>21-25岁</td>
+            <td>17512341234</td>
+            <td>BJ20</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

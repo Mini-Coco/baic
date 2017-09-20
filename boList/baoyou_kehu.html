@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客户转化情况表</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/boList_e.css">
+    <style>
+        .box{
+            margin: 20px auto;
+            padding: 0;
+            width:93vw;
+        }
+        table>thead>tr>th{
+            text-align: center;
+        }
+        table>thead>tr>th,
+        table>tbody>tr>th{
+            color: #fff;
+            background-color: rgb(68,172,224);
+        }
+        .table-bordered,
+        .table-bordered > thead > tr > th,
+        .table-bordered > tbody > tr > th,
+        .table-bordered > tfoot > tr > th,
+        .table-bordered > thead > tr > td,
+        .table-bordered > tbody > tr > td,
+        .table-bordered > tfoot > tr > td{
+            border: 1px solid rgb(145,201,226);
+        }
+        .table-striped > tbody > tr:nth-of-type(odd){
+            background-color: rgb(242,250,252);
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <nav style="overflow: hidden;margin-bottom: 10px;">
+        <span style="float:right;">
+            年：
+            <select name="">
+                <option value="">2017</option>
+                <option value="">2016</option>
+                <option value="">2015</option>
+            </select>
+            月：
+            <select name="">
+                <option value="">01</option><option value="">02</option>
+                <option value="">03</option><option value="">04</option>
+                <option value="">05</option><option value="">06</option>
+                <option value="">07</option><option value="">08</option>
+                <option value="">09</option><option value="">10</option>
+                <option value="">11</option><option value="">12</option>
+            </select>
+            品牌：
+            <select name="">
+                <option value="">轿车</option>
+                <option value="">12</option>
+                <option value="">1</option>
+            </select>
+            <button onclick="setGraph()">刷新</button>
+            <button>详细报表</button>
+        </span>
+    </nav>
+    <h3 class="text-center" style="margin-bottom:20px;">客户转化情况表</h3>
+    <table class="table table-responsive table-bordered table-striped text-right">
+        <thead>
+        <tr>
+            <th>项目</th>
+            <th>01.2013</th>
+            <th>01.2014</th>
+            <th>01.2015</th>
+            <th>01.2016</th>
+            <th>01.2017</th>
+            <th>02.2013</th>
+            <th>02.2014</th>
+            <th>02.2015</th>
+            <th>02.2016</th>
+            <th>02.2017</th>
+            <th>03.2013</th>
+            <th>03.2014</th>
+            <th>03.2015</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>购车客户数</th>
+            <td></td>
+            <td>24757</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>7129</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>8558</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>再购车客户数</th>
+            <td></td>
+            <td>132</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>27</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>63</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>例保客户数</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>例保实施率</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>保持客户数</th>
+            <td></td>
+            <td>31675</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>活跃客户数</th>
+            <td>0</td>
+            <td>567</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <th>活跃客户率</th>
+            <td></td>
+            <td>2.00%</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>售后客户数</th>
+            <td></td>
+            <td>31245</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>进店客户数</th>
+            <td></td>
+            <td>35039</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>忠诚客户数</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>客户忠诚率</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>客户把握率</th>
+            <td></td>
+            <td>100.00%</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

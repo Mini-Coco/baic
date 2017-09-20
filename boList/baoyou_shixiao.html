@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实销概况表</title>
+    <link rel="stylesheet" href="../css/boList_e.css">
+    <style>
+        .ibox_content,#shixiao{
+            margin: 0 auto;
+            width:80vw;
+            height: 85vh;
+        }
+        #shixiao{
+            height: 80vh;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <nav style="overflow: hidden;margin-bottom: 20px;">
+        <span style="float:right;">
+            年：
+            <select name="">
+                <option value="">2017</option>
+                <option value="">2016</option>
+                <option value="">2015</option>
+            </select>
+            月：
+            <select name="">
+                <option value="">01</option><option value="">02</option>
+                <option value="">03</option><option value="">04</option>
+                <option value="">05</option><option value="">06</option>
+                <option value="">07</option><option value="">08</option>
+                <option value="">09</option><option value="">10</option>
+                <option value="">11</option><option value="">12</option>
+            </select>
+            品牌：
+            <select name="">
+                <option value="">轿车</option>
+                <option value="">12</option>
+                <option value="">1</option>
+            </select>
+            <button onclick="setGraph()">刷新</button>
+            <button>详细报表</button>
+        </span>
+    </nav>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>实销概况表</h5>
+        </div>
+        <div id="shixiao"></div>
+    </div>
+</div>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/echarts-all.js"></script>
+<script>
+    function shixiao(data) {
+        var shixiao=echarts.init(document.getElementById('shixiao'));
+        var shixiao_option={
+//            title : {
+//                text: '实销概况表',
+//                x:'center'
+//            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['购车客户统计'],
+                x:'left'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data : ['01.2017','02.2017','03.2017','04.2017','05.2017','06.2017','07.2017','08.2016','09.2016','10.2016','11.2016','12.2016']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max : 80000
+                }
+            ],
+            series : [
+                {
+                    name:'购车客户统计',
+                    type:'bar',
+                    barWidth:40,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{
+                                    color:'#000'
+                                }
+                            }
+                        }
+                    },
+                    data:data
+                }
+            ]
+        };
+        shixiao.setOption(shixiao_option);
+    }
+    
+    //设置随机数据
+    function setGraph() {
+        var data1_1 = parseInt(Math.random()*60000);
+        var data1_2 = parseInt(Math.random()*60000);
+        var data1_3 = parseInt(Math.random()*60000);
+        var data1_4 = parseInt(Math.random()*60000);
+        var data1_5 = parseInt(Math.random()*60000);
+        var data1_6 = parseInt(Math.random()*60000);
+        var data1_7 = parseInt(Math.random()*60000);
+        var data1_8 = parseInt(Math.random()*60000);
+        var data1_9 = parseInt(Math.random()*60000);
+        var data1_10 = parseInt(Math.random()*60000);
+        var data1_11 = parseInt(Math.random()*60000);
+        var data1_12 = parseInt(Math.random()*60000);
+        var data1=[data1_1,data1_2,data1_3,data1_4,data1_5,data1_6,data1_7,data1_8,data1_9,data1_10,data1_11,data1_12];
+        shixiao(data1);
+    }
+    setGraph();
+</script>
+</body>
+</html>

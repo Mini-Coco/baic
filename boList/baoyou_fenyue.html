@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分月首保实施情况表</title>
+    <link rel="stylesheet" href="../css/boList_e.css">
+    <style>
+        .ibox_content,#fenyue{
+            margin: 0 auto;
+            width:80vw;
+            height: 85vh;
+        }
+        #fenyue{
+            height: 80vh;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <nav style="overflow: hidden;margin-bottom: 20px;">
+        <span style="float:right;">
+            年：
+            <select name="">
+                <option value="">2017</option>
+                <option value="">2016</option>
+                <option value="">2015</option>
+            </select>
+            月：
+            <select name="">
+                <option value="">01</option><option value="">02</option>
+                <option value="">03</option><option value="">04</option>
+                <option value="">05</option><option value="">06</option>
+                <option value="">07</option><option value="">08</option>
+                <option value="">09</option><option value="">10</option>
+                <option value="">11</option><option value="">12</option>
+            </select>
+            品牌：
+            <select name="">
+                <option value="">轿车</option>
+                <option value="">12</option>
+                <option value="">1</option>
+            </select>
+            <button onclick="setGraph()">刷新</button>
+            <button>详细报表</button>
+        </span>
+    </nav>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>分月首保实施情况表</h5>
+        </div>
+        <div id="fenyue"></div>
+    </div>
+</div>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/echarts-all.js"></script>
+<script>
+    function fenyue(data1,data2,data3) {
+        var fenyue=echarts.init(document.getElementById('fenyue'));
+        var fenyue_option = {
+//            title : {
+//                text: '分月首保实施情况表',
+//                x:'center'
+//            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['购车客户统计','首保客户数统计','分时间首保实施率'],
+                x:'left',
+//                orient:'vertical'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data : ['01.2017','02.2017','03.2017','04.2017','05.2017','06.2017','07.2017']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max : 80000
+                },
+                {
+                    type : 'value'
+                }
+            ],
+            series : [
+                {
+                    name:'购车客户统计',
+                    type:'bar',
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{
+                                    color:'#000'
+                                }
+                            }
+                        }
+                    },
+                    data:data1
+                },
+                {
+                    name:'首保客户数统计',
+                    type:'bar',
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(91,206,162)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{
+                                    color:'#000'
+                                }
+                            }
+                        }
+                    },
+                    data:data2
+                },
+                {
+                    name:'分时间首保实施率',
+                    type:'line',
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(239,215,72)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{
+                                    color:'#000'
+                                }
+                            }
+                        }
+                    },
+                    data:data3
+                }
+            ]
+        };
+        fenyue.setOption(fenyue_option);
+    }
+    
+    //设置随机数据
+    function setGraph() {
+        var data1_1 = parseInt(Math.random()*60000);
+        var data1_2 = parseInt(Math.random()*60000);
+        var data1_3 = parseInt(Math.random()*60000);
+        var data1_4 = parseInt(Math.random()*60000);
+        var data1_5 = parseInt(Math.random()*60000);
+        var data1_6 = parseInt(Math.random()*60000);
+        var data1_7 = parseInt(Math.random()*60000);
+        var data1=[data1_1,data1_2,data1_3,data1_4,data1_5,data1_6,data1_7];
+        var data2_1 = parseInt(Math.random()*60000);
+        var data2_2 = parseInt(Math.random()*60000);
+        var data2_3 = parseInt(Math.random()*60000);
+        var data2_4 = parseInt(Math.random()*60000);
+        var data2_5 = parseInt(Math.random()*60000);
+        var data2_6 = parseInt(Math.random()*60000);
+        var data2_7 = parseInt(Math.random()*60000);
+        var data2=[data2_1,data2_2,data2_3,data2_4,data2_5,data2_6,data2_7];
+        var data3_1 = parseInt(Math.random()*100)/100;
+        var data3_2 = parseInt(Math.random()*100)/100;
+        var data3_3 = parseInt(Math.random()*100)/100;
+        var data3_4 = parseInt(Math.random()*100)/100;
+        var data3_5 = parseInt(Math.random()*100)/100;
+        var data3_6 = parseInt(Math.random()*100)/100;
+        var data3_7 = parseInt(Math.random()*100)/100;
+        var data3=[data3_1,data3_2,data3_3,data3_4,data3_5,data3_6,data3_7];
+        fenyue(data1,data2,data3);
+    }
+    setGraph();
+</script>
+</body>
+</html>

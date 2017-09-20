@@ -1,0 +1,48 @@
+.table{
+    max-width: 150%;
+}
+.pagCenter .pagination li a{
+    background-color:#fafafa;
+}
+.chosen-container-single .chosen-single{
+    min-height:25px;
+}
+a.chosen-single{
+    text-align: left;
+}
+.potentialCus .input_name{
+    width: 105px;
+}
+div.chosen-container.chosen-container-multi {
+    width: 322px !important;
+}
+
+.nav > li > ul > li > a {
+    position: relative;
+    display: block;
+    padding: 14px 20px 14px 25px;
+    font-weight: 600;
+    color: #000000;
+}
+.nav > li > ul > li > a i {
+    margin-right: 6px;
+}
+.navbar-default .nav > li > ul > li > a:hover,
+.navbar-default .nav > li > ul > li > a:focus {
+    background-color: #f6f6f6;
+    color: #d02516;
+}
+.datagrid-row-selected {
+    background: #029be5;
+    color: #fff;
+}
+.pagination>li>a{
+    border:1px solid #ddd;
+}
+.pagination > .active > a{
+    background-color: #029be5;
+    border-color:#029be5;
+}
+#showTable{
+    opacity:0;
+}

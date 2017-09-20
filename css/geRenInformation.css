@@ -1,0 +1,86 @@
+.geRen_nav_content{
+	background-color: #FFFFFF;
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+.geRen_nav{
+	margin-left: -14px;
+}
+.geRen_nav2{
+	margin-top: -15px;
+	margin-left: 30px;
+}
+.geRen_nav2_line{
+	margin-left: 4%;
+	width: 780px;
+	height: 1px;
+	margin-top: 20px;
+	border-bottom:2px solid #C0C0C0;
+}
+.geRen_nav2 li{
+	display: block;
+	float: left;
+}
+.geRen_nav2 li>img{
+	z-index: 2000;
+	width: 30px;
+	height: 30px;
+	margin-right: 56px;
+	margin-left: 1px;
+}
+.geRen_nav li{
+	display: block;
+	float: left;
+	margin-right: 5px;
+}
+.geRentable-responsive{
+	min-height: 60px;
+}
+.geRentable-responsive>div{
+	text-align: right;
+}
+.geRentable-responsive>div>input{
+	width: 140px;
+}
+/*nav导航条*/
+/*.geRen_nav>li>a{
+	color: #FFFFFF;
+}*/
+.geRen_nav li a {
+	display: block;
+	color: #000000;
+}
+.geRen_nav>li>a:focus, .geRen_nav>li>a:hover
+{
+	display: block;
+	color: rgb(208, 37, 22);
+    border-color: rgb(208, 37, 22);
+	background-color: rgb(255, 255, 255);
+}
+.geRen_nav>li:not(".active")>a:focus, .geRen_nav>li:not(".active")>a:hover {
+	display: block;
+    background-color: rgb(255, 255, 255);
+    color: rgb(208,37, 22);
+    border-color: rgb(208,37, 22);
+}
+.geRen_nav>.active a{
+	white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+	border-radius: 3px;
+	display: block;
+	background-color: rgb(24, 166, 137);
+    color: rgb(208,37,22);
+    border-color: rgb(208, 37, 22);
+}
+.active button.btn-default{
+	background-color: #029be5;
+}
+.btn-default:hover,.btn-default:focus, .btn-default:active{
+    border-color: rgb(194, 194, 194);
+	background-color: #029be5;
+	color: rgb(255,255,255);
+}

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客户流失率分析</title>
+    <link rel="stylesheet" href="../css/boList_e.css">
+    <style>
+        .box>div{
+            display: inline-block;
+            width:43.5vw;
+            height:53vh;
+        }
+        .box>div:nth-of-type(1),
+        .box>div:nth-of-type(3){
+            margin-right: 12px;
+        }
+        .div_box{
+            width:44vw;
+            height:45vh;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <nav style="overflow: hidden;margin-bottom: 10px;">
+        <span style="float:right;">
+            年：
+            <select name="">
+                <option value="">2017</option>
+                <option value="">2016</option>
+                <option value="">2015</option>
+            </select>
+            月：
+            <select name="">
+                <option value="">01</option><option value="">02</option>
+                <option value="">03</option><option value="">04</option>
+                <option value="">05</option><option value="">06</option>
+                <option value="">07</option><option value="">08</option>
+                <option value="">09</option><option value="">10</option>
+                <option value="">11</option><option value="">12</option>
+            </select>
+            品牌：
+            <select name="">
+                <option value="">轿车</option>
+                <option value="">12</option>
+                <option value="">1</option>
+            </select>
+            车型：
+            <select name="">
+                <option value="">全部</option>
+                <option value="">D50</option>
+                <option value="">D20</option>
+            </select>
+            <button onclick="setGraph()">刷新</button>
+            <button>详细报表</button>
+        </span>
+    </nav>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>90天内流失客户</h5>
+        </div>
+        <div id="nine" class="div_box"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>180天内流失客户</h5>
+        </div>
+        <div id="eight" class="div_box"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>270天内流失客户</h5>
+        </div>
+        <div id="seven" class="div_box"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>360天内流失客户</h5>
+        </div>
+        <div id="six" class="div_box"></div>
+    </div>
+</div>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/echarts-all.js"></script>
+<script>
+    function nine(data) {
+        var nine=echarts.init(document.getElementById('nine'));
+        var nine_option = {
+//            title : {
+//                text: '90天内流失客户',
+//                x:'center'
+//            },
+            grid: {
+                y:30
+            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    boundaryGap : true,
+                    data : ['2013年','2014年','2015年','2016年','2017年']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max:120,
+                    axisLabel : {
+                        formatter: '{value} %'
+                    }
+                }
+            ],
+            series : [
+                {
+                    name:'百分比',
+                    type:'line',
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{color:'#000'},
+                                formatter: '{c} %'
+                            }
+                        }
+                    },
+                    data:data
+                }
+            ]
+        };
+        nine.setOption(nine_option);
+    }
+
+    function eight(data) {
+        var eight=echarts.init(document.getElementById('eight'));
+        var eight_option = {
+//            title : {
+//                text: '180天内流失客户',
+//                x:'center'
+//            },
+            grid: {
+                y:30
+            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    boundaryGap : true,
+                    data : ['2013年','2014年','2015年','2016年','2017年']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max:120,
+                    axisLabel : {
+                        formatter: '{value} %'
+                    }
+                }
+            ],
+            series : [
+                {
+                    name:'百分比',
+                    type:'line',
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{color:'#000'},
+                                formatter: '{c} %'
+                            }
+                        }
+                    },
+                    data:data
+                }
+            ]
+        };
+        eight.setOption(eight_option);
+    }
+
+    function seven(data) {
+        var seven=echarts.init(document.getElementById('seven'));
+        var seven_option = {
+//            title : {
+//                text: '270天内流失客户',
+//                x:'center'
+//            },
+            grid: {
+                y:30
+            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    boundaryGap : true,
+                    data : ['2013年','2014年','2015年','2016年','2017年']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max:120,
+                    axisLabel : {
+                        formatter: '{value} %'
+                    }
+                }
+            ],
+            series : [
+                {
+                    name:'百分比',
+                    type:'line',
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                                label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{color:'#000'},
+                                formatter: '{c} %'
+                            }
+                        }
+                    },
+                    data:data
+                }
+            ]
+        };
+        seven.setOption(seven_option);
+    }
+
+    function six(data) {
+        var six=echarts.init(document.getElementById('six'));
+        var six_option = {
+//            title : {
+//                text: '360天内流失客户',
+//                x:'center'
+//            },
+            grid: {
+                y:30
+            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    boundaryGap : true,
+                    data : ['2013年','2014年','2015年','2016年','2017年']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max:120,
+                    axisLabel : {
+                        formatter: '{value} %'
+                    }
+                }
+            ],
+            series : [
+                {
+                    name:'百分比',
+                    type:'line',
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{color:'#000'},
+                                formatter: '{c} %'
+                            }
+                        }
+                    },
+                    data:data
+                }
+            ]
+        };
+        six.setOption(six_option);
+    }
+
+    //设置随机数据
+    function setGraph() {
+        var data1_1 = parseInt(Math.random()*10000)/100;
+        var data1_2 = parseInt(Math.random()*10000)/100;
+        var data1_3 = parseInt(Math.random()*10000)/100;
+        var data1_4 = parseInt(Math.random()*10000)/100;
+        var data1_5 = parseInt(Math.random()*10000)/100;
+        var data1=[data1_1,data1_2,data1_3,data1_4,data1_5];
+        nine(data1);
+
+        var data2_1 = parseInt(Math.random()*10000)/100;
+        var data2_2 = parseInt(Math.random()*10000)/100;
+        var data2_3 = parseInt(Math.random()*10000)/100;
+        var data2_4 = parseInt(Math.random()*10000)/100;
+        var data2_5 = parseInt(Math.random()*10000)/100;
+        var data2=[data2_1,data2_2,data2_3,data2_4,data2_5];
+        eight(data2);
+
+        var data3_1 = parseInt(Math.random()*10000)/100;
+        var data3_2 = parseInt(Math.random()*10000)/100;
+        var data3_3 = parseInt(Math.random()*10000)/100;
+        var data3_4 = parseInt(Math.random()*10000)/100;
+        var data3_5 = parseInt(Math.random()*10000)/100;
+        var data3=[data3_1,data3_2,data3_3,data3_4,data3_5];
+        seven(data3);
+
+        var data4_1 = parseInt(Math.random()*10000)/100;
+        var data4_2 = parseInt(Math.random()*10000)/100;
+        var data4_3 = parseInt(Math.random()*10000)/100;
+        var data4_4 = parseInt(Math.random()*10000)/100;
+        var data4_5 = parseInt(Math.random()*10000)/100;
+        var data4=[data4_1,data4_2,data4_3,data4_4,data4_5];
+        six(data4);
+    }
+    setGraph();
+</script>
+</body>
+</html>

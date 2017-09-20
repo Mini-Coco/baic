@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投诉量分析</title>
+    <link rel="stylesheet" href="../css/boList_e.css">
+    <style>
+        .ibox_content,#tousu{
+            margin: 0 auto;
+            width:80vw;
+            height: 85vh;
+        }
+        #tousu{
+            height: 80vh;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <nav style="overflow: hidden;margin-bottom: 20px;">
+        <span style="float:right;">
+            年：
+            <select name="">
+                <option value="">2017</option>
+                <option value="">2016</option>
+                <option value="">2015</option>
+            </select>
+            月：
+            <select name="">
+                <option value="">01</option><option value="">02</option>
+                <option value="">03</option><option value="">04</option>
+                <option value="">05</option><option value="">06</option>
+                <option value="">07</option><option value="">08</option>
+                <option value="">09</option><option value="">10</option>
+                <option value="">11</option><option value="">12</option>
+            </select>
+            品牌：
+            <select name="">
+                <option value="">轿车</option>
+                <option value="">12</option>
+                <option value="">1</option>
+            </select>
+            <button onclick="setGraph()">刷新</button>
+            <button>详细报表</button>
+        </span>
+    </nav>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>投诉总量</h5>
+        </div>
+        <div id="tousu"></div>
+    </div>
+</div>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/echarts-all.js"></script>
+<script>
+    function tousu(data1,data2,data3,data4,data5) {
+        var tousu=echarts.init(document.getElementById('tousu'));
+        var tousu_option = {
+//            title : {
+//                text:'投诉总量',
+//                x:'center'
+//            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                x:'left',
+                data:['质量','售后','配件','销售','其他']
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    splitLine : {show : false},
+                    data : ['08.2016','09.2016','10.2016','11.2016','12.2016','01.2017','02.2017','03.2017','04.2017','05.2017','06.2017','07.2017']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value'
+                }
+            ],
+            series : [
+                {
+                    name:'质量',
+                    type:'bar',
+                    tooltip : {trigger: 'item'},
+                    stack: '数量',
+                    barWidth:40,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label : {
+                                show: true,
+                                position: 'inside',
+                                textStyle:{color:'#fff'}
+                            }
+                        }
+                    },
+                    data:data1
+                },
+                {
+                    name:'售后',
+                    type:'bar',
+                    tooltip : {trigger: 'item'},
+                    stack: '数量',
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(69,203,221)',
+                            label : {
+                                show: true,
+                                position: 'inside',
+                                textStyle:{color:'#fff'}
+                            }
+                        }
+                    },
+                    data:data2
+                },
+                {
+                    name:'配件',
+                    type:'bar',
+                    tooltip : {trigger: 'item'},
+                    stack: '数量',
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(91,206,162)',
+                            label : {
+                                show: true,
+                                position: 'inside',
+                                textStyle:{color:'#fff'}
+                            }
+                        }
+                    },
+                    data:data3
+                },
+                {
+                    name:'销售',
+                    type:'bar',
+                    tooltip : {trigger: 'item'},
+                    stack: '数量',
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(79,198,107)',
+                            label : {
+                                show: true,
+                                position: 'inside',
+                                textStyle:{color:'#fff'}
+                            }
+                        }
+                    },
+                    data:data4
+                },
+                {
+                    name:'其他',
+                    type:'line',
+//                    yAxisIndex: 1000,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(239,215,72)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{color:'#000'},
+                                formatter: '{c} %'
+                            }
+                        }
+                    },
+                    data:data5
+                }
+            ]
+        };
+        tousu.setOption(tousu_option);
+    }
+    
+    //设置随机数据
+    function setGraph() {
+        var data1_1 = parseInt(Math.random()*300);
+        var data1_2 = parseInt(Math.random()*300);
+        var data1_3 = parseInt(Math.random()*300);
+        var data1_4 = parseInt(Math.random()*300);
+        var data1_5 = parseInt(Math.random()*300);
+        var data1_6 = parseInt(Math.random()*300);
+        var data1_7 = parseInt(Math.random()*300);
+        var data1_8 = parseInt(Math.random()*300);
+        var data1_9 = parseInt(Math.random()*300);
+        var data1_10 = parseInt(Math.random()*300);
+        var data1_11 = parseInt(Math.random()*300);
+        var data1_12 = parseInt(Math.random()*300);
+        var data1=[data1_1,data1_2,data1_3,data1_4,data1_5,data1_6,data1_7,data1_8,data1_9,data1_10,data1_11,data1_12];
+        var data2_1 = parseInt(Math.random()*100);
+        var data2_2 = parseInt(Math.random()*100);
+        var data2_3 = parseInt(Math.random()*100);
+        var data2_4 = parseInt(Math.random()*100);
+        var data2_5 = parseInt(Math.random()*100);
+        var data2_6 = parseInt(Math.random()*100);
+        var data2_7 = parseInt(Math.random()*100);
+        var data2_8 = parseInt(Math.random()*100);
+        var data2_9 = parseInt(Math.random()*100);
+        var data2_10 = parseInt(Math.random()*100);
+        var data2_11 = parseInt(Math.random()*100);
+        var data2_12 = parseInt(Math.random()*100);
+        var data2=[data2_1,data2_2,data2_3,data2_4,data2_5,data2_6,data2_7,data2_8,data2_9,data2_10,data2_11,data2_12];
+        var data3_1 = parseInt(Math.random()*400);
+        var data3_2 = parseInt(Math.random()*400);
+        var data3_3 = parseInt(Math.random()*400);
+        var data3_4 = parseInt(Math.random()*400);
+        var data3_5 = parseInt(Math.random()*400);
+        var data3_6 = parseInt(Math.random()*400);
+        var data3_7 = parseInt(Math.random()*400);
+        var data3_8 = parseInt(Math.random()*400);
+        var data3_9 = parseInt(Math.random()*400);
+        var data3_10 = parseInt(Math.random()*400);
+        var data3_11 = parseInt(Math.random()*400);
+        var data3_12 = parseInt(Math.random()*400);
+        var data3=[data3_1,data3_2,data3_3,data3_4,data3_5,data3_6,data3_7,data3_8,data3_9,data3_10,data3_11,data3_12];
+        var data4_1 = parseInt(Math.random()*400);
+        var data4_2 = parseInt(Math.random()*400);
+        var data4_3 = parseInt(Math.random()*400);
+        var data4_4 = parseInt(Math.random()*400);
+        var data4_5 = parseInt(Math.random()*400);
+        var data4_6 = parseInt(Math.random()*400);
+        var data4_7 = parseInt(Math.random()*400);
+        var data4_8 = parseInt(Math.random()*400);
+        var data4_9 = parseInt(Math.random()*400);
+        var data4_10 = parseInt(Math.random()*400);
+        var data4_11 = parseInt(Math.random()*400);
+        var data4_12 = parseInt(Math.random()*400);
+        var data4=[data4_1,data4_2,data4_3,data4_4,data4_5,data4_6,data4_7,data4_8,data4_9,data4_10,data4_11,data4_12];
+        var data5_1 = parseInt(Math.random()*10000)/100;
+        var data5_2 = parseInt(Math.random()*10000)/100;
+        var data5_3 = parseInt(Math.random()*10000)/100;
+        var data5_4 = parseInt(Math.random()*10000)/100;
+        var data5_5 = parseInt(Math.random()*10000)/100;
+        var data5_6 = parseInt(Math.random()*10000)/100;
+        var data5_7 = parseInt(Math.random()*10000)/100;
+        var data5_8 = parseInt(Math.random()*10000)/100;
+        var data5_9 = parseInt(Math.random()*10000)/100;
+        var data5_10 = parseInt(Math.random()*10000)/100;
+        var data5_11 = parseInt(Math.random()*10000)/100;
+        var data5_12 = parseInt(Math.random()*10000)/100;
+        var data5=[data5_1,data5_2,data5_3,data5_4,data5_5,data5_6,data5_7,data5_8,data5_9,data5_10,data5_11,data5_12];
+        tousu(data1,data2,data3,data4,data5);
+    }
+    setGraph();
+</script>
+</body>
+</html>

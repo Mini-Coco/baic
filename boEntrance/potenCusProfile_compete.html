@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="renderer" content="webkit">
+    <title>潜客画像</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/style2.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../css/queryInformation.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/geRenInformation.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/potentialCus.css" rel="stylesheet" type="text/css" />
+    <style>
+        .input_name {
+            width: 115px;
+        }
+        .buyInfo .input_name {
+            width: 160px;
+        }
+        .concernFactors .input_name {
+            width: 220px;
+        }
+        .concernFactors input[type="checkbox"] {
+            position: relative;
+            top:3px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="page-wrapper" class="gray-bg dashbard-1" style="min-height: inherit;">
+        <!--导航条-->
+        <div class="row geRen_nav_content">
+            <div class="col-sm-12" style="margin-left: 15px;">
+                <ul class="geRen_nav">
+                    <li class="">
+                        <a href="potenCusProfile_customer.html"><button type="button" class="btn btn-outline btn-default">客户信息</button></a>
+                    </li>
+                    <li class="">
+                        <a href="potenCusProfile_tag.html"><button type="button" class="btn btn-outline btn-default">标签信息</button></a>
+                    </li>
+                    <li class="active">
+                        <a href="javascript:;"><button type="button" class="btn btn-default">竞争信息</button></a>
+                    </li>
+                    <li class="">
+                        <a href="potenCusProfile_talk.html"><button type="button" class="btn btn-outline btn-default">沟通信息</button></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--竞争信息-->
+        <div class="wrapper wrapper-content competeInfo" style="padding-bottom: 0px;min-height: 494px;">
+            <h4 class="querySearch_font" style="margin-bottom: 20px;">竞争信息：</h4>
+            <table class="table table-bordered table-striped query_table" style="margin-top: 0px;">
+                <thead>
+                <tr>
+                    <th>类别</th>
+                    <th>客户参考</th>
+                    <th>品牌</th>
+                    <th>车型</th>
+                    <th>款式</th>
+                    <th>正面认知</th>
+                    <th>负面认知</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td rowspan="3" style="vertical-align: middle;">本品</td>
+                    <td></td>
+                    <td rowspan="3" style="vertical-align: middle;">北汽</td>
+                    <td>D50</td>
+                    <td>2.0T基本版</td>
+                    <td>外观漂亮</td>
+                    <td>小毛病多</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>D70</td>
+                    <td>1.8T豪华版</td>
+                    <td>空间大、省油</td>
+                    <td>操控性差</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>BJ20</td>
+                    <td>手动精英型</td>
+                    <td>军车质量过硬、底盘高</td>
+                    <td>油耗高</td>
+                </tr>
+                <tr>
+                    <td rowspan="3" style="vertical-align: middle;">竞品</td>
+                    <td></td>
+                    <td>比亚迪</td>
+                    <td>E5</td>
+                    <td>1.8T豪华版</td>
+                    <td>舒适性好、配置高</td>
+                    <td>外观一般</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>奇瑞</td>
+                    <td>艾瑞泽7</td>
+                    <td>1.6豪华版</td>
+                    <td>省油、配置高</td>
+                    <td>质量一般</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>长安</td>
+                    <td>长安CS55</td>
+                    <td>1.5T手动炫目型</td>
+                    <td>外观漂亮、省油</td>
+                    <td>内部空间小</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="query_table" style="padding-right:20px;text-align: right;">
+                <a href="../excel/qianke_compete.xlsx" class="showquery_button btn">导出Excel</a>
+            </div>
+            <nav aria-label="Page navigation" style="text-align: center;">
+                <ul class="pagination">
+                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Mainly scripts -->
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/potentialCus.js"></script>
+<script>
+    $('input').attr("readonly",true);
+</script>
+</body>
+
+</html>

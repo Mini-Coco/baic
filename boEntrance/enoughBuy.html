@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <title>购买信息</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style2.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/queryInformation.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/geRenInformation.css"/>
+    <link rel="stylesheet" type="text/css" href="../js/easyui/thirdParty/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../js/easyui/thirdParty/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../js/easyui/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="../js/easyui/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/potentialCus.css" />
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="page-wrapper" class="gray-bg dashbard-1" style="min-height: inherit;">
+            <!--导航条-->
+            <div class="row geRen_nav_content">
+            	<div class="col-sm-12" style="margin-left: 15px;">
+                    <ul class="geRen_nav">
+                        <li class="">
+                            <a href="geRenInformation.html"><button type="button" class="btn btn-outline btn-default">基本信息</button></a>
+                        </li>
+                        <li class="">
+                            <a href="carInformation.html"><button type="button" class="btn btn-outline btn-outline btn-default">拥车信息</button></a>
+                        </li>
+                        <li class="active">
+                            <a href="enoughBuy.html"><button type="button" class="btn btn-default">购买信息</button></a>
+                        </li>
+                        <li class="">
+                            <a href="mainwxInformation.html"><button type="button" class="btn btn-outline btn-default">维保信息</button></a>
+                        </li>
+                        <li class="">
+                            <a href="claimInformation.html"><button type="button" class="btn btn-outline btn-default">索赔信息</button></a>
+                        </li>
+                        <li class="">
+                            <a href="rescueInformation.html"><button type="button" class="btn btn-outline btn-default">救援信息</button></a>
+                        </li>
+                        <li class="">
+                            <a href="complaintInformation.html"><button type="button" class="btn btn-outline btn-default">投诉信息</button></a>
+                        </li>
+                        <li class="">
+                            <a href="consult.html"><button type="button" class="btn btn-outline btn-default" >咨询信息</button></a>
+                        </li>
+                        <li class="">
+                            <a href="advise.html"><button type="button" class="btn btn-outline btn-default">建议信息</button></a>
+                        </li>
+                        <li class="">
+                            <a href="integration.html"><button type="button" class="btn btn-outline btn-default">积分信息</button></a>
+                        </li>
+                    </ul>
+                </div>
+                	<div class="col-sm-12">
+            		<div class="geRen_nav2_line">
+            		</div>
+            		 <ul  class="geRen_nav2">
+                    	<li>
+                    		<img src="../img/jiben_gray.png" />
+                    	</li>
+                    	<li>
+                    		<img src="../img/car_gray.png" />
+                    	</li>
+                    	<li>
+                    		<img src="../img/gou_blue.png" />
+                    	</li>
+                    	<li>
+                    		<img src="../img/weixiu_gray.png" />
+                    	</li>
+                    	<li>
+                    		<img src="../img/suo_gray.png" />
+                    	</li>
+                    	<li>
+                    		<img src="../img/jiuruan_gray.png" />
+                    	</li>
+                    	<li>
+                    		<img src="../img/toushu_gray.png" />
+                    	</li>
+                    	<li>
+                    		<img src="../img/zixun_gray.png" />
+                    	</li>
+                    	<li>
+                    		<img src="../img/jianyi_gray.png" />
+                    	</li>
+                    	<li>
+                    		<img src="../img/jifen_gray.png" />
+                    	</li>
+                    </ul>
+            	</div>
+            </div>
+            <div class="wrapper wrapper-content" style="min-height: 460px;">
+            	<!--查询条件-->
+                <div class="row">
+                    <div class="col-lg-12 query_padding_lr">
+                    	<h4 class="querySearch_font">购买信息：</h4>
+                    	<div class="table-responsive">
+                            <div class="col-md-11">
+                                <div class="col-md-3">
+                                    <span>VIN号：</span><input type="text" value="" class="input_name" style="width: 160px;"/>
+                                </div>
+                                <div class="col-md-3" style="padding: 0;">
+                                    <span>车型名称：</span><input type="text" value="" class="input_name" style="width: 160px;"/>
+                                </div>
+                                <div class="col-md-3" style="padding: 0;">
+                                    <span>车牌号：</span><input type="text" value="" class="input_name" style="width: 160px;"/>
+                                </div>
+                                <div class="col-md-3" style="padding: 0;">
+                                    <span>开票日期：</span><input type="text" value="" class="input_name Wdate" onclick="WdatePicker()" style="width: 160px;height: 26px;line-height: 26px;border: 1px solid #e5e5e5;"/>
+                                </div>
+                            </div>
+                            <div class="col-md-1" style="padding: 0;" >
+                            	<button class="showquery_button btn btn-danger" style="width: 60px;">查询</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 20px;">
+                    <div id="showTable" class="col-lg-12 query_padding_lr queryList">
+                        <style>
+                            div.panel.datagrid.easyui-fluid{width:1099px !important;}
+                        </style>
+                        <table class="table table-bordered table-striped query_table link_table easyui-datagrid"
+                               style="margin-top: -2px;"
+                               cellspacing="0" cellpadding="0" width="100%" height="137"
+                               data-options="
+                                singleSelect: true,
+                                collapsible: true,
+                                fitColumns: true,
+                                url: '',
+                                method: 'get',
+                                onLoadSuccess: function(){
+                                    $(this).datagrid('freezeRow');
+                                }">
+                            <thead>
+                                <tr class="listTit tabTh">
+                                    <th data-options="frozen:true,field:'orderNo'">序号</th>
+                                    <th data-options="frozen:true,field:'zvin'">VIN号</th>
+                                    <th data-options="frozen:true,field:'zbrand_name'">品牌名称</th>
+                                    <th data-options="frozen:true,field:'zcar_type'">车型名称</th>
+                                    <th data-options="frozen:true,field:'zconfiguration'">车型配置</th>
+                                    <th data-options="frozen:true,field:'zagency_name'">经销商名称</th>
+                                    <th data-options="frozen:true,field:'zcar_number'">车牌号</th>
+                                    <th data-options="frozen:true,field:'zcust_type'">客户类型</th>
+                                    <th data-options="frozen:true,field:'zsale_date'">开票日期</th>
+                                </tr>
+                            </thead>
+                            <tbody class="easyui-panel" style="height:104px"
+                                    data-options="href:''">
+                                <tr class="listTr">
+                                    <td>1</td>
+                                    <td>LNBMCUBKXFT109610</td>
+                                    <td>绅宝&北京</td>
+                                    <td>X65</td>
+                                    <td>X65 2.0T AT 精英版（国IV）</td>
+                                    <td>南宁新源</td>
+                                    <td></td>
+                                    <td>自然人</td>
+                                    <td>2015.09.09</td>
+                                </tr>
+                                <tr class="listTr">
+                                    <td>2</td>
+                                    <td>LNBMDLAA5DR217322</td>
+                                    <td>威旺</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>钦州鹏达</td>
+                                    <td></td>
+                                    <td>自然人</td>
+                                    <td>2013.09.17</td>
+                                </tr>
+                                <tr class="listTr">
+                                    <td>3</td>
+                                    <td>LNBMDLAF2FR527197</td>
+                                    <td>威旺</td>
+                                    <td>M20</td>
+                                    <td>M20 DAM15 VVT 超豪华型</td>
+                                    <td>钦州鹏达</td>
+                                    <td></td>
+                                    <td>自然人</td>
+                                    <td>2015.05.06</td>
+                                </tr>
+                            </tbody>
+                         </table>
+                    </div>
+                </div>
+                <div class="row">
+                	<div class="col-lg-12 query_padding_lr">
+                        <h4 class="querySearch_font">购买详细信息：</h4>
+                		<div class="table-responsive" style="min-height: 220px;padding-left: 15px;padding-right: 15px;">
+                            <div class="col-md-3 show_input show_input1" style="padding-left: 0px;padding-right: 0px;">
+                            	<span>客户编号：</span><input value="A0000149362" type="text" class="input_name"/><br />
+                            	<span class="show_input1_top">交车日期：</span><input  value="2015.09.09" type="text" class="input_name show_input1_top"/><br />
+                            	<span class="show_input1_top">经销商名称：</span><input  value="南宁市新源汽车销售服务有限公司" type="text" class="input_name show_input1_top"/><br />
+                            	<span class="show_input1_top">开出库单据日期：</span><input  value="2015.09.09" type="text" class="input_name show_input1_top"/><br />
+                            </div>
+                            <div class="col-md-3 show_input"  style="padding-right: 0px;">
+                            	<span>录入日期：</span><input value="2015.09.09" type="text" class="input_name enoughBuy_input"/><br />
+                            	<span class="show_input1_top">购车价格：</span><input  value="110940.17" type="text" class="input_name show_input1_top enoughBuy_input"/><br />
+                            	<span class="show_input1_top">销售顾问：</span><input  value="张小兴" type="text" class="input_name show_input1_top enoughBuy_input"/><br />
+                            	<span class="show_input1_top">合作单位：</span><input  value="" type="text" class="input_name show_input1_top enoughBuy_input_peration"/><br />
+                            </div>
+                            <div class="col-md-3 show_input">
+                            	<span>开票日期：</span><input value="2015.09.09" type="text" class="input_name"/><br />
+                            	<span class="show_input1_top">发票号：</span><input  value="01501709" type="text" class="input_name show_input1_top"/><br />
+                            	<span class="show_input1_top">付款方式：</span><input  value="" type="text" class="input_name show_input1_top"/><br />
+                            </div>
+                            <div class="col-md-3 show_input">
+                            	<span>实销日期：</span><input value="2015.09.09" type="text" class="input_name"/><br />
+                            	<span class="show_input1_top">经销商代码：</span><input  value="C4204S" type="text" class="input_name show_input1_top"/><br />
+                            	<span class="show_input1_top">首付比例：</span><input  value="0" type="text" class="input_name show_input1_top"/><br />
+                            </div>
+                        </div>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="../js/jquery-2.1.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/easyui/thirdParty/easyui/jquery.easyui.min.js"></script>
+    <script src="../js/easyui/thirdParty/easyui/easyui-lang-zh_CN.js"></script>
+    <script src="../js/My97DatePicker/WdatePicker.js"></script>
+    <script src="../js/potentialCus.js"></script>
+</body>
+
+</html>

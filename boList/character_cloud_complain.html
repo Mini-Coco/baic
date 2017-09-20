@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客户投诉内容关键词分析</title>
+    <link rel="stylesheet" href="../css/boList_e.css">
+</head>
+<body>
+<div>
+    <div id="character_cloud" style="margin: 50px auto;width: 80vw;height: 80vh;"></div>
+</div>
+
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/echarts-all.js"></script>
+<script>
+    //随机颜色
+    function createRandomItemStyle() {
+        return {
+            normal: {
+                color: 'rgb(' + [
+                    Math.round(Math.random() * 160),
+                    Math.round(Math.random() * 160),
+                    Math.round(Math.random() * 160)
+                ].join(',') + ')'
+            }
+        };
+    }
+    //字符云
+    function character_cloud() {
+        var character_cloud=echarts.init(document.getElementById("character_cloud"));
+        var character_cloud_option = {
+            title: {
+                text: '投诉内容词频云图',
+                x:'center'
+            },
+            tooltip: {
+                show: true
+            },
+            series: [{
+                name: '投诉内容词频云图',
+                type: 'wordCloud',
+                size: ['80%', '80%'],
+                textRotation : [0, 45, 90, -45],
+                textPadding: 0,
+                autoSize: {
+                    enable: true,
+                    minSize: 14
+                },
+                data: [
+                    {
+                        name: "经销商",
+                        value: 8722,
+                        itemStyle: {
+                            normal: {
+                                color: 'black'
+                            }
+                        }
+                    },
+                    {
+                        name: "客服",
+                        value: 4990,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "导航",
+                        value: 3814,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "4S店",
+                        value: 3750,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "购车",
+                        value: 3307,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "更换",
+                        value: 3286,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "到货",
+                        value: 3245,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "厂家",
+                        value: 2778,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "订购",
+                        value: 2542,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "处理",
+                        value: 2339,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "空调",
+                        value: 2328,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "许昌",
+                        value: 2141,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "异响",
+                        value: 2090,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "投诉",
+                        value: 1501,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "绅宝",
+                        value: 1386,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "D50",
+                        value: 1339,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "保养",
+                        value: 1288,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "车管所",
+                        value: 1038,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "置换",
+                        value: 997,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "二网",
+                        value: 908,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "发动机",
+                        value: 707,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "威旺",
+                        value: 619,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "变速箱",
+                        value: 593,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "售后",
+                        value: 556,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "离合",
+                        value: 477,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "306",
+                        value: 472,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "M20",
+                        value: 304,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "天骏",
+                        value: 246,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "起火",
+                        value: 240,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "退车",
+                        value: 238,
+                        itemStyle: createRandomItemStyle()
+                    }
+                ]
+            }]
+        };
+       character_cloud.setOption(character_cloud_option);
+    }
+    character_cloud();
+</script>
+</body>
+</html>

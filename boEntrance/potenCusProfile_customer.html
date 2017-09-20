@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="renderer" content="webkit">
+    <title>潜客画像</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/style2.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../css/queryInformation.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/geRenInformation.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/potentialCus.css" rel="stylesheet" type="text/css" />
+    <style>
+        .input_name {
+            width: 115px;
+        }
+        .buyInfo .input_name {
+            width: 160px;
+        }
+        .concernFactors .input_name {
+            width: 220px;
+        }
+        .concernFactors input[type="checkbox"] {
+            position: relative;
+            top:3px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="page-wrapper" class="gray-bg dashbard-1" style="min-height: inherit;">
+        <!--导航条-->
+        <div class="row geRen_nav_content">
+            <div class="col-sm-12" style="margin-left: 15px;">
+                <ul class="geRen_nav">
+                    <li class="active">
+                        <a href="javascript:;"><button type="button" class="btn btn-default">客户信息</button></a>
+                    </li>
+                    <li class="">
+                        <a href="potenCusProfile_tag.html"><button type="button" class="btn btn-outline btn-default">标签信息</button></a>
+                    </li>
+                    <li class="">
+                        <a href="potenCusProfile_compete.html"><button type="button" class="btn btn-outline btn-default">竞争信息</button></a>
+                    </li>
+                    <li class="">
+                        <a href="potenCusProfile_talk.html"><button type="button" class="btn btn-outline btn-default">沟通信息</button></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--客户信息-->
+        <div class="wrapper wrapper-content cusInfo">
+            <!--查询条件-->
+            <div class="row">
+                <div class="col-lg-12 query_padding_lr">
+                    <h4 class="querySearch_font">基本信息：</h4>
+                    <div class="table-responsive">
+                        <div class="col-md-1">
+                            <img height="108" style="margin-left: 22px;" src="../img/admin_logo.png" alt="">
+                        </div>
+                        <div class="col-md-11" style="padding-left: 0px;">
+                            <div class="col-md-12">
+                                <div class="col-md-3 text-right">
+                                    <span>姓名：</span><input type="text" value="朱小峰" class="input_name"/>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <span>性别：</span><input type="text" value="男" class="input_name"/>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <span>年龄段：</span><input type="text" value="80后" class="input_name"/>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <span>所在城市：</span><input type="text" value="哈尔滨" class="input_name"/>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mr_t15">
+                                <div class="col-md-3 text-right">
+                                    <span>学历：</span><input type="text" value="本科" class="input_name"/>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <span>职业：</span><input type="text" value="会计" class="input_name"/>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <span>客户来源：</span><input type="text" value="官网" class="input_name"/>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <span>客户状态：</span><input type="text" value="跟进" class="input_name"/>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mr_t15">
+                                <div class="col-md-3 text-right">
+                                    <span>手机：</span><input type="text" value="13877004572" class="input_name"/>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <span>微信：</span><input type="text" value="zhuxfeng003" class="input_name"/>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <span>家庭人口数量：</span><input type="text" value="5" class="input_name"/>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <span>是否有小孩：</span><input type="text" value="有" class="input_name"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 query_padding_lr">
+                    <h4 class="querySearch_font" style="margin-top: 20px;">购买信息：</h4>
+                    <div class="table-responsive buyInfo">
+                        <div class="col-md-11">
+                            <div class="col-md-4 text-right">
+                                <span>第几次购车：</span><input type="text" value="1" class="input_name"/>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <span>购车类型：</span><input type="text" value="轿车" class="input_name"/>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <span>购车用途：</span><input type="text" value="接送孩子" class="input_name"/>
+                            </div>
+                        </div>
+                        <div class="col-md-11 mr_t15">
+                            <div class="col-md-4 text-right">
+                                <span>付款方式：</span><input type="text" value="全款" class="input_name"/>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <span>预计购车时间：</span><input type="text" value="1月内" class="input_name"/>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <span>购车预算：</span><input type="text" value="15万" class="input_name"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 query_padding_lr">
+                    <h4 class="querySearch_font" style="margin-top: 20px;">关注要素：</h4>
+                    <div class="table-responsive concernFactors">
+                        <div class="col-md-11">
+                            <div class="col-md-4 text-right">
+                                <span>外观：</span>
+                                <input type="checkbox" disabled checked>
+                                <input type="text" value="" class="input_name" placeholder=""/>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <span>配置：</span>
+                                <input type="checkbox" disabled>
+                                <input type="text" value="" class="input_name" placeholder=""/>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <span>经济性：</span>
+                                <input type="checkbox" disabled>
+                                <input type="text" value="" class="input_name" placeholder=""/>
+                            </div>
+                        </div>
+                        <div class="col-md-11 mr_t15">
+                            <div class="col-md-4 text-right">
+                                <span>价格：</span>
+                                <input type="checkbox" disabled>
+                                <input type="text" value="" class="input_name" placeholder=""/>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <span>内饰：</span>
+                                <input type="checkbox" disabled checked>
+                                <input type="text" value="" class="input_name" placeholder=""/>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <span>安全性：</span>
+                                <input type="checkbox" disabled>
+                                <input type="text" value="" class="input_name" placeholder=""/>
+                            </div>
+                        </div>
+                        <div class="col-md-11 mr_t15">
+                            <div class="col-md-4 text-right">
+                                <span>舒适：</span>
+                                <input type="checkbox" disabled>
+                                <input type="text" value="" class="input_name" placeholder=""/>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <span>质量：</span>
+                                <input type="checkbox" disabled>
+                                <input type="text" value="" class="input_name" placeholder=""/>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <span>操控性：</span>
+                                <input type="checkbox" disabled>
+                                <input type="text" value="" class="input_name" placeholder=""/>
+                            </div>
+                        </div>
+                        <div class="col-md-11 mr_t15">
+                            <div class="col-md-4 text-right">
+                                <span>动力：</span>
+                                <input type="checkbox" disabled>
+                                <input type="text" value="" class="input_name" placeholder=""/>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <span>品牌：</span>
+                                <input type="checkbox" disabled checked>
+                                <input type="text" value="" class="input_name" placeholder=""/>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <span>智能化：</span>
+                                <input type="checkbox" disabled>
+                                <input type="text" value="" class="input_name" placeholder=""/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Mainly scripts -->
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/potentialCus.js"></script>
+<script>
+    $('input').attr("readonly",true);
+</script>
+</body>
+
+</html>

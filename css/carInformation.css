@@ -1,0 +1,25 @@
+.query_table_car tbody td{
+	background: #FFFFFF;
+	font-size: 14px;
+	/*padding: 20px 8px;*/
+	vertical-align: middle;
+}
+.carInfor_r{
+	/*width: 120px;*/
+	width: 35%;
+	display: inline-block;
+	text-align: right;
+	font-weight: 600;
+}
+.carInfor_c{
+	width: 65%;
+	/*width: 200px;*/
+	color: rgb(103, 106, 108);
+	display: inline-block;
+	text-align: center;
+	/*font-weight: 600;*/
+}
+.carInfor_value2{
+	display: none;
+}
+

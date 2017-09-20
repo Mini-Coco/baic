@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<title>客户画像大数据平台</title>
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+	    <link rel="stylesheet" href="../css/animate.css">
+	    <link rel="stylesheet" href="../css/style2.css">
+		<link rel="stylesheet" href="../css/style.css" type="text/css" />
+		<link rel="stylesheet" href="../css/login.css" type="text/css"/>
+		<link rel="stylesheet" href="../css/boList.css" type="text/css"/>
+		<link rel="stylesheet" href="../css/boEntrance.css" type="text/css"/>
+	</head>
+	<body style="background-color: #fff">
+		<div class="bolist_body">
+			<div class="bolist_container container">
+				<!--内容部分-->
+				<div class="boEntrance_content row">
+					<a class="J_menuItem boEntrance_bj" addr="queryInformation.html" href="#"> </a>
+				</div>
+			</div>
+		</div>
+
+		<script src="../js/jquery-2.1.1.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+            var crtHeight=$(window).height();
+            var hdHeight=$('.bolist_header').height();
+            var newHeight=crtHeight-hdHeight-crtHeight*0.12;
+            $('.boEntrance_content').css("height",newHeight);
+            $('.boEntrance_bj').css("height",newHeight);
+            $('.boEntrance_bj').html('<img src="../img/boEntrance_login.png" style="display: none;" class="boEntrance_login img-responsive"/>');
+            $('.boEntrance_login').css({"height":newHeight-40,"display":'inline-block'});
+		</script>
+	</body>
+
+</html>

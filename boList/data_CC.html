@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CC问题数据报表</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/boList_e.css">
+    <style>
+        .box{
+            margin: 0 auto;
+            padding: 20px;
+            width: 110vw;
+        }
+        table>thead>tr>th{
+            text-align: center;
+        }
+        table>thead>tr>th,
+        table>tbody>tr>th{
+            color: #fff;
+            background-color: rgb(68,172,224);
+        }
+        .table-bordered,
+        .table-bordered > thead > tr > th,
+        .table-bordered > tbody > tr > th,
+        .table-bordered > tfoot > tr > th,
+        .table-bordered > thead > tr > td,
+        .table-bordered > tbody > tr > td,
+        .table-bordered > tfoot > tr > td{
+            border: 1px solid rgb(145,201,226);
+        }
+        .table-striped > tbody > tr:nth-of-type(odd){
+            background-color: rgb(242,250,252);
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <nav style="overflow: hidden;margin-bottom: 10px;">
+        <span style="float:right;">
+            年：
+            <select name="">
+                <option value="">2017</option>
+                <option value="">2016</option>
+                <option value="">2015</option>
+            </select>
+            月：
+            <select name="">
+                <option value="">01</option><option value="">02</option>
+                <option value="">03</option><option value="">04</option>
+                <option value="">05</option><option value="">06</option>
+                <option value="">07</option><option value="">08</option>
+                <option value="">09</option><option value="">10</option>
+                <option value="">11</option><option value="">12</option>
+            </select>
+            品牌：
+            <select name="">
+                <option value="">轿车</option>
+                <option value="">12</option>
+                <option value="">1</option>
+            </select>
+            <button onclick="setGraph()">刷新</button>
+            <button>详细报表</button>
+        </span>
+    </nav>
+    <h3 class="text-center">CC问题数据报表</h3>
+    <table class="table table-responsive table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>CC问题字段统计</th>
+            <th>VIP标志(CC)</th>
+            <th>城市代码(CC)</th>
+            <th>传真(CC)</th>
+            <th>电子邮箱(CC)</th>
+            <th>街道(CC)</th>
+            <th>客户ID(CC)</th>
+            <th>客户类别(CC)</th>
+            <th>客户姓名(CC)</th>
+            <th>联系地址(CC)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>客户姓名/省份代码/城市代码/联系人/</td>
+            <td>#</td>
+            <td>恩施土家</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>1728651</td>
+            <td>#</td>
+            <td>罗华</td>
+            <td>湖北省恩施土家族</td>
+        </tr>
+        <tr>
+            <td>客户姓名/联系人/</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>1352526</td>
+            <td>#</td>
+            <td>古力加马力.木拉提</td>
+            <td>新疆维吾尔自治区</td>
+        </tr>
+        <tr>
+            <td>客户姓名/城市代码/</td>
+            <td>#</td>
+            <td>恩施土家</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>1758651</td>
+            <td>#</td>
+            <td>黎黎</td>
+            <td>湖北省恩施土家族</td>
+        </tr>
+        <tr>
+            <td>客户姓名/城市代码/</td>
+            <td>#</td>
+            <td>恩施土家</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>1758651</td>
+            <td>#</td>
+            <td>黎黎</td>
+            <td>湖北省恩施土家族</td>
+        </tr>
+        <tr>
+            <td>客户姓名/城市代码/</td>
+            <td>#</td>
+            <td>恩施土家</td>
+            <td>#</td>
+            <td>#</td>
+            <td>恩施市</td>
+            <td>1458651</td>
+            <td>#</td>
+            <td>刘璃</td>
+            <td>湖北省恩施土家族</td>
+        </tr>
+        <tr>
+            <td>客户姓名/城市代码/</td>
+            <td>#</td>
+            <td>恩施土家</td>
+            <td>#</td>
+            <td>#</td>
+            <td>恩施市</td>
+            <td>1358651</td>
+            <td>#</td>
+            <td>西西里</td>
+            <td>湖北省恩施土家族</td>
+        </tr>
+        <tr>
+            <td>客户姓名/城市代码/</td>
+            <td>#</td>
+            <td>北京市</td>
+            <td>#</td>
+            <td>#</td>
+            <td>海淀区</td>
+            <td>1758651</td>
+            <td>#</td>
+            <td>张章</td>
+            <td>北京市海淀区</td>
+        </tr>
+        <tr>
+            <td>客户姓名/城市代码/</td>
+            <td>#</td>
+            <td>长沙市</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>1758651</td>
+            <td>#</td>
+            <td>李佳</td>
+            <td>湖南省长沙市</td>
+        </tr>
+        <tr>
+            <td>客户姓名/城市代码/</td>
+            <td>#</td>
+            <td>吉林市</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>1758651</td>
+            <td>#</td>
+            <td>陈深</td>
+            <td>吉林省吉林市</td>
+        </tr>
+        <tr>
+            <td>客户姓名/城市代码/</td>
+            <td>#</td>
+            <td>吕梁市</td>
+            <td>#</td>
+            <td>#</td>
+            <td>孝义市</td>
+            <td>1758651</td>
+            <td>#</td>
+            <td>张小凡</td>
+            <td>山西省吕梁市孝义市</td>
+        </tr>
+        <tr>
+            <td>客户姓名/城市代码/</td>
+            <td>#</td>
+            <td>吕梁市</td>
+            <td>#</td>
+            <td>#</td>
+            <td>离石区</td>
+            <td>1758651</td>
+            <td>#</td>
+            <td>孙淼淼</td>
+            <td>山西省吕梁市离石区</td>
+        </tr>
+        <tr>
+            <td>客户姓名/城市代码/</td>
+            <td>#</td>
+            <td>文水县</td>
+            <td>#</td>
+            <td>#</td>
+            <td>孝义市</td>
+            <td>1758651</td>
+            <td>#</td>
+            <td>乔晴有</td>
+            <td>山西省吕梁市文水县</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

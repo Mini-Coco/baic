@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>账户管理</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body style="background: #fafafa;">
+<div class="page page-account">
+    <div class="page-content">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="widget widget-shadow text-center">
+                    <div class="widget-header">
+                        <div class="widget-header-content">
+                            <a class="avatar" href="javascript:;">
+                                <img src="img/avatar.svg" alt="17778011234">
+                            </a>
+                            <h4 class="account-user">17778011234</h4>
+                            <p>上次登录：2017-9-15 17:22:35</p>
+                        </div>
+                    </div>
+                    <div class="widget-footer">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <strong class="account-stat-count">11</strong>
+                                <span>登录</span>
+                            </div>
+                            <div class="col-xs-4">
+                                <strong class="account-stat-count msg-number">0</strong>
+                                <span>消息</span>
+                            </div>
+                            <div class="col-xs-4">
+                                <strong class="account-stat-count log-number">0</strong>
+                                <span>日志</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="panel">
+                    <div class="panel-body nav-tabs-animate">
+                        <ul class="nav nav-tabs nav-tabs-line tabList" role="tablist">
+                            <li class="news active" role="presentation" id="accountMsg">
+                                <a href="javascript:;" data-pjax="#accountContent" aria-expanded="true">
+                                    <i class="fa fa-comment-o" aria-hidden="true"></i> 消息
+                                    <span class="badge badge-danger"></span>
+                                </a>
+                            </li>
+                            <li class="news " role="presentation" id="accountLog">
+                                <a href="javascript:;" data-pjax="#accountContent" aria-expanded="false">
+                                    <i class="fa fa-file-text-o" aria-hidden="true"></i> 日志
+                                </a>
+                            </li>
+                            <li class="news " role="presentation">
+                                <a href="javascript:;" data-pjax="#accountContent" aria-expanded="false">
+                                    <i class="fa fa-key" aria-hidden="true"></i> 密码
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content margin-top-15">
+                            <div class="animation-slide-left tab-message active" id="accountContent">
+                                <div id="messageLists">
+                                    <p class="text-center height-150 vertical-align no-message">
+                                        <small class="vertical-align-middle opacity-four">没有新消息</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

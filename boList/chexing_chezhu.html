@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>车主画像</title>
+    <link rel="stylesheet" href="../css/boList_e.css">
+    <style>
+        .box{
+            padding: 20px 37px 0;
+        }
+        .box>div{
+            display: inline-block;
+            width:18vw;
+            height:45vh;
+            overflow: hidden;
+        }
+        .ibox_content:nth-of-type(1),
+        .ibox_content:nth-of-type(2){
+            height:53vh;
+        }
+        .div_box{
+            width:18vw;
+            height:35vh;
+        }
+        .ibox_content:nth-of-type(2){width:73vw;}
+        #area{
+            width:73vw;
+            height: 45vh;
+        }
+        .ibox_content:nth-of-type(4),
+        #age{width:36vw;}
+    </style>
+</head>
+<body>
+<div class="box">
+    <nav style="overflow: hidden;margin-bottom: 10px;">
+        <span style="float:right;">
+            起始年：
+            <select name="">
+                <option value="">2017</option>
+                <option value="">2016</option>
+                <option value="">2015</option>
+            </select>
+            月：
+            <select name="">
+                <option value="">01</option><option value="">02</option>
+                <option value="">03</option><option value="">04</option>
+                <option value="">05</option><option value="">06</option>
+                <option value="">07</option><option value="">08</option>
+                <option value="">09</option><option value="">10</option>
+                <option value="">11</option><option value="">12</option>
+            </select>
+            截止年：
+            <select name="">
+                <option value="">2017</option>
+                <option value="">2016</option>
+                <option value="">2015</option>
+            </select>
+            月：
+            <select name="">
+                <option value="">01</option><option value="">02</option>
+                <option value="">03</option><option value="">04</option>
+                <option value="">05</option><option value="">06</option>
+                <option value="">07</option><option value="">08</option>
+                <option value="">09</option><option value="">10</option>
+                <option value="">11</option><option value="">12</option>
+            </select>
+            品牌：
+            <select name="">
+                <option value="">轿车</option>
+                <option value="">12</option>
+                <option value="">1</option>
+            </select>
+            车型：
+            <select name="">
+                <option value="">全部</option>
+                <option value="">D50</option>
+                <option value="">D20</option>
+            </select>
+            <button onclick="setGraph()">刷新</button>
+            <button>详细报表</button>
+        </span>
+    </nav>
+    <div id="num" class="ibox_content" style="text-align: center;">
+        <div class="ibox_title">
+            <h5>实销车主</h5>
+        </div>
+        <h1 style="margin: 75px 0px;font-size:40px;color:rgb(68,172,224);"></h1>
+        <div style="font-size: 14px;">全国统计</div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>车主所属地域-TOP15</h5>
+        </div>
+        <div id="area" class="div_box"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>学历分布</h5>
+        </div>
+        <div id="xueli" class="div_box"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>年龄分布</h5>
+        </div>
+        <div id="age" class="div_box"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>户口分布</h5>
+        </div>
+        <div id="hukou" class="div_box"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>职业分布</h5>
+        </div>
+        <div id="career" class="div_box"></div>
+    </div>
+</div>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/echarts-all.js"></script>
+<script>
+    function area(data) {
+        var area=echarts.init(document.getElementById('area'));
+        var area_option={
+//            title : {
+//                text: '车主所属地域-TOP15',
+//                x:'center'
+//            },
+            grid:{
+                y:30
+            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data : ['河北省','北京市','河南省','山西省','山东省','四川省','吉林省','安徽省','内蒙古西','湖南省','江苏省','云南省','湖北省','辽宁省','贵州省']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max:2000
+                }
+            ],
+            series : [
+                {
+                    name:'',
+                    type:'bar',
+                    barWidth:30,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{
+                                    color:'#000'
+                                }
+                            }
+                        }
+                    },
+                    data:data
+                }
+            ]
+        };
+        area.setOption(area_option);
+    }
+
+    function xueli(data) {
+        var xueli=echarts.init(document.getElementById('xueli'));
+        var xueli_option = {
+//            title: {
+//                text:'学历分布',
+//                x:'center'
+//            },
+            color:['rgb(68,172,224)','rgb(69,203,221)','rgb(91,206,162)','rgb(79,198,107)','rgb(120,120,214)','rgb(239,215,72)','rgb(224,151,63)'],
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient : 'vertical',
+                x : 'left',
+                y: 'center',
+                data:['中专','中学','大专','大学','小学','本科','#']
+            },
+            series : [
+                {
+                    name:'人数',
+                    type:'pie',
+                    radius : ['30%', '45%'],
+                    itemStyle : {
+                        normal : {
+                            label : {
+                                show : false
+                            },
+                            labelLine : {
+                                show : false
+                            }
+                        },
+                        emphasis : {
+                            label : {
+                                show : true,
+                                position : 'center',
+                                textStyle : {
+                                    fontSize : '20',
+                                    fontWeight : 'bold'
+                                }
+                            }
+                        }
+                    },
+                    data:[
+                        {value:data[0], name:'中专'},
+                        {value:data[1], name:'中学'},
+                        {value:data[2], name:'大专'},
+                        {value:data[3], name:'大学'},
+                        {value:data[4], name:'小学'},
+                        {value:data[5], name:'本科'},
+                        {value:data[6], name:'#'}
+                    ]
+                }
+            ]
+        };
+        xueli.setOption(xueli_option);
+    }
+
+    function age(data) {
+        var age=echarts.init(document.getElementById('age'));
+        var age_option={
+//            title : {
+//                text: '年龄分布',
+//                x:'center'
+//            },
+            grid:{
+                y:30
+            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    axisLabel:{
+                        rotate:25
+                    },
+                    data : ['20岁以下','21-25岁','26-30岁','31-35岁','36-40岁','41-45岁','45以上']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max:600
+                }
+            ],
+            series : [
+                {
+                    name:'',
+                    type:'bar',
+                    barWidth:25,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{
+                                    color:'#000'
+                                }
+                            }
+                        }
+                    },
+                    data:data
+                }
+            ]
+        };
+        age.setOption(age_option);
+    }
+
+    function hukou(data) {
+        var hukou=echarts.init(document.getElementById('hukou'));
+        var hukou_option = {
+//            title: {
+//                text:'户口分布',
+//                x:'center'
+//            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            color:['rgb(68,172,224)','rgb(69,203,221)','rgb(91,206,162)'],
+            legend: {
+                orient : 'vertical',
+                x : 'left',
+                y: 'center',
+                data:['农村','城市','#']
+            },
+            series : [
+                {
+                    name:'人数',
+                    type:'pie',
+                    radius : ['30%', '45%'],
+                    itemStyle : {
+                        normal : {
+                            label : {
+                                show : false
+                            },
+                            labelLine : {
+                                show : false
+                            }
+                        },
+                        emphasis : {
+                            label : {
+                                show : true,
+                                position : 'center',
+                                textStyle : {
+                                    fontSize : '20',
+                                    fontWeight : 'bold'
+                                }
+                            }
+                        }
+                    },
+                    data:[
+                        {value:data[0], name:'农村'},
+                        {value:data[1], name:'城市'},
+                        {value:data[2], name:'#'}
+                    ]
+                }
+            ]
+        };
+        hukou.setOption(hukou_option);
+    }
+
+    function career(data) {
+        var career=echarts.init(document.getElementById('career'));
+        var career_option = {
+//            title: {
+//                text:'职业分布',
+//                x:'center'
+//            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            color:['rgb(68,172,224)','rgb(69,203,221)','rgb(91,206,162)','rgb(79,198,107)','rgb(120,120,214)'],
+            legend: {
+                orient : 'vertical',
+                x : 'left',
+                y: 'center',
+                data:['上班','个体','其他','农民','#']
+            },
+            series : [
+                {
+                    name:'人数',
+                    type:'pie',
+                    radius : ['30%', '45%'],
+                    itemStyle : {
+                        normal : {
+                            label : {
+                                show : false
+                            },
+                            labelLine : {
+                                show : false
+                            }
+                        },
+                        emphasis : {
+                            label : {
+                                show : true,
+                                position : 'center',
+                                textStyle : {
+                                    fontSize : '20',
+                                    fontWeight : 'bold'
+                                }
+                            }
+                        }
+                    },
+                    data:[
+                        {value:data[0], name:'上班'},
+                        {value:data[1], name:'个体'},
+                        {value:data[2], name:'其他'},
+                        {value:data[3], name:'农民'},
+                        {value:data[4], name:'#'}
+                    ]
+                }
+            ]
+        };
+        career.setOption(career_option);
+    }
+
+    //设置随机数据
+    function setGraph() {
+        var data_num = parseInt(Math.random()*12000);
+        if(data_num>1200){
+            $('#num h1').html(data_num);
+        }else if(data_num>100){
+            $('#num h1').html(data_num*10);
+        }else if(data_num>10){
+            $('#num h1').html(data_num*100);
+        }else if(data_num>1){
+            $('#num h1').html(data_num*1000);
+        }
+
+        var data1_1 = parseInt(Math.random()*1500);
+        var data1_2 = parseInt(Math.random()*1500);
+        var data1_3 = parseInt(Math.random()*1500);
+        var data1_4 = parseInt(Math.random()*1500);
+        var data1_5 = parseInt(Math.random()*1500);
+        var data1_6 = parseInt(Math.random()*1500);
+        var data1_7 = parseInt(Math.random()*1500);
+        var data1_8 = parseInt(Math.random()*1500);
+        var data1_9 = parseInt(Math.random()*1500);
+        var data1_10 = parseInt(Math.random()*1500);
+        var data1_11 = parseInt(Math.random()*1500);
+        var data1_12 = parseInt(Math.random()*1500);
+        var data1_13 = parseInt(Math.random()*1500);
+        var data1_14 = parseInt(Math.random()*1500);
+        var data1_15 = parseInt(Math.random()*1500);
+        var data1=[data1_1,data1_2,data1_3,data1_4,data1_5,data1_6,data1_7,data1_8,data1_9,data1_10,data1_11,data1_12,data1_13,data1_14,data1_15];
+        area(data1);
+
+        var data2_1 = parseInt(Math.random()*60000);
+        var data2_2 = parseInt(Math.random()*60000);
+        var data2_3 = parseInt(Math.random()*60000);
+        var data2_4 = parseInt(Math.random()*60000);
+        var data2_5 = parseInt(Math.random()*60000);
+        var data2_6 = parseInt(Math.random()*60000);
+        var data2_7 = parseInt(Math.random()*10000);
+        var data2=[data2_1,data2_2,data2_3,data2_4,data2_5,data2_6,data2_7];
+        xueli(data2);
+
+        var data3_1 = parseInt(Math.random()*400);
+        var data3_2 = parseInt(Math.random()*400);
+        var data3_3 = parseInt(Math.random()*400);
+        var data3_4 = parseInt(Math.random()*400);
+        var data3_5 = parseInt(Math.random()*400);
+        var data3_6 = parseInt(Math.random()*400);
+        var data3_7 = parseInt(Math.random()*400);
+        var data3=[data3_1,data3_2,data3_3,data3_4,data3_5,data3_6,data3_7];
+        age(data3);
+
+        var data4_1 = parseInt(Math.random()*1000);
+        var data4_2 = parseInt(Math.random()*1000);
+        var data4_3 = parseInt(Math.random()*1000);
+        var data4=[data4_1,data4_2,data4_3];
+        hukou(data4);
+
+        var data5_1 = parseInt(Math.random()*1000);
+        var data5_2 = parseInt(Math.random()*1000);
+        var data5_3 = parseInt(Math.random()*1000);
+        var data5_4 = parseInt(Math.random()*1000);
+        var data5_5 = parseInt(Math.random()*1000);
+        var data5=[data5_1,data5_2,data5_3,data5_4,data5_5];
+        career(data5);
+    }
+    setGraph();
+</script>
+</body>
+</html>

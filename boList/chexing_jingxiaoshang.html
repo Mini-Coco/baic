@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>经销商实销情况</title>
+    <link rel="stylesheet" href="../css/boList_e.css">
+    <style>
+        .box{
+            text-align: center;
+        }
+        .box>div{
+            display: inline-block;
+            width:80vw;
+            height:53vh;
+        }
+        #zhanqu,#jingxiaoshang{
+            width:80vw;
+            height:45vh;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <nav style="overflow: hidden;margin-bottom: 10px;">
+        <span style="float:right;">
+            年：
+            <select name="">
+                <option value="">2017</option>
+                <option value="">2016</option>
+                <option value="">2015</option>
+            </select>
+            月：
+            <select name="">
+                <option value="">01</option><option value="">02</option>
+                <option value="">03</option><option value="">04</option>
+                <option value="">05</option><option value="">06</option>
+                <option value="">07</option><option value="">08</option>
+                <option value="">09</option><option value="">10</option>
+                <option value="">11</option><option value="">12</option>
+            </select>
+            品牌：
+            <select name="">
+                <option value="">轿车</option>
+                <option value="">12</option>
+                <option value="">1</option>
+            </select>
+            车型：
+            <select name="">
+                <option value="">全部</option>
+                <option value="">D50</option>
+                <option value="">D20</option>
+            </select>
+            <button onclick="setGraph()">刷新</button>
+            <button>详细报表</button>
+        </span>
+    </nav>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>战区销量对比</h5>
+        </div>
+        <div id="zhanqu"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>经销商实销-TOP10</h5>
+        </div>
+        <div id="jingxiaoshang"></div>
+    </div>
+</div>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/echarts-all.js"></script>
+<script>
+    function zhanqu(data1,data2) {
+        var zhanqu=echarts.init(document.getElementById('zhanqu'));
+        var zhanqu_option = {
+//            title : {
+//                text: '战区销量对比',
+//                x:'center'
+//            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['总销量','店均销量'],
+                x:'left'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data : ['东一战区','东二战区','北一战区','北二战区','南一战区','南二战区','其他']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max:80000
+                },
+                {
+                    type : 'value'
+                }
+            ],
+            series : [
+                {
+                    name:'店均销量',
+                    type:'bar',
+                    barWidth:40,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{
+                                    color:'#000'
+                                }
+                            }
+                        }
+                    },
+                    data:data1
+                },
+                {
+                    name:'总销量',
+                    type:'line',
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(91,206,162)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{
+                                    color:'#000'
+                                }
+                            }
+                        }
+                    },
+                    data:data2
+                }
+            ]
+        };
+        zhanqu.setOption(zhanqu_option);
+    }
+
+    function jingxiaoshang(data1,data2) {
+        var jingxiaoshang=echarts.init(document.getElementById('jingxiaoshang'));
+        var jingxiaoshang_option = {
+//            title : {
+//                text: '经销商实销-TOP10',
+//                x:'center'
+//            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['占比','经销商'],
+                x:'left'
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data : ['北京鹏元','北京奥祥瑞','成都盛国','郑州大广','长沙脸谱','北京易捷汇','北京泓建祥源','北京天乐国汽','西安华瑞','温州腾邦']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max:12000
+                },
+                {
+                    type : 'value',
+                    max:1.2
+                }
+            ],
+            series : [
+                {
+                    name:'经销商',
+                    type:'bar',
+                    barWidth:40,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label : {
+                                show: true,
+                                position: 'inside',
+                                textStyle:{color:'#fff'}
+                            }
+                        }
+                    },
+                    data:data1
+                },
+                {
+                    name:'占比',
+                    type:'line',
+                    yAxisIndex: 1,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(91,206,162)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{color:'#000'}
+                            }
+                        }
+                    },
+                    data:data2
+                }
+            ]
+        };
+        jingxiaoshang.setOption(jingxiaoshang_option);
+    }
+
+    //设置随机数据
+    function setGraph() {
+        var data1_1 = parseInt(Math.random()*1000);
+        var data1_2 = parseInt(Math.random()*1000);
+        var data1_3 = parseInt(Math.random()*1000);
+        var data1_4 = parseInt(Math.random()*1000);
+        var data1_5 = parseInt(Math.random()*1000);
+        var data1_6 = parseInt(Math.random()*1000);
+        var data1_7 = parseInt(Math.random()*1000);
+        var data1=[data1_1,data1_2,data1_3,data1_4,data1_5,data1_6,data1_7];
+        var data2_1 = parseInt(Math.random()*60000);
+        var data2_2 = parseInt(Math.random()*60000);
+        var data2_3 = parseInt(Math.random()*60000);
+        var data2_4 = parseInt(Math.random()*60000);
+        var data2_5 = parseInt(Math.random()*60000);
+        var data2_6 = parseInt(Math.random()*60000);
+        var data2_7 = parseInt(Math.random()*60000);
+        var data2=[data2_1,data2_2,data2_3,data2_4,data2_5,data2_6,data2_7];
+        zhanqu(data1,data2);
+
+        var data3_1 = parseInt(Math.random()*10000);
+        var data3_2 = parseInt(Math.random()*10000);
+        var data3_3 = parseInt(Math.random()*10000);
+        var data3_4 = parseInt(Math.random()*10000);
+        var data3_5 = parseInt(Math.random()*10000);
+        var data3_6 = parseInt(Math.random()*10000);
+        var data3_7 = parseInt(Math.random()*10000);
+        var data3_8 = parseInt(Math.random()*10000);
+        var data3_9 = parseInt(Math.random()*10000);
+        var data3_10 = parseInt(Math.random()*10000);
+        var data3=[data3_1,data3_2,data3_3,data3_4,data3_5,data3_6,data3_7,data3_8,data3_9,data3_10];
+        var data4=[data3_1/10000,data3_2/10000,data3_3/10000,data3_4/10000,data3_5/10000,data3_6/10000,data3_7/10000,data3_8/10000,data3_9/10000,data3_10/10000];
+        jingxiaoshang(data3,data4);
+    }
+    setGraph();
+</script>
+</body>
+</html>
