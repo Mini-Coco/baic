@@ -37,6 +37,26 @@
         .code.message{
             color:#029be5;
         }
+        .mask{
+            z-index:10000;
+            position: fixed;
+            top: 0;
+            left:0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.8);
+            display: none;
+        }
+        #regBox,#forgetBox{
+            font-size:12px;
+        }
+        #regBox input,
+        #regBox button,
+        #forgetBox input,
+        #forgetBox button{
+            height:34px;
+            font-size:12px;
+        }
     </style>
 </head>
 <body class="page-login layout-full page-dark">
@@ -79,7 +99,7 @@
                         <div class="form-group">
                             <label class="sr-only" for="password">验证码</label>
                             <div class="input-group">
-                                <input id="answerCode" type="text" class="form-control" name="validCode" placeholder="请输入验证码" style="padding-right: 45px;">
+                                <input id="answerCode" type="text" class="form-control" name="validCode" placeholder="请输入验证码" style="padding-right: 45px;width:229px;">
                                 <a id="validateCode" onclick="refreshCode()" class="input-group-addon padding-0 reload-vify">
                                     <span id="code_node1" class="code_node"></span>
                                     <span id="code_node2" class="code_node"></span>
@@ -120,18 +140,6 @@
     </div>
 </div>
 <!--黑色罩层-->
-<style>
-    .mask{
-        z-index:10000;
-        position: fixed;
-        top: 0;
-        left:0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0,0,0,0.8);
-        display: none;
-    }
-</style>
 <div class="mask"></div>
 <!-- 注册 -->
 <div style="z-index:10001;position: relative;top: -510px;" class="ui small modal signbox" id="regBox">
@@ -156,7 +164,7 @@
                         </div>
                         <button onclick="getCode('reg')" class="ui mini button getcode reg" type="button" style="font-weight: 100;">获取验证码</button>
                     </div>
-                    <div class="field code message"></div>
+                    <div class="field code message" style="font-size:12px;"></div>
                     <div class="field">
                         <div class="ui left icon input">
                             <input type="password" id="regPad" name="password" placeholder="密码，6-16位数字、字母、符号组合" />
@@ -172,7 +180,7 @@
                     <div class="field">
                         <div class="ui checkbox">
                             <input type="checkbox" name="agreement" id="agreement" checked="checked" />
-                            <label for="agreement">我同意《<a href="about.html" target="_blank">Smart Data 相关条款</a>》</label>
+                            <label style="font-size:12px;" for="agreement">我同意《<a href="about.html" target="_blank">Smart Data 相关条款</a>》</label>
                         </div>
                     </div>
                     <input type="hidden" name="type" value="register" />
@@ -182,7 +190,7 @@
                     </button>
                 </div>
             </div>
-            <div class="ui vertical divider" style="left:64%">或</div>
+            <div class="ui vertical divider" style="left:64%;font-size: 12px;">或</div>
             <div class="center aligned six wide column">
                 <button style="padding-left: 18px !important;" class="ui blue labeled icon button openlogin" type="button" onclick="goLogin()">
                     <i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;
@@ -215,7 +223,7 @@
                         </div>
                         <button onclick="getCode('pswd')" style="font-weight: 100;" class="ui mini button getcode pswd" type="button">获取验证码</button>
                     </div>
-                    <div class="field code message"></div>
+                    <div class="field code message" style="font-size:12px;"></div>
                     <div class="field">
                         <div class="ui left icon input">
                             <input type="password" id="forPad" name="password" placeholder="密码，6-16位数字、字母、符号组合" />
@@ -232,7 +240,7 @@
                     <button class="ui blue submit button">重置密码</button>
                 </div>
             </div>
-            <div class="ui vertical divider" style="left:64%">或</div>
+            <div class="ui vertical divider" style="left:64%;font-size: 12px;">或</div>
             <div class="center aligned six wide column">
                 <button style="padding-left: 18px !important;" class="ui blue labeled icon button openlogin" type="button" onclick="goLogin()">
                     <i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;

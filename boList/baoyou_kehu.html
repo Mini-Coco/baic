@@ -17,7 +17,7 @@
         table>thead>tr>th,
         table>tbody>tr>th{
             color: #fff;
-            background-color: rgb(68,172,224);
+            background-color: #029be5;
         }
         .table-bordered,
         .table-bordered > thead > tr > th,
@@ -29,7 +29,7 @@
             border: 1px solid rgb(145,201,226);
         }
         .table-striped > tbody > tr:nth-of-type(odd){
-            background-color: rgb(242,250,252);
+            background-color: #fff;
         }
     </style>
 </head>
@@ -43,6 +43,7 @@
                 <option value="">2016</option>
                 <option value="">2015</option>
             </select>
+            &nbsp;&nbsp;
             月：
             <select name="">
                 <option value="">01</option><option value="">02</option>
@@ -52,34 +53,60 @@
                 <option value="">09</option><option value="">10</option>
                 <option value="">11</option><option value="">12</option>
             </select>
+            &nbsp;&nbsp;
             品牌：
-            <select name="">
+            <select style="position: relative;top: 2px;" name="">
                 <option value="">轿车</option>
-                <option value="">12</option>
-                <option value="">1</option>
+                <option value="">微车</option>
+                <option value="">Ｈ</option>
             </select>
+            &nbsp;&nbsp;
+            战区：
+            <select style="position: relative;top: 2px;" name="">
+                <option value="">东一战区</option>
+                <option value="">东二战区</option>
+                <option value="">东部</option>
+                <option value="">东部C</option>
+                <option value="">中部</option>
+                <option value="">北一战区</option>
+                <option value="">北二战区</option>
+                <option value="">南一战区</option>
+            </select>
+            &nbsp;&nbsp;
+            车型：
+            <select style="position: relative;top: 2px;" name="">
+                <option value="">2系</option>
+                <option value="">3系</option>
+                <option value="">BJ20</option>
+                <option value="">BJ40L</option>
+                <option value="">BJ80</option>
+                <option value="">BW007</option>
+                <option value="">EU220</option>
+                <option value="">EV160</option>
+            </select>
+            &nbsp;&nbsp;
             <button onclick="setGraph()">刷新</button>
             <button>详细报表</button>
         </span>
     </nav>
-    <h3 class="text-center" style="margin-bottom:20px;">客户转化情况表</h3>
+    <h4 class="text-center" style="margin-top:20px;font-weight: 600;">客户转化情况表</h4>
     <table class="table table-responsive table-bordered table-striped text-right">
         <thead>
         <tr>
             <th>项目</th>
-            <th>01.2013</th>
-            <th>01.2014</th>
-            <th>01.2015</th>
-            <th>01.2016</th>
-            <th>01.2017</th>
-            <th>02.2013</th>
-            <th>02.2014</th>
-            <th>02.2015</th>
-            <th>02.2016</th>
-            <th>02.2017</th>
-            <th>03.2013</th>
-            <th>03.2014</th>
-            <th>03.2015</th>
+            <th>2013.01</th>
+            <th>2014.01</th>
+            <th>2015.01</th>
+            <th>2016.01</th>
+            <th>2017.01</th>
+            <th>2013.02</th>
+            <th>2014.02</th>
+            <th>2015.02</th>
+            <th>2016.02</th>
+            <th>2017.02</th>
+            <th>2013.03</th>
+            <th>2014.03</th>
+            <th>2015.03</th>
         </tr>
         </thead>
         <tbody>

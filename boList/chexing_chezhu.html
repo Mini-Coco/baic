@@ -29,6 +29,10 @@
         }
         .ibox_content:nth-of-type(4),
         #age{width:36vw;}
+        #xueli,#hukou,#career{
+            position: relative;
+            left:25px;
+        }
     </style>
 </head>
 <body>
@@ -41,6 +45,7 @@
                 <option value="">2016</option>
                 <option value="">2015</option>
             </select>
+            &nbsp;&nbsp;
             月：
             <select name="">
                 <option value="">01</option><option value="">02</option>
@@ -50,12 +55,14 @@
                 <option value="">09</option><option value="">10</option>
                 <option value="">11</option><option value="">12</option>
             </select>
+            &nbsp;&nbsp;
             截止年：
             <select name="">
                 <option value="">2017</option>
                 <option value="">2016</option>
                 <option value="">2015</option>
             </select>
+            &nbsp;&nbsp;
             月：
             <select name="">
                 <option value="">01</option><option value="">02</option>
@@ -65,18 +72,28 @@
                 <option value="">09</option><option value="">10</option>
                 <option value="">11</option><option value="">12</option>
             </select>
+            &nbsp;&nbsp;
             品牌：
-            <select name="">
+            <select style="position: relative;top: 2px;" name="">
                 <option value="">轿车</option>
-                <option value="">12</option>
-                <option value="">1</option>
+                <option value="">微车</option>
             </select>
+            &nbsp;&nbsp;
             车型：
-            <select name="">
+            <select style="position: relative;top: 2px;" name="">
                 <option value="">全部</option>
-                <option value="">D50</option>
-                <option value="">D20</option>
+                <option value="">BJ20</option>
+                <option value="">BJ40L</option>
+                <option value="">BJ80</option>
+                <option value="">绅宝D20</option>
+                <option value="">绅宝D50</option>
+                <option value="">绅宝D60</option>
+                <option value="">绅宝D70</option>
+                <option value="">绅宝D80</option>
+                <option value="">绅宝X25</option>
+                <option value="">绅宝X35</option>
             </select>
+            &nbsp;&nbsp;
             <button onclick="setGraph()">刷新</button>
             <button>详细报表</button>
         </span>
@@ -85,7 +102,8 @@
         <div class="ibox_title">
             <h5>实销车主</h5>
         </div>
-        <h1 style="margin: 75px 0px;font-size:40px;color:rgb(68,172,224);"></h1>
+        <img width="110" style="margin-top: 20px;" src="../img/admin_logo.png" alt="">
+        <h1 style="margin: 12px 0px;font-size:40px;color:rgb(68,172,224);"></h1>
         <div style="font-size: 14px;">全国统计</div>
     </div>
     <div class="ibox_content">
@@ -138,6 +156,9 @@
             xAxis : [
                 {
                     type : 'category',
+                    axisLabel:{
+                        rotate:25
+                    },
                     data : ['河北省','北京市','河南省','山西省','山东省','四川省','吉林省','安徽省','内蒙古西','湖南省','江苏省','云南省','湖北省','辽宁省','贵州省']
                 }
             ],
@@ -187,13 +208,13 @@
                 orient : 'vertical',
                 x : 'left',
                 y: 'center',
-                data:['中专','中学','大专','大学','小学','本科','#']
+                data:['中专','中学','大专','大学','小学','本科','其他']
             },
             series : [
                 {
                     name:'人数',
                     type:'pie',
-                    radius : ['30%', '45%'],
+                    radius : ['25%', '40%'],
                     itemStyle : {
                         normal : {
                             label : {
@@ -221,7 +242,7 @@
                         {value:data[3], name:'大学'},
                         {value:data[4], name:'小学'},
                         {value:data[5], name:'本科'},
-                        {value:data[6], name:'#'}
+                        {value:data[6], name:'其他'}
                     ]
                 }
             ]
@@ -297,13 +318,13 @@
                 orient : 'vertical',
                 x : 'left',
                 y: 'center',
-                data:['农村','城市','#']
+                data:['农村','城市','其他']
             },
             series : [
                 {
                     name:'人数',
                     type:'pie',
-                    radius : ['30%', '45%'],
+                    radius : ['25%', '40%'],
                     itemStyle : {
                         normal : {
                             label : {
@@ -327,7 +348,7 @@
                     data:[
                         {value:data[0], name:'农村'},
                         {value:data[1], name:'城市'},
-                        {value:data[2], name:'#'}
+                        {value:data[2], name:'其他'}
                     ]
                 }
             ]
@@ -351,13 +372,13 @@
                 orient : 'vertical',
                 x : 'left',
                 y: 'center',
-                data:['上班','个体','其他','农民','#']
+                data:['上班','个体','农民','其他']
             },
             series : [
                 {
                     name:'人数',
                     type:'pie',
-                    radius : ['30%', '45%'],
+                    radius : ['25%', '40%'],
                     itemStyle : {
                         normal : {
                             label : {
@@ -381,9 +402,8 @@
                     data:[
                         {value:data[0], name:'上班'},
                         {value:data[1], name:'个体'},
-                        {value:data[2], name:'其他'},
-                        {value:data[3], name:'农民'},
-                        {value:data[4], name:'#'}
+                        {value:data[2], name:'农民'},
+                        {value:data[3], name:'其他'}
                     ]
                 }
             ]

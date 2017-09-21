@@ -8,6 +8,9 @@ body{
 .box{
     padding: 13px 55px 0;
 }
+nav span{
+    font-size:14px;
+}
 nav select,nav button{
     padding:2px 10px;
     border-radius: 3px;

@@ -17,7 +17,7 @@
         table>thead>tr>th,
         table>tbody>tr>th{
             color: #fff;
-            background-color: rgb(68,172,224);
+            background-color: #029be5;
         }
         .table-bordered,
         .table-bordered > thead > tr > th,
@@ -29,7 +29,7 @@
             border: 1px solid rgb(145,201,226);
         }
         .table-striped > tbody > tr:nth-of-type(odd){
-            background-color: rgb(242,250,252);
+            background-color: #fff;
         }
     </style>
 </head>
@@ -37,12 +37,13 @@
 <div class="box">
     <nav style="overflow: hidden;margin-bottom: 10px;">
         <span style="float:right;">
-            年：
+            起始年：
             <select name="">
                 <option value="">2017</option>
                 <option value="">2016</option>
                 <option value="">2015</option>
             </select>
+            &nbsp;&nbsp;
             月：
             <select name="">
                 <option value="">01</option><option value="">02</option>
@@ -52,17 +53,38 @@
                 <option value="">09</option><option value="">10</option>
                 <option value="">11</option><option value="">12</option>
             </select>
-            品牌：
+            &nbsp;&nbsp;
+            截止年：
             <select name="">
-                <option value="">轿车</option>
-                <option value="">12</option>
-                <option value="">1</option>
+                <option value="">2017</option>
+                <option value="">2016</option>
+                <option value="">2015</option>
             </select>
+            &nbsp;&nbsp;
+            月：
+            <select name="">
+                <option value="">01</option><option value="">02</option>
+                <option value="">03</option><option value="">04</option>
+                <option value="">05</option><option value="">06</option>
+                <option value="">07</option><option value="">08</option>
+                <option value="">09</option><option value="">10</option>
+                <option value="">11</option><option value="">12</option>
+            </select>
+            &nbsp;&nbsp;
+            品牌：
+            <select style="position: relative;top: 2px;" name="">
+                <option value="">轿车</option>
+                <option value="">微车</option>
+            </select>
+            &nbsp;&nbsp;
+            生日月日：
+            <input type="text" style="width: 100px;">
+            &nbsp;&nbsp;
             <button onclick="setGraph()">刷新</button>
             <button>详细报表</button>
         </span>
     </nav>
-    <h3 class="text-center">客户维系数据查询－客户关怀</h3>
+    <h4 style="font-weight: 600;" class="text-center">客户维系数据查询－客户关怀</h4>
     <table class="table table-responsive table-bordered table-striped">
         <thead>
         <tr>

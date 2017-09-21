@@ -34,30 +34,34 @@
     <nav style="overflow: hidden;margin-bottom: 10px;">
         <span style="float:right;">
             省份：
-            <select name="">
+            <select style="position: relative;top: 2px;" name="">
                 <option value="">北京</option>
                 <option value="">天津</option>
                 <option value="">河北</option>
                 <option value="">山西</option>
             </select>
+            &nbsp;&nbsp;
             城市：
-            <select name="">
+            <select style="position: relative;top: 2px;" name="">
                 <option value="">北京</option>
                 <option value="">天津</option>
                 <option value="">石家庄</option>
             </select>
+            &nbsp;&nbsp;
             经销商：
-            <select name="">
+            <select style="position: relative;top: 2px;" name="">
                 <option value="">北京盈之宝</option>
                 <option value="">大同绅宝专销</option>
                 <option value="">吉林红宝石</option>
             </select>
+            &nbsp;&nbsp;
             年：
             <select name="">
                 <option value="">2017</option>
                 <option value="">2016</option>
                 <option value="">2015</option>
             </select>
+            &nbsp;&nbsp;
             <button onclick="setGraph()">刷新</button>
             <button>详细报表</button>
         </span>
@@ -179,8 +183,7 @@
             calculable : true,
             legend: {
                 data:['及时跟进率','到店率','成交率'],
-                x:'left',
-//                orient:'vertical'
+                x:'left'
             },
             xAxis : [
                 {

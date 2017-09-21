@@ -3,48 +3,988 @@
 <head>
     <meta charset="UTF-8">
     <title>互联网客户口碑分析</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style2.css">
     <link rel="stylesheet" href="../css/boList_e.css">
+    <style>
+        .box {
+            padding: 13px 15px 10px;
+        }
+        .box>div{
+            display: inline-block;
+        }
+        .ibox_content{
+            width:23.66vw;
+            height:44.3vh;
+            overflow: hidden;
+        }
+        .div_box{
+            width:23.5vw;
+            height:36vh;
+        }
+        .query_table thead th,
+        .query_table tbody td{
+            text-align: center;
+        }
+        .normal_table > thead > tr > th,
+        .normal_table > tbody > tr > td{
+            border:none;
+            padding:2px 0;
+        }
+        .mask{
+            display: none;
+            z-index: 100000;
+            position: fixed;
+            top:0;
+            left:0;
+            width:100vw;
+            height:100vh;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .evaluate_alert{
+            display: none;
+            z-index: 100001;
+            position: fixed;
+            top:8vh;
+            left:20vw;
+            padding: 10px 15px;
+            width:60vw;
+            background-color: #fff;
+            border:1px solid #e2e2e2;
+        }
+        .alert_space{
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px dotted #ccd3e4;
+        }
+        .alert_space>span{
+            display: inline-block;
+            padding: 5px;
+            margin-bottom: 5px;
+            border: 1px solid #ccd2e8;
+            background-color: #fafbfc;
+        }
+    </style>
 </head>
 <body>
 <div class="box">
     <nav style="overflow: hidden;margin-bottom: 10px;">
         <span style="float:right;">
             品牌：
-            <select name="">
+            <select style="position: relative;top: 2px;" name="">
                 <option value="">轿车</option>
                 <option value="">12</option>
                 <option value="">1</option>
             </select>
+            &nbsp;&nbsp;
             车系：
             <select name="">
                 <option value="">D50</option>
                 <option value="">X35</option>
                 <option value="">D20</option>
             </select>
+            &nbsp;&nbsp;
             款式：
             <select name="">
                 <option value="">1</option>
                 <option value="">3</option>
                 <option value="">5</option>
             </select>
+            &nbsp;&nbsp;
             网站：
-            <select name="">
+            <select style="position: relative;top: 2px;" name="">
                 <option value="">百度</option>
                 <option value="">谷歌</option>
             </select>
+            &nbsp;&nbsp;
             <button onclick="setGraph()">刷新</button>
             <button>详细报表</button>
         </span>
     </nav>
-    <div id="shujuyilan"></div>
-    <div id="zhanquleiji"></div>
-    <div id="bawolv"></div>
-    <div id="gouchekehu"></div>
+    <div>
+        <table class="table table-bordered query_table linkage"
+               style="width: 47vw;margin-right: 15px;margin-bottom: -1px;">
+            <thead>
+            <tr>
+                <th>车型</th>
+                <th>口碑</th>
+                <th>得分</th>
+                <th>参评人数</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>车型整体</td>
+                <td>
+                    <img src="../img/star.png" alt="">
+                    <img src="../img/star.png" alt="">
+                    <img src="../img/star.png" alt="">
+                    <img src="../img/star.png" alt="">
+                </td>
+                <td>4分</td>
+                <td>500人</td>
+            </tr>
+            <tr>
+                <td>2016手动基本款</td>
+                <td>
+                    <img src="../img/star.png" alt="">
+                    <img src="../img/star.png" alt="">
+                    <img src="../img/star.png" alt="">
+                    <img src="../img/star.png" alt="">
+                    <img src="../img/star.png" alt="">
+                </td>
+                <td>5分</td>
+                <td>100人</td>
+            </tr>
+            <tr>
+                <td>2016手动豪华款</td>
+                <td>
+                    <img src="../img/star.png" alt="">
+                    <img src="../img/star.png" alt="">
+                    <img src="../img/star.png" alt="">
+                    <img src="../img/star.png" alt="">
+                </td>
+                <td>4分</td>
+                <td>200人</td>
+            </tr>
+            <tr>
+                <td>2016自动基本款</td>
+                <td>
+                    <img src="../img/star.png" alt="">
+                    <img src="../img/star.png" alt="">
+                    <img src="../img/star.png" alt="">
+                </td>
+                <td>3分</td>
+                <td>100人</td>
+            </tr>
+            <tr>
+                <td>2016自动豪华款</td>
+                <td>
+                    <img src="../img/star.png" alt="">
+                    <img src="../img/star.png" alt="">
+                    <img src="../img/star.png" alt="">
+                </td>
+                <td>3分</td>
+                <td>100人</td>
+            </tr>
+            <tr>
+                <td>2015基自动本款</td>
+                <td>
+                    <img src="../img/star.png" alt="">
+                    <img src="../img/star.png" alt="">
+                </td>
+                <td>2分</td>
+                <td>100人</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="ibox_content" style="width: 47vw;">
+        <div class="ibox_title">
+            <h5>质量评价分析</h5>
+        </div>
+        <div id="quality" style="width: 48vw;height:36vh;"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>客户满意点分析</h5>
+        </div>
+        <div id="satisfy" class="div_box"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>客户不满意点分析</h5>
+        </div>
+        <div id="unsatisfy" class="div_box"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>购买目的分析</h5>
+        </div>
+        <div id="aim" class="div_box"></div>
+    </div>
+    <div class="ibox_content">
+        <div class="ibox_title">
+            <h5>单项评价</h5>
+        </div>
+        <div id="evaluate" class="div_box" style="width: 29vw;"></div>
+    </div>
+    <div class="ibox_content" style="width:47vw;height:50vh;margin-right: 15px;overflow: hidden;">
+        <div class="ibox_title">
+            <h5>本车型主要竞品对比排行</h5>
+        </div>
+        <div style="padding: 10px 20px;width:47vw;">
+            <div style="display: inline-block;">
+                <table class="table table-bordered query_table"
+                       style="width: 20vw;margin-right: 25px;margin-bottom: 0px;">
+                    <thead>
+                    <tr>
+                        <th>口碑排行</th>
+                        <th>用户评分</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td style="color: #f00;">绅宝X35</td>
+                        <td style="color: #f00;">4.29分</td>
+                    </tr>
+                    <tr>
+                        <td>北汽幻速S2</td>
+                        <td>4.27分</td>
+                    </tr>
+                    <tr>
+                        <td>东风风神AX3</td>
+                        <td>4.24分</td>
+                    </tr>
+                    <tr>
+                        <td>瑞虎3</td>
+                        <td>4.22分</td>
+                    </tr>
+                    <tr>
+                        <td>绅宝D20</td>
+                        <td>4.16分</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="display: inline-block;height:211px;border-right:1px dotted #ccc;"></div>
+            <div style="display: inline-block;">
+                <table class="table normal_table"
+                       style="width: 18vw;margin-left: 25px;margin-bottom: 0px;">
+                    <thead>
+                    <tr>
+                        <th colspan="3" style="padding-bottom: 10px;">单项评分及排名</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>空间</td>
+                        <td>4.70分</td>
+                        <td>第2名</td>
+                    </tr>
+                    <tr>
+                        <td>动力</td>
+                        <td>3.61分</td>
+                        <td>第5名</td>
+                    </tr>
+                    <tr>
+                        <td>操控</td>
+                        <td>4.49分</td>
+                        <td style="color: #f00;">第1名</td>
+                    </tr>
+                    <tr>
+                        <td>油耗</td>
+                        <td>3.96分</td>
+                        <td>第3名</td>
+                    </tr>
+                    <tr>
+                        <td>舒适性</td>
+                        <td>4.03分</td>
+                        <td>第2名</td>
+                    </tr>
+                    <tr>
+                        <td>外观</td>
+                        <td>4.62分</td>
+                        <td>第2名</td>
+                    </tr>
+                    <tr>
+                        <td>内饰</td>
+                        <td>4.34分</td>
+                        <td style="color: #f00;">第1名</td>
+                    </tr>
+                    <tr>
+                        <td>性价比</td>
+                        <td>4.55分</td>
+                        <td>第4名</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="ibox_content" style="width:47vw;height:50vh;overflow: hidden;">
+        <div class="ibox_title">
+            <h5>近半年本车型热门讨论内容</h5>
+        </div>
+        <div id="discuss" class="div_box" style="width: 60vw;height:48vh;position: relative;left:-80px;top:-15px;"></div>
+    </div>
+    <footer>
+        注：本分析场景数据样本时间为2017.01.01-2017.06.30
+    </footer>
+</div>
+<div class="mask"></div>
+<div class="evaluate_alert evaluate_alert_space">
+    <div>
+        空间 详细故障
+        <span class="close_alert" style="float:right;cursor: pointer;">X</span>
+    </div>
+    <hr style="margin-top: 5px;">
+    <div class="alert_space">
+        <h5>前门：</h5>
+        <span>门把手或门锁(扣)故障（1）</span>
+        <span>有异响（6）</span>
+        <span>不易关闭(如：关门时阻力过大、关门费力)（1）</span>
+    </div>
+    <div class="alert_space">
+        <h5>侧滑门：</h5>
+        <span>不易开启(如：开门时阻力过大、开门费力)（1）</span>
+        <span>有异响（1）</span>
+        <span>不易关闭(如：关门时阻力过大、关门费力)（1）</span>
+    </div>
+    <div class="alert_space">
+        <h5>后门：</h5>
+        <span>门把手或门锁(扣)故障（1）</span>
+        <span>有异响（2）</span>
+        <span>不易关闭(如：关门时阻力过大、关门费力)（5）</span>
+        <span>门把手或门锁(扣)操控困难（1）</span>
+        <span>不易开启(如：开门时阻力过大、开门费力)（2）</span>
+    </div>
+    <div class="alert_space">
+        <h5>后备厢门：</h5>
+        <span>门把手或门锁(扣)操控困难（1）</span>
+    </div>
+</div>
+<div class="evaluate_alert evaluate_alert_power">
+    <div>
+        动力 详细故障
+        <span class="close_alert" style="float:right;cursor: pointer;">X</span>
+    </div>
+    <hr style="margin-top: 5px;">
+    <div class="alert_space">
+        <h5>发动机怠速不稳：</h5>
+        <span>冷启动时（4）</span>
+        <span>热启动时（1）</span>
+    </div>
+    <div class="alert_space">
+        <h5>发动机有异响：</h5>
+        <span>冷启动时（3）</span>
+        <span>在稳定或高速行驶时（5）</span>
+    </div>
+    <div class="alert_space">
+        <h5>空调开启后，发动机无力（13）</h5>
+    </div>
+    <div class="alert_space">
+        <h5>耗油量过大(明显高于同级别车型油耗)：</h5>
+        <span>频繁启动或停车的行驶(例如城市拥堵路况)（9）</span>
+        <span>高速公路行驶（3）</span>
+    </div>
+    <div class="alert_space">
+        <h5>排气系统问题(如：异响等)（1）</h5>
+    </div>
+</div>
+<div class="evaluate_alert evaluate_alert_operate">
+    <div>
+        操控 详细故障
+        <span class="close_alert" style="float:right;cursor: pointer;">X</span>
+    </div>
+    <hr style="margin-top: 5px;">
+    <div class="alert_space">
+        <h5>前雨刷或喷洗器：</h5>
+        <span>操控不易理解或使用（1）</span>
+    </div>
+    <div class="alert_space">
+        <h5>后雨刷或喷洗器：</h5>
+        <span>故障（1）</span>
+    </div>
+    <div class="alert_space">
+        <h5>转向灯或转向灯开关</h5>
+        <span>故障（3）</span>
+    </div>
+    <div class="alert_space">
+        <h5>胎压监控系统：</h5>
+        <span>操控不易理解或使用（2）</span>
+        <span>操控或操控显示的位置不佳（2）</span>
+        <span>故障（9）</span>
+    </div>
+    <div class="alert_space">
+        <h5>天窗：</h5>
+        <span>故障（1）</span>
+    </div>
 </div>
 <script src="../js/jquery-2.1.1.min.js"></script>
 <script src="../js/echarts-all.js"></script>
 <script>
+    function quality(data) {
+        var quality=echarts.init(document.getElementById('quality'));
+        var quality_option={
+            tooltip : {
+                trigger: 'axis'
+            },
+            grid:{
+                y:20
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    axisLabel : {
+                        interval:0,
+                        rotate:35
+                    },
+                    data : ['车身外观','行驶过程','功能操作','电子设备','座椅','空调系统','内饰','发动机','变速系统']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max : 140,
+                    axisLabel : {
+                        formatter: '{value} %'
+                    }
+                }
+            ],
+            series : [
+                {
+                    name:'',
+                    type:'bar',
+                    barWidth:25,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{
+                                    color:'#000'
+                                },
+                                formatter: '{c}%'
+                            }
+                        }
+                    },
+                    data:data
+                }
+            ]
+        };
+        quality.setOption(quality_option);
+    }
+    function satisfy(data) {
+        var satisfy=echarts.init(document.getElementById('satisfy'));
+        var satisfy_option={
+            color:['rgb(68,172,224)','rgb(69,203,221)','rgb(91,206,162)','rgb(79,198,107)','rgb(120,120,214)','rgb(239,215,72)'],
+            series: [
+                {
+                    name:'',
+                    type:'pie',
+                    radius: ['0%', '28%'],
+                    avoidLabelOverlap: false,
+                    itemStyle: {
+                        normal: {
+                            label: {
+                                show: true,
+                                formatter: '{b} : {c} \n ({d}%)'
+                            },
+                            labelLine: {
+                                show: true,
+                                length:2
+                            }
+                        },
+                        emphasis: {
+                            label: {
+                                show: false,
+                                position: 'center',
+                                textStyle: {
+                                    fontSize: '15',
+                                    fontWeight: 'bold'
+                                }
+                            }
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            show: false,
+                            textStyle: {
+                                fontSize: '30',
+                                fontWeight: 'bold'
+                            }
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data:[
+                        {value:data[0], name:'后备箱大'},
+                        {value:data[1], name:'舒适性不错'},
+                        {value:data[2], name:'控制好'},
+                        {value:data[3], name:'综合油耗低'},
+                        {value:data[4], name:'空间大'},
+                        {value:data[5], name:'动力充足'}
+                    ]
+                }
+            ]
+        };
+        satisfy.setOption(satisfy_option);
+    }
+    function unsatisfy(data) {
+        var unsatisfy=echarts.init(document.getElementById('unsatisfy'));
+        var unsatisfy_option={
+            color:['rgb(68,172,224)','rgb(69,203,221)','rgb(91,206,162)','rgb(79,198,107)','rgb(120,120,214)'],
+            series: [
+                {
+                    name:'',
+                    type:'pie',
+                    radius: ['0%', '28%'],
+                    avoidLabelOverlap: false,
+                    itemStyle: {
+                        normal: {
+                            label: {
+                                show: true,
+                                formatter: '{b} : {c} \n ({d}%)'
+                            },
+                            labelLine: {
+                                show: true,
+                                length:2
+                            }
+                        },
+                        emphasis: {
+                            label: {
+                                show: false,
+                                position: 'center',
+                                textStyle: {
+                                    fontSize: '15',
+                                    fontWeight: 'bold'
+                                }
+                            }
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            show: false,
+                            textStyle: {
+                                fontSize: '30',
+                                fontWeight: 'bold'
+                            }
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data:[
+                        {value:data[0], name:'胎噪大'},
+                        {value:data[1], name:'安全性一般'},
+                        {value:data[2], name:'视线不好'},
+                        {value:data[3], name:'内饰粗糙'},
+                        {value:data[4], name:'外观差'}
+                    ]
+                }
+            ]
+        };
+        unsatisfy.setOption(unsatisfy_option);
+    }
+    function aim(data) {
+        var aim=echarts.init(document.getElementById('aim'));
+        var aim_option={
+            color:['rgb(68,172,224)','rgb(69,203,221)','rgb(91,206,162)','rgb(79,198,107)','rgb(120,120,214)','rgb(239,215,72)'],
+            series: [
+                {
+                    name:'',
+                    type:'pie',
+                    radius: ['0%', '28%'],
+                    avoidLabelOverlap: false,
+                    itemStyle: {
+                        normal: {
+                            label: {
+                                show: true,
+                                formatter: '{b} : {c} \n ({d}%)'
+                            },
+                            labelLine: {
+                                show: true,
+                                length:2
+                            }
+                        },
+                        emphasis: {
+                            label: {
+                                show: false,
+                                position: 'center',
+                                textStyle: {
+                                    fontSize: '15',
+                                    fontWeight: 'bold'
+                                }
+                            }
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            show: false,
+                            textStyle: {
+                                fontSize: '30',
+                                fontWeight: 'bold'
+                            }
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data:[
+                        {value:data[0], name:'购物'},
+                        {value:data[1], name:'自驾游'},
+                        {value:data[2], name:'商务接待'},
+                        {value:data[3], name:'跑长途'},
+                        {value:data[4], name:'接送孩子'},
+                        {value:data[5], name:'上下班'}
+                    ]
+                }
+            ]
+        };
+        aim.setOption(aim_option);
+    }
+    function evaluate(data) {
+        var evaluate=echarts.init(document.getElementById('evaluate'));
+        var evaluate_option={
+            tooltip : {
+                trigger: 'axis'
+            },
+            grid:{
+                x:25,
+                y:20
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    axisLabel : {
+                        interval:0,
+                        rotate:35
+                    },
+                    data : ['空间','动力','操控','油耗','舒适性','外观','内饰','性价比']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    max : 7
+                }
+            ],
+            series : [
+                {
+                    name:'',
+                    type:'bar',
+                    barWidth:15,
+                    itemStyle: {
+                        normal: {
+                            color:'rgb(68,172,224)',
+                            label : {
+                                show: true,
+                                position: 'top',
+                                textStyle:{
+                                    color:'#000'
+                                }
+                            }
+                        }
+                    },
+                    data:data
+                }
+            ]
+        };
+        evaluate.setOption(evaluate_option);
+        //点击柱子事件
+        var ecConfig = echarts.config;
+        function eConsole(param) {
+            if (typeof param.seriesIndex != 'undefined') {
+                switch (param.name) {
+                    case '空间':
+                        $('.mask').show();
+                        $('.evaluate_alert_space').show();
+                        break;
+                    case '动力':
+                        $('.mask').show();
+                        $('.evaluate_alert_power').show();
+                        break;
+                    case '操控':
+                        $('.mask').show();
+                        $('.evaluate_alert_operate').show();
+                        break;
+                    case '油耗':
+                        alert('加载中');
+                        break;
+                    case '舒适性':
+                        alert('加载中');
+                        break;
+                    case '外观':
+                        alert('加载中');
+                        break;
+                    case '内饰':
+                        alert('加载中');
+                        break;
+                    case '性价比':
+                        alert('加载中');
+                        break;
+                    default:
+                        alert('none');
+                        break;
+                }
+            }
+        }
+        evaluate.on(ecConfig.EVENT.CLICK, eConsole);
+    }
+    //关闭弹出框
+    $('.close_alert').click(function () {
+        $(this).parent().parent().hide();
+        $('.mask').hide();
+    });
+    //随机颜色
+    function createRandomItemStyle() {
+        return {
+            normal: {
+                color: 'rgb(' + [
+                    Math.round(Math.random() * 160),
+                    Math.round(Math.random() * 160),
+                    Math.round(Math.random() * 160)
+                ].join(',') + ')'
+            }
+        };
+    }
+    //字符云
+    function discuss() {
+        var discuss=echarts.init(document.getElementById("discuss"));
+        var discuss_option = {
+            tooltip: {
+                show: true
+            },
+            series: [{
+                name: '',
+                type: 'wordCloud',
+                size: ['100%', '100%'],
+                textRotation : [0, 45, 90, -45],
+                textPadding: 0,
+                autoSize: {
+                    enable: true,
+                    minSize: 14
+                },
+                data: [
+                    {
+                        name: "经销商",
+                        value: 8722,
+                        itemStyle: {
+                            normal: {
+                                color: 'black'
+                            }
+                        }
+                    },
+                    {
+                        name: "客服",
+                        value: 4990,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "导航",
+                        value: 3814,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "4S店",
+                        value: 3750,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "购车",
+                        value: 3307,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "更换",
+                        value: 3286,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "到货",
+                        value: 3245,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "厂家",
+                        value: 2778,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "订购",
+                        value: 2542,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "处理",
+                        value: 2339,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "空调",
+                        value: 2328,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "许昌",
+                        value: 2141,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "异响",
+                        value: 2090,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "投诉",
+                        value: 1501,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "绅宝",
+                        value: 1386,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "D50",
+                        value: 1339,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "保养",
+                        value: 1288,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "车管所",
+                        value: 1038,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "置换",
+                        value: 997,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "二网",
+                        value: 908,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "发动机",
+                        value: 707,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "威旺",
+                        value: 619,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "变速箱",
+                        value: 593,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "售后",
+                        value: 556,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "离合",
+                        value: 477,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "306",
+                        value: 472,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "M20",
+                        value: 304,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "天骏",
+                        value: 246,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "起火",
+                        value: 240,
+                        itemStyle: createRandomItemStyle()
+                    },
+                    {
+                        name: "退车",
+                        value: 238,
+                        itemStyle: createRandomItemStyle()
+                    }
+                ]
+            }]
+        };
+        discuss.setOption(discuss_option);
+    }
 
+    //设置随机数据
+    function setGraph() {
+        var data1_1 = parseInt(Math.random()*10000)/100;
+        var data1_2 = parseInt(Math.random()*10000)/100;
+        var data1_3 = parseInt(Math.random()*10000)/100;
+        var data1_4 = parseInt(Math.random()*10000)/100;
+        var data1_5 = parseInt(Math.random()*10000)/100;
+        var data1_6 = parseInt(Math.random()*10000)/100;
+        var data1_7 = parseInt(Math.random()*10000)/100;
+        var data1_8 = parseInt(Math.random()*10000)/100;
+        var data1_9 = parseInt(Math.random()*10000)/100;
+        var data1=[data1_1,data1_2,data1_3,data1_4,data1_5,data1_6,data1_7,data1_8,data1_9];
+        quality(data1);
+
+        var data2_1 = parseInt(Math.random()*100);
+        var data2_2 = parseInt(Math.random()*100);
+        var data2_3 = parseInt(Math.random()*100);
+        var data2_4 = parseInt(Math.random()*100);
+        var data2_5 = parseInt(Math.random()*100);
+        var data2_6 = parseInt(Math.random()*100);
+        var data2=[data2_1,data2_2,data2_3,data2_4,data2_5,data2_6];
+        satisfy(data2);
+
+        var data3_1 = parseInt(Math.random()*100);
+        var data3_2 = parseInt(Math.random()*100);
+        var data3_3 = parseInt(Math.random()*100);
+        var data3_4 = parseInt(Math.random()*100);
+        var data3_5 = parseInt(Math.random()*100);
+        var data3=[data3_1,data3_2,data3_3,data3_4,data3_5];
+        unsatisfy(data3);
+
+        var data4_1 = parseInt(Math.random()*100);
+        var data4_2 = parseInt(Math.random()*100);
+        var data4_3 = parseInt(Math.random()*100);
+        var data4_4 = parseInt(Math.random()*100);
+        var data4_5 = parseInt(Math.random()*100);
+        var data4_6 = parseInt(Math.random()*100);
+        var data4=[data4_1,data4_2,data4_3,data4_4,data4_5,data4_6];
+        aim(data4);
+
+        var data5_1 = parseInt(Math.random()*6);
+        var data5_2 = parseInt(Math.random()*6);
+        var data5_3 = parseInt(Math.random()*6);
+        var data5_4 = parseInt(Math.random()*6);
+        var data5_5 = parseInt(Math.random()*6);
+        var data5_6 = parseInt(Math.random()*6);
+        var data5_7 = parseInt(Math.random()*6);
+        var data5_8 = parseInt(Math.random()*6);
+        var data5=[data5_1,data5_2,data5_3,data5_4,data5_5,data5_6,data5_7,data5_8];
+        evaluate(data5);
+
+        discuss();
+    }
+    setGraph();
+
+    $('table.linkage tbody tr').click(function () {
+        setGraph();
+    });
 </script>
 
 </body>
