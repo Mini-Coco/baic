@@ -10,6 +10,9 @@
     <link href="../css/queryInformation.css" rel="stylesheet" type="text/css"/>
     <link href="../css/chosen.css" rel="stylesheet" type="text/css" />
     <link href="../css/potentialCus.css" rel="stylesheet" type="text/css" />
+    <style>
+        .miss{display: none;}
+    </style>
 </head>
 <body>
 <div id="wrapper">
@@ -19,19 +22,31 @@
             <div class="row">
                 <div class="col-lg-12 query_padding_lr">
                     <h4 class="querySearch_font">搜索条件：</h4>
-                    <div class="table-responsive">
-                        <div class="col-md-12">
+                    <div class="table-responsive flex_height" style="height:200px;overflow: visible;">
+                        <div class="col-md-12 flex_ht">
                             <div class="col-md-10">
-                                <div class="col-md-6 show_input" style="text-align:center;position:relative;left:10px;background: transparent;">
+                                <div class="col-md-6 show_input miss" style="text-align:center;position:relative;left:10px;background: transparent;">
                                     <span>大<span style="color:transparent;">一</span>区：</span>
                                     <select multiple="multiple" data-placeholder="请选择" name="" id="area" class="input_name slt_area dept_select" onchange="changeBrand();">
-                                        <option value=""></option>
+                                        <option value="">东北</option>
+                                        <option value="">华北</option>
+                                        <option value="">西北</option>
+                                        <option value="">华中</option>
+                                        <option value="">华东</option>
+                                        <option value="">华南</option>
                                     </select>
                                 </div>
-                                <div class="col-md-6 show_input" style="text-align:center;position:relative;left:8px;background: transparent;">
+                                <div class="col-md-6 show_input miss" style="text-align:center;position:relative;left:8px;background: transparent;">
                                     <span>省<span style="color:transparent;">一</span>份：</span>
                                     <select multiple="multiple" data-placeholder="请选择" name="" id="province" class="input_name slt_area dept_select" onchange="changeStation();">
-                                        <option value=""></option>
+                                        <option value="">黑龙江</option>
+                                        <option value="">吉林</option>
+                                        <option value="">辽宁</option>
+                                        <option value="">内蒙古</option>
+                                        <option value="">河北</option>
+                                        <option value="">北京</option>
+                                        <option value="">陕西</option>
+                                        <option value="">山西</option>
                                     </select>
                                 </div>
                             </div>
@@ -39,21 +54,35 @@
                                 <button class="showquery_button btn btn-w-m btn-danger" onclick="queryCustInfo()">查询</button>
                             </div>
                             <div class="col-md-10">
-                                <div class="col-md-6 show_input mr_t15" style="text-align:center;position:relative;left:10px;background: transparent;">
+                                <div class="col-md-6 show_input mr_t15 miss" style="text-align:center;position:relative;left:10px;background: transparent;">
                                     <span>城<span style="color:transparent;">一</span>市：</span>
                                     <select multiple="multiple" data-placeholder="请选择" name="" id="city" class="input_name slt_province dept_select" onchange="changeProvince();">
-                                        <option value=""></option>
+                                        <option value="">哈尔滨</option>
+                                        <option value="">吉林市</option>
+                                        <option value="">沈阳</option>
+                                        <option value="">呼和浩特</option>
+                                        <option value="">衡水</option>
+                                        <option value="">北京</option>
+                                        <option value="">西安</option>
+                                        <option value="">大同</option>
                                     </select>
                                 </div>
-                                <div class="col-md-6 show_input mr_t15" style="text-align:center;position:relative;left:8px;background: transparent;">
+                                <div class="col-md-6 show_input mr_t15 miss" style="text-align:center;position:relative;left:8px;background: transparent;">
                                     <span>经销商：</span>
                                     <select multiple="multiple" data-placeholder="请选择" name="" id="agency" class="input_name slt_city dept_select" onchange="changeAgency();">
-                                        <option value=""></option>
+                                        <option value="">黑龙江宝客来</option>
+                                        <option value="">吉林红宝石</option>
+                                        <option value="">沈阳庞大</option>
+                                        <option value="">呼和浩特奇峰</option>
+                                        <option value="">衡水灵动汽车</option>
+                                        <option value="">北京盈之宝</option>
+                                        <option value="">西安北汽销售</option>
+                                        <option value="">大同绅宝专销</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-2 show_input" style="margin-top:18px;">
-                                <button class="showquery_button btn btn-w-m btn-danger" onclick="clearCondition()">重置</button>
+                                <button class="showquery_button btn btn-w-m" onclick="clearCondition()">重置</button>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -64,10 +93,12 @@
                                 <div class="col-md-3 show_input mr_t15" style="position: relative;left: -1px;">
                                     <span>手<span style="color:transparent;">一</span>机：</span><input id="phoneNum" type="text" class="input_name" style="width: 130px;"/>
                                 </div>
-                                <div class="col-md-6 show_input mr_t15" style="text-align:center;">
+                                <div class="col-md-6 show_input mr_t15 miss" style="text-align:center;">
                                     <span>潜客状态：</span>
-                                    <select multiple="multiple" data-placeholder="请选择" name="" id="potentialCus" class="slt_cus dept_select" onchange="changeCus();">
-                                        <option value=""></option>
+                                    <select multiple="multiple" data-placeholder="请选择" name="" id="potentialCusState" class="slt_cus dept_select" onchange="changeCus();">
+                                        <option value="">跟进</option>
+                                        <option value="">冷冻</option>
+                                        <option value="">战败</option>
                                     </select>
                                 </div>
                             </div>
@@ -236,16 +267,31 @@
 <script src="../js/My97DatePicker/WdatePicker.js"></script>
 <script src="../js/potentialCus.js"></script>
 <script>
+    //改变高度
+    function changeHeight(){
+        var crtHeight=$('.flex_ht').height();
+        var addHeight2=280+crtHeight-165;
+        $('.flex_height').css("height",addHeight2+"px");
+    }
+    setInterval(changeHeight,100);
+
+    //解决select框加载错位问题
+    setTimeout(function () {
+        $('.miss').show();
+    },10);
     //点击清空查询条件
     function clearCondition(){
-        var station = $("#station").prop("data-placeholder", '请选择');
-        var province = $("#province").prop("data-placeholder", '请选择');
-        var city = $("#city").prop("data-placeholder", '请选择');
-        var agency = $("#agency").prop("data-placeholder", '请选择');
-        $("#station option:not(:first)").remove();
-        $("#province option:not(:first)").remove();
-        $("#city option:not(:first)").remove();
-        $("#agency option:not(:first)").remove();
+        $("#area").val("1");
+        $("#province").val("1");
+        $("#city").val("1");
+        $("#agency").val("1");
+        $("#potentialCusState").val("1");
+        $("#area").trigger("chosen:updated");
+        $("#province").trigger("chosen:updated");
+        $("#city").trigger("chosen:updated");
+        $("#agency").trigger("chosen:updated");
+        $("#potentialCusState").trigger("chosen:updated");
+
     }
     //chosen
     $('.dept_select').chosen();

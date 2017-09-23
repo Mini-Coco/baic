@@ -25,6 +25,11 @@
         .query_table thead th,
         .query_table tbody td{
             text-align: center;
+            height:35px !important;
+        }
+        .query_table tbody tr td:nth-of-type(1){
+            text-decoration: underline;
+            cursor: pointer;
         }
         .normal_table > thead > tr > th,
         .normal_table > tbody > tr > td{
@@ -86,15 +91,19 @@
             &nbsp;&nbsp;
             款式：
             <select name="">
-                <option value="">1</option>
-                <option value="">3</option>
-                <option value="">5</option>
+                <option value="">车型整体</option>
+                <option value="">2016手动基本款</option>
+                <option value="">2016手动豪华款</option>
+                <option value="">2016自动基本款</option>
+                <option value="">2016自动豪华款</option>
+                <option value="">2015基自动本款</option>
             </select>
             &nbsp;&nbsp;
             网站：
             <select name="">
-                <option value="">百度</option>
-                <option value="">谷歌</option>
+                <option value="">汽车之家</option>
+                <option value="">新浪汽车</option>
+                <option value="">搜狐汽车</option>
             </select>
             &nbsp;&nbsp;
             <button onclick="setGraph()">刷新</button>
@@ -103,7 +112,7 @@
     </nav>
     <div>
         <table class="table table-bordered query_table linkage"
-               style="width: 47vw;margin-right: 15px;margin-bottom: -1px;">
+               style="width: 47.65vw;margin-bottom: -1px;">
             <thead>
             <tr>
                 <th>车型</th>
@@ -179,7 +188,7 @@
             </tbody>
         </table>
     </div>
-    <div class="ibox_content" style="width: 47vw;">
+    <div class="ibox_content quality" style="width: 47.6vw;">
         <div class="ibox_title">
             <h5>质量评价分析</h5>
         </div>
@@ -209,7 +218,7 @@
         </div>
         <div id="evaluate" class="div_box" style="width: 29vw;"></div>
     </div>
-    <div class="ibox_content" style="width:47vw;height:50vh;margin-right: 15px;overflow: hidden;">
+    <div class="ibox_content" style="width:47.64vw;height:50vh;overflow: hidden;">
         <div class="ibox_title">
             <h5>本车型主要竞品对比排行</h5>
         </div>
@@ -302,7 +311,7 @@
             </div>
         </div>
     </div>
-    <div class="ibox_content" style="width:47vw;height:50vh;overflow: hidden;">
+    <div class="ibox_content" style="width:47.6vw;height:50vh;overflow: hidden;">
         <div class="ibox_title">
             <h5>近半年本车型热门讨论内容</h5>
         </div>
@@ -320,28 +329,24 @@
     </div>
     <hr style="margin-top: 5px;">
     <div class="alert_space">
-        <h5>前门：</h5>
-        <span>门把手或门锁(扣)故障（1）</span>
-        <span>有异响（6）</span>
-        <span>不易关闭(如：关门时阻力过大、关门费力)（1）</span>
+        <h5>风挡玻璃：</h5>
+        <span>风噪声过大（3）</span>
     </div>
     <div class="alert_space">
-        <h5>侧滑门：</h5>
-        <span>不易开启(如：开门时阻力过大、开门费力)（1）</span>
-        <span>有异响（1）</span>
-        <span>不易关闭(如：关门时阻力过大、关门费力)（1）</span>
+        <h5>前门或车窗：</h5>
+        <span>风噪声过大（2）</span>
     </div>
     <div class="alert_space">
-        <h5>后门：</h5>
-        <span>门把手或门锁(扣)故障（1）</span>
-        <span>有异响（2）</span>
-        <span>不易关闭(如：关门时阻力过大、关门费力)（5）</span>
-        <span>门把手或门锁(扣)操控困难（1）</span>
-        <span>不易开启(如：开门时阻力过大、开门费力)（2）</span>
+        <h5>后门或车窗：</h5>
+        <span>风噪声过大（2）</span>
     </div>
     <div class="alert_space">
-        <h5>后备厢门：</h5>
-        <span>门把手或门锁(扣)操控困难（1）</span>
+        <h5>车顶或天窗：</h5>
+        <span>风噪声过大（3）</span>
+    </div>
+    <div class="alert_space">
+        <h5>后备厢或尾门：</h5>
+        <span>风噪声过大（1）</span>
     </div>
 </div>
 <div class="evaluate_alert evaluate_alert_power">
@@ -387,7 +392,7 @@
         <span>故障（1）</span>
     </div>
     <div class="alert_space">
-        <h5>转向灯或转向灯开关</h5>
+        <h5>转向灯或转向灯开关：</h5>
         <span>故障（3）</span>
     </div>
     <div class="alert_space">
@@ -401,9 +406,163 @@
         <span>故障（1）</span>
     </div>
 </div>
+<div class="evaluate_alert evaluate_alert_oil">
+    <div>
+        油耗 详细故障
+        <span class="close_alert" style="float:right;cursor: pointer;">X</span>
+    </div>
+    <hr style="margin-top: 5px;">
+    <div class="alert_space">
+        <h5>行驶中，方向明显跑偏：</h5>
+        <span>偏向右边（1）</span>
+        <span>偏向左边（1）</span>
+    </div>
+    <div class="alert_space">
+        <h5>刹车时(车身)会振动：</h5>
+        <span>在低速刹车时（2）</span>
+    </div>
+    <div class="alert_space">
+        <h5>刹车时有异响：</h5>
+        <span>尖锐杂音（4）</span>
+        <span>低沉或摩擦杂音（3）</span>
+        <span>车辆后部（1）</span>
+        <span>车辆前部（2）</span>
+    </div>
+    <div class="alert_space">
+        <h5>驻车制动问题(手刹、电子驻车等)：</h5>
+        <span>无法刹住车（1）</span>
+        <span>位置不佳(使用不顺手)（1）</span>
+        <span>太费力（2）</span>
+    </div>
+    <div class="alert_space">
+        <h5>转向系统或方向盘：</h5>
+        <span>有异响（4）</span>
+        <span>太松(有旷量)（1）</span>
+        <span>行驶时，方向盘会明显抖动（1）</span>
+    </div>
+</div>
+<div class="evaluate_alert evaluate_alert_comfort">
+    <div>
+        舒适性 详细故障
+        <span class="close_alert" style="float:right;cursor: pointer;">X</span>
+    </div>
+    <hr style="margin-top: 5px;">
+    <div class="alert_space">
+        <h5>驾驶座：</h5>
+        <span>座椅材质凹陷或松动或缝线松脱（4）</span>
+        <span>座椅肮脏或损坏(购车时)（1）</span>
+        <span>安全带锁定或回卷有问题（3）</span>
+        <span>座椅有异响（5）</span>
+        <span>安全带扣上或解开 - 操作不易理解或使用（1）</span>
+        <span>安全带扣上或解开 - 功能故障（1）</span>
+    </div>
+    <div class="alert_space">
+        <h5>前排乘客座：</h5>
+        <span>安全带扣上或解开 - 操作不易理解或使用（1）</span>
+        <span>座椅材质凹陷或松动或缝线松脱（1）</span>
+        <span>座椅肮脏或损坏(购车时)（2）</span>
+        <span>安全带锁定或回卷有问题（1）</span>
+        <span>座椅有异响（1）</span>
+    </div>
+    <div class="alert_space">
+        <h5>后座(第二排)：</h5>
+        <span>座椅折叠 - 操作不易理解或使用（1）</span>
+        <span>安全带锁定或回卷有问题（1）</span>
+        <span>座椅有异响（2）</span>
+    </div>
+    <div class="alert_space">
+        <h5>第三排座椅：</h5>
+        <span>座椅有异响（1）</span>
+    </div>
+</div>
+<div class="evaluate_alert evaluate_alert_exterior">
+    <div>
+        外观 详细故障
+        <span class="close_alert" style="float:right;cursor: pointer;">X</span>
+    </div>
+    <hr style="margin-top: 5px;">
+    <div class="alert_space">
+        <h5>前门：</h5>
+        <span>门把手或门锁(扣)故障（1）</span>
+        <span>有异响（6）</span>
+        <span>不易关闭(如：关门时阻力过大、关门费力)（1）</span>
+    </div>
+    <div class="alert_space">
+        <h5>侧滑门：</h5>
+        <span>不易开启(如：开门时阻力过大、开门费力)（1）</span>
+        <span>有异响（1）</span>
+        <span>不易关闭(如：关门时阻力过大、关门费力)（1）</span>
+    </div>
+    <div class="alert_space">
+        <h5>后门：</h5>
+        <span>门把手或门锁(扣)故障（1）</span>
+        <span>有异响（2）</span>
+        <span>不易关闭(如：关门时阻力过大、关门费力)（5）</span>
+        <span>门把手或门锁(扣)操控困难（1）</span>
+        <span>不易开启(如：开门时阻力过大、开门费力)（2）</span>
+    </div>
+    <div class="alert_space">
+        <h5>后备厢门：</h5>
+        <span>门把手或门锁(扣)操控困难（1）</span>
+    </div>
+</div>
+<div class="evaluate_alert evaluate_alert_trim">
+    <div>
+        内饰 详细故障
+        <span class="close_alert" style="float:right;cursor: pointer;">X</span>
+    </div>
+    <hr style="margin-top: 5px;">
+    <div class="alert_space">
+        <h5>仪表板：</h5>
+        <span>有异响（2）</span>
+    </div>
+    <div class="alert_space">
+        <h5>车门内饰板：</h5>
+        <span>有异响（2）</span>
+    </div>
+    <div class="alert_space">
+        <h5>车顶内饰板：</h5>
+        <span>有异响（1）</span>
+    </div>
+    <div class="alert_space">
+        <h5>地毯：</h5>
+        <span>有间隙或无法密合（1）</span>
+    </div>
+    <div class="alert_space">
+        <h5>手套箱(副驾驶侧)：</h5>
+        <span>设计不合理或不易操作（1）</span>
+        <span>有损坏（1）</span>
+    </div>
+</div>
+<div class="evaluate_alert evaluate_alert_cost">
+    <div>
+        性价比 详细故障
+        <span class="close_alert" style="float:right;cursor: pointer;">X</span>
+    </div>
+    <hr style="margin-top: 5px;">
+    <div class="alert_space">
+        <h5>自动挡(包括手自一体)：</h5>
+        <span>换挡有延迟（1）</span>
+    </div>
+    <div class="alert_space">
+        <h5>手动挡：</h5>
+        <span>入挡不易(个别挡位不易挂挡) - 2挡（2）</span>
+        <span>入挡不易(个别挡位不易挂挡) - 1挡（6）</span>
+        <span>入挡不易(个别挡位不易挂挡) - 3挡（1）</span>
+        <span>入挡不易(个别挡位不易挂挡) - 倒挡（14）</span>
+        <span>离合器踏板使用太费力(太沉)（1）</span>
+        <span>换挡杆不易操作(行驶时与换挡有关的问题)（2）</span>
+        <span>离合器踏板接合不顺畅（1）</span>
+        <span>换挡时有异响（1）</span>
+    </div>
+</div>
 <script src="../js/jquery-2.1.1.min.js"></script>
 <script src="../js/echarts-all.js"></script>
 <script>
+    //动态设置质量评价分析高度
+    var query_table_h=$('.query_table').height();
+    $('.quality').css('height',query_table_h+1+'px');
+
     function quality(data) {
         var quality=echarts.init(document.getElementById('quality'));
         var quality_option={
@@ -710,19 +869,24 @@
                         $('.evaluate_alert_operate').show();
                         break;
                     case '油耗':
-                        alert('加载中');
+                        $('.mask').show();
+                        $('.evaluate_alert_oil').show();
                         break;
                     case '舒适性':
-                        alert('加载中');
+                        $('.mask').show();
+                        $('.evaluate_alert_comfort').show();
                         break;
                     case '外观':
-                        alert('加载中');
+                        $('.mask').show();
+                        $('.evaluate_alert_exterior').show();
                         break;
                     case '内饰':
-                        alert('加载中');
+                        $('.mask').show();
+                        $('.evaluate_alert_trim').show();
                         break;
                     case '性价比':
-                        alert('加载中');
+                        $('.mask').show();
+                        $('.evaluate_alert_cost').show();
                         break;
                     default:
                         alert('none');

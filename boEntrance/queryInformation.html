@@ -10,6 +10,9 @@
 	<link href="../css/queryInformation.css" rel="stylesheet" type="text/css"/>
 	<link href="../css/chosen.css" rel="stylesheet" type="text/css" />
 	<link href="../css/potentialCus.css" rel="stylesheet" type="text/css" />
+	<style>
+		.miss{display: none;}
+	</style>
 </head>
 <body>
     <div id="wrapper">
@@ -22,16 +25,22 @@
 						<div class="table-responsive flex_height" style="overflow:visible;height:200px;">
 							<div class="col-md-12 flex_ht">
 								<div class="col-md-10">
-									<div class="col-md-6 show_input" style="text-align:center;position:relative;left:10px;background: transparent;">
+									<div class="col-md-6 show_input miss" style="text-align:center;position:relative;left:10px;background: transparent;">
 										<span>品<span style="color:transparent;">一</span>牌：</span>
-										<select multiple="multiple" data-placeholder="请选择" name="" id="brand" class="input_name slt_area dept_select" onchange="changeBrand();">
-											<option value=""></option>
+										<select multiple="multiple" data-placeholder="请选择" name="" id="brand" class="input_name slt_area dept_select">
+											<option value="">威旺</option>
+											<option value="">绅宝&北京</option>
 										</select>
 									</div>
-									<div class="col-md-6 show_input" style="text-align:center;position:relative;left:8px;background: transparent;">
+									<div class="col-md-6 show_input miss" style="text-align:center;position:relative;left:8px;background: transparent;">
 										<span>战<span style="color:transparent;">一</span>区：</span>
-										<select multiple="multiple" data-placeholder="请选择" name="" id="station" class="input_name slt_area dept_select" onchange="changeStation();">
-											<option value=""></option>
+										<select multiple="multiple" data-placeholder="请选择" name="" id="station" class="input_name slt_area dept_select">
+											<option value="">北一战区</option>
+											<option value="">北二战区</option>
+											<option value="">东一战区</option>
+											<option value="">东二战区</option>
+											<option value="">南一战区</option>
+											<option value="">南二战区</option>
 										</select>
 									</div>
 								</div>
@@ -39,16 +48,35 @@
 									<button class="showquery_button btn btn-w-m" onclick="queryCustInfo()">查询</button>
 								</div>
 								<div class="col-md-10">
-									<div class="col-md-6 show_input mr_t15" style="text-align:center;position:relative;left:10px;background: transparent;">
+									<div class="col-md-6 show_input mr_t15 miss" style="text-align:center;position:relative;left:10px;background: transparent;">
 										<span>省<span style="color:transparent;">一</span>份：</span>
-										<select multiple="multiple" data-placeholder="请选择" name="" id="province" class="input_name slt_province dept_select" onchange="changeProvince();">
-											<option value=""></option>
+										<select multiple="multiple" data-placeholder="请选择" name="" id="province" class="input_name slt_province dept_select">
+											<option value="">西藏自治区</option>
+											<option value="">黑龙江省</option>
+											<option value="">贵州省</option>
+											<option value="">湖北省</option>
+											<option value="">广东省</option>
+											<option value="">安徽省</option>
+											<option value="">宁夏回族自治区</option>
+											<option value="">江西省</option>
+											<option value="">吉林省</option>
+											<option value="">辽宁省</option>
+											<option value="">江苏省</option>
 										</select>
 									</div>
-									<div class="col-md-6 show_input mr_t15" style="text-align:center;position:relative;left:8px;background: transparent;">
+									<div class="col-md-6 show_input mr_t15 miss" style="text-align:center;position:relative;left:8px;background: transparent;">
 										<span>城<span style="color:transparent;">一</span>市：</span>
-										<select multiple="multiple" data-placeholder="请选择" name="" id="city" class="input_name slt_city dept_select" onchange="changeCity();">
-											<option value=""></option>
+										<select multiple="multiple" data-placeholder="请选择" name="" id="city" class="input_name slt_city dept_select">
+											<option value="">昌吉回族自治州</option>
+											<option value="">大客户</option>
+											<option value="">湘西土家族苗族自治州</option>
+											<option value="">广元市</option>
+											<option value="">通化市</option>
+											<option value="">银川市</option>
+											<option value="">本溪市</option>
+											<option value="">亳州市</option>
+											<option value="">抚顺市</option>
+											<option value="">佛山市</option>
 										</select>
 									</div>
 								</div>
@@ -56,16 +84,34 @@
 									<button class="showquery_button btn btn-w-m" onclick="clearCondition()">重置</button>
 								</div>
 								<div class="col-md-10">
-									<div class="col-md-6 show_input mr_t15" style="text-align:center;position:relative;left:10px;background: transparent;">
+									<div class="col-md-6 show_input mr_t15 miss" style="text-align:center;position:relative;left:10px;background: transparent;">
 										<span>经销商：</span>
 										<select multiple="multiple" data-placeholder="请选择" name="" id="agency" class="input_name slt_agency dept_select" >
-											<option value=""></option>
+											<option value="">C1714S  达州市德绅汽车销售服务有限公司</option>
+											<option value="">V2817  保定云天汽车贸易有限公司</option>
+											<option value="">F0442S  北京市天安门地区管理委员会北戴河干部休养所</option>
+											<option value="">F1393S  中国邮政集团公司山东省平度市分公司</option>
+											<option value="">C1004S  潍坊市兆和汽车销售服务有限公司</option>
+											<option value="">V4313S  呼伦贝尔市富田汽车贸易有限责任公司</option>
+											<option value="">C1215S  义乌市绅远汽车销售服务有限公司</option>
+											<option value="">V1109S  泰州市海陵区安顺汽车销售有限公司</option>
+											<option value="">V2117S  佛山市国昌汽车贸易有限公司</option>
+											<option value="">V1318S  宿州益昌汽车销售有限公司</option>
 										</select>
 									</div>
-									<div class="col-md-6 show_input mr_t15" style="text-align:center;position:relative;left:8px;background: transparent;">
+									<div class="col-md-6 show_input mr_t15 miss" style="text-align:center;position:relative;left:8px;background: transparent;">
 										<span>车<span style="color:transparent;">一</span>型：</span>
 										<select multiple="multiple" data-placeholder="请选择" name="" id="carType" class="input_name slt_agency dept_select" >
-											<option value=""></option>
+											<option value="">D20</option>
+											<option value="">绅宝X25</option>
+											<option value="">BJ80</option>
+											<option value="">S50</option>
+											<option value="">绅宝X35</option>
+											<option value="">M50F</option>
+											<option value="">绅宝X55</option>
+											<option value="">M系</option>
+											<option value="">绅宝D60</option>
+											<option value="">绅宝D70</option>
 										</select>
 									</div>
 								</div>
@@ -319,20 +365,24 @@
         }
         setInterval(changeHeight,100);
 
+        //解决select框加载错位问题
+		setTimeout(function () {
+            $('.miss').show();
+        },10);
         //点击清空查询条件
         function clearCondition(){
-            var station = $("#station").prop("data-placeholder", '请选择');
-            var province = $("#province").prop("data-placeholder", '请选择');
-            var city = $("#city").prop("data-placeholder", '请选择');
-            var agency = $("#agency").prop("data-placeholder", '请选择');
-            var brand = $("#brand").prop("data-placeholder", '请选择');
-            var carType = $("#carType").prop("data-placeholder", '请选择');
-            $("#station option:not(:first)").remove();
-            $("#province option:not(:first)").remove();
-            $("#city option:not(:first)").remove();
-            $("#agency option:not(:first)").remove();
-            $("#brand option:not(:first)").remove();
-            $("#carType option:not(:first)").remove();
+            $("#brand").val("1");
+            $("#station").val("1");
+            $("#province").val("1");
+            $("#city").val("1");
+            $("#agency").val("1");
+            $("#carType").val("1");
+            $("#brand").trigger("chosen:updated");
+            $("#station").trigger("chosen:updated");
+            $("#province").trigger("chosen:updated");
+            $("#city").trigger("chosen:updated");
+            $("#agency").trigger("chosen:updated");
+            $("#carType").trigger("chosen:updated");
         }
 
         //chosen

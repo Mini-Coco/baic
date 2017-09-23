@@ -46,3 +46,16 @@ div.chosen-container.chosen-container-multi {
 #showTable{
     opacity:0;
 }
+.geRen_nav li a.return_query,
+.geRen_nav li a.return_query:hover,
+.geRen_nav li a.return_query:focus{
+    display: inline-block;
+    height:34px;
+    line-height:34px;
+    padding: 0 10px;
+    margin-right:20px;
+    border: 1px solid #e5e5e5;
+    font-size: 14px;
+    color: #029be5;
+    border-radius: 3px;
+}

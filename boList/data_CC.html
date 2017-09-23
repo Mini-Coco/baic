@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>CC问题数据报表</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/queryInformation.css">
+    <link rel="stylesheet" href="../css/potentialCus.css">
     <link rel="stylesheet" href="../css/boList_e.css">
     <style>
         .box{
@@ -30,6 +32,9 @@
         }
         .table-striped > tbody > tr:nth-of-type(odd){
             background-color: #fff;
+        }
+        nav select{
+            padding: 2px;
         }
     </style>
 </head>
@@ -76,22 +81,23 @@
                 <option value="">轿车</option>
                 <option value="">微车</option>
             </select>
-            <div style="margin-top: 10px;">
-                客户姓名：
-                <input type="text" style="width: 100px;">
+                &nbsp;&nbsp;
+            <!--<div style="margin-top: 10px;">-->
+                姓名：
+                <input type="text" style="width: 80px;">
                 &nbsp;&nbsp;
                 手机号：
-                <input type="text" style="width: 140px;">
+                <input type="text" style="width: 100px;">
                 &nbsp;&nbsp;
                 客户ID：
-                <input type="text" style="width: 140px;">
+                <input type="text" style="width: 95px;">
                 &nbsp;&nbsp;
                 <button onclick="setGraph()">刷新</button>
                 <button>详细报表</button>
-            </div>
+            <!--</div>-->
         </span>
     </nav>
-    <h4 style="font-weight: 600;" class="text-center">CC问题数据报表</h4>
+    <h4 style="margin-top:20px;font-weight: 600;" class="text-center">CC问题数据报表</h4>
     <table class="table table-responsive table-bordered table-striped">
         <thead>
         <tr>
@@ -254,6 +260,20 @@
         </tr>
         </tbody>
     </table>
+    <div class="query_table" style="padding-right:20px;text-align: right;">
+        <a href="../excel/data_quality_CC.xlsx" class="showquery_button btn">导出Excel</a>
+    </div>
+    <nav aria-label="Page navigation" style="text-align: center;">
+        <ul class="pagination">
+            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+        </ul>
+    </nav>
 </div>
 <script src="../js/jquery-2.1.1.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>

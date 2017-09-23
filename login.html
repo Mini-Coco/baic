@@ -110,23 +110,17 @@
                             </div>
                         </div>
                         <div class="form-group clearfix">
-                            <div class="checkbox-custom checkbox-inline checkbox-primary pull-left">
-                                <input type="checkbox" id="remember" name="remember">
+                            <div class="pull-left">
+                                <input type="checkbox" id="remember" name="remember"
+                                       style="width:20px;height:20px;opacity:1;position: relative;top: 5px;">
                                 <label for="remember">自动登录</label>
                             </div>
                             <div class="pull-right">
                                 <a style="cursor: pointer;" onclick="register()">注册账号</a>
                                 ·
-                                <a style="cursor: pointer;" onclick="forgetpswd()" class="collapsed" data-toggle="collapse" aria-expanded="false" aria-controls="forgetPassword">
-                                    忘记密码
-                                </a>
+                                <a style="cursor: pointer;" onclick="forgetpswd()">忘记密码</a>
                             </div>
                         </div>
-                        <!--<div class="collapse" id="forgetPassword" aria-expanded="true">-->
-                            <!--<div class="alert alert-warning alert-dismissible" role="alert">-->
-                                <!--请返回官网点击登录按钮找回密码-->
-                            <!--</div>-->
-                        <!--</div>-->
                         <a href="index.html" type="submit"
                            class="btn btn-primary btn-block margin-top-30"
                            style="height:40px;line-height: 30px;background-color: #029be5;border: none;">立即登录</a>

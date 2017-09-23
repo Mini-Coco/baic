@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>客户关怀数据查询</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/queryInformation.css">
+    <link rel="stylesheet" href="../css/potentialCus.css">
     <link rel="stylesheet" href="../css/boList_e.css">
     <style>
         .box{
@@ -77,14 +79,14 @@
                 <option value="">微车</option>
             </select>
             &nbsp;&nbsp;
-            生日月日：
+            生日：
             <input type="text" style="width: 100px;">
             &nbsp;&nbsp;
             <button onclick="setGraph()">刷新</button>
             <button>详细报表</button>
         </span>
     </nav>
-    <h4 style="font-weight: 600;" class="text-center">客户维系数据查询－客户关怀</h4>
+    <h4 style="margin-top:20px;font-weight: 600;" class="text-center">客户维系数据查询－客户关怀</h4>
     <table class="table table-responsive table-bordered table-striped">
         <thead>
         <tr>
@@ -98,7 +100,7 @@
         </thead>
         <tbody>
         <tr>
-            <td>01.08.2017</td>
+            <td>2017.01.08</td>
             <td>丁小同</td>
             <td>男</td>
             <td>31-35岁</td>
@@ -106,7 +108,7 @@
             <td>M系</td>
         </tr>
         <tr>
-            <td>01.08.2017</td>
+            <td>2017.01.08</td>
             <td>丁志轩</td>
             <td>男</td>
             <td>41-45岁</td>
@@ -114,7 +116,7 @@
             <td>3系</td>
         </tr>
         <tr>
-            <td>01.08.2017</td>
+            <td>2017.01.08</td>
             <td>丁周舟</td>
             <td>男</td>
             <td>26-30岁</td>
@@ -122,7 +124,7 @@
             <td>BJ40L</td>
         </tr>
         <tr>
-            <td>01.08.2017</td>
+            <td>2017.01.08</td>
             <td>上海易鑫融资租赁有限公司昆明分公司</td>
             <td>#</td>
             <td>26-30岁</td>
@@ -130,7 +132,7 @@
             <td>绅宝X65</td>
         </tr>
         <tr>
-            <td>01.08.2017</td>
+            <td>2017.01.08</td>
             <td>言犹怜</td>
             <td>女</td>
             <td>26-30岁</td>
@@ -138,7 +140,7 @@
             <td>BJ40L</td>
         </tr>
         <tr>
-            <td>01.08.2017</td>
+            <td>2017.01.08</td>
             <td>中国人民保险集团股份有限公司周口支公司</td>
             <td>#</td>
             <td>26-30岁</td>
@@ -146,7 +148,7 @@
             <td>绅宝D50</td>
         </tr>
         <tr>
-            <td>01.08.2017</td>
+            <td>2017.01.08</td>
             <td>丰存仁</td>
             <td>男</td>
             <td>26-30岁</td>
@@ -154,7 +156,7 @@
             <td>BJ20</td>
         </tr>
         <tr>
-            <td>01.08.2017</td>
+            <td>2017.01.08</td>
             <td>于孝义</td>
             <td>男</td>
             <td>41-45岁</td>
@@ -162,7 +164,7 @@
             <td>S50</td>
         </tr>
         <tr>
-            <td>01.08.2017</td>
+            <td>2017.01.08</td>
             <td>于敏</td>
             <td>女</td>
             <td>26-30岁</td>
@@ -170,7 +172,7 @@
             <td>M系</td>
         </tr>
         <tr>
-            <td>01.08.2017</td>
+            <td>2017.01.08</td>
             <td>于飞</td>
             <td>女</td>
             <td>21-25岁</td>
@@ -178,7 +180,7 @@
             <td>BJ20</td>
         </tr>
         <tr>
-            <td>01.08.2017</td>
+            <td>2017.01.08</td>
             <td>付宏杰</td>
             <td>男</td>
             <td>31-35岁</td>
@@ -186,7 +188,7 @@
             <td>绅宝X35</td>
         </tr>
         <tr>
-            <td>01.08.2017</td>
+            <td>2017.01.08</td>
             <td>付星星</td>
             <td>男</td>
             <td>21-25岁</td>
@@ -195,6 +197,20 @@
         </tr>
         </tbody>
     </table>
+    <div class="query_table" style="padding-right:20px;text-align: right;">
+        <a href="../excel/data_CRM_care.xlsx" class="showquery_button btn">导出Excel</a>
+    </div>
+    <nav aria-label="Page navigation" style="text-align: center;">
+        <ul class="pagination">
+            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+        </ul>
+    </nav>
 </div>
 <script src="../js/jquery-2.1.1.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
