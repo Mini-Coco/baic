@@ -50,7 +50,7 @@
             &nbsp;&nbsp;
             经销商：
             <select name="">
-                <option value="">北京盈之宝</option>
+                <option value="">北京新能源</option>
                 <option value="">大同绅宝专销</option>
                 <option value="">吉林红宝石</option>
             </select>
@@ -68,25 +68,25 @@
     </nav>
     <div class="ibox_content">
         <div class="ibox_title">
-            <h5>客户线索图</h5>
+            <h5>客户线索分析</h5>
         </div>
         <div id="echarts_graph" class="div_box"></div>
     </div>
     <div class="ibox_content">
         <div class="ibox_title">
-            <h5>销售过程图</h5>
+            <h5>销售过程分析</h5>
         </div>
         <div id="echarts_line" class="div_box"></div>
     </div>
     <div class="ibox_content">
         <div class="ibox_title">
-            <h5>冷冻原因图</h5>
+            <h5>冷冻原因分析</h5>
         </div>
         <div id="echarts_bar_frozen" class="div_box"></div>
     </div>
     <div class="ibox_content">
         <div class="ibox_title">
-            <h5>战败原因图</h5>
+            <h5>战败原因分析</h5>
         </div>
         <div id="echarts_bar_fail" class="div_box"></div>
     </div>
@@ -98,10 +98,6 @@
     function echarts_graph(data1,data2) {
         var echarts_graph=echarts.init(document.getElementById('echarts_graph'));
         var option = {
-//            title:{
-//                text:'客户线索图',
-//                x:'center'
-//            },
 //            grid : {
 //                x:50,
 //                y:40,
@@ -168,10 +164,6 @@
     function echarts_line(data1,data2,data3) {
         var echarts_line=echarts.init(document.getElementById('echarts_line'));
         var option = {
-//            title:{
-//                text:'销售过程图',
-//                x:'center'
-//            },
 //            grid : {
 //                x:80,
 //                y:80,
@@ -263,10 +255,6 @@
     function echarts_bar_frozen(data) {
         var echarts_bar_frozen=echarts.init(document.getElementById('echarts_bar_frozen'));
         var option = {
-//            title:{
-//                text:'冷冻原因图',
-//                x:'center'
-//            },
             tooltip : {
                 trigger: 'axis'
             },
@@ -331,10 +319,6 @@
     function echarts_bar_fail(data) {
         var echarts_bar_fail=echarts.init(document.getElementById('echarts_bar_fail'));
         var option = {
-//            title:{
-//                text:'战败原因图',
-//                x:'center'
-//            },
             tooltip : {
                 trigger: 'axis'
             },

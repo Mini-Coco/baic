@@ -117,24 +117,10 @@
                                         <a class="J_menuItem" addr="boList/chexing_jingxiaoshang.html" href="#">经销商实销情况</a>
                                     </li>
                                     <li>
-                                        <a class="J_menuItem" addr="boList/chexing_shixiao.html" href="#">实销车辆配置内饰颜色分布</a>
+                                        <a class="J_menuItem" addr="boList/chexing_shixiao.html" href="#">实销车配置内饰颜色分布</a>
                                     </li>
                                     <li>
-                                        <a class="J_menuItem" addr="boList/chexing_chezhu.html" href="#">车主画像</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" addr="" href="#">
-                                    数据质量分析
-                                    <span class="fa arrow"></span>
-                                </a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a class="J_menuItem" addr="boList/data_DMS.html" href="#">DMS问题数据报表</a>
-                                    </li>
-                                    <li>
-                                        <a class="J_menuItem" addr="boList/data_CC.html" href="#">CC问题数据报表</a>
+                                        <a class="J_menuItem" addr="boList/chexing_chezhu.html" href="#">车主群体分析</a>
                                     </li>
                                 </ul>
                             </li>
@@ -155,6 +141,20 @@
                                     </li>
                                     <li>
                                         <a class="J_menuItem" addr="boList/CRM_content.html" href="#">投诉内容分析</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" addr="" href="#">
+                                    数据质量分析
+                                    <span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/data_DMS.html" href="#">DMS问题数据报表</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" addr="boList/data_CC.html" href="#">CC问题数据报表</a>
                                     </li>
                                 </ul>
                             </li>
@@ -374,11 +374,11 @@ window.onload=function() {
             }
         }
     }
-    $(".J_menuItem").each(function(k) {
-        if (!$(this).attr("data-index")) {
-            $(this).attr("data-index", k)
-        }
-    });
+//    $(".J_menuItem").each(function(k) {
+//        if (!$(this).attr("data-index")) {
+//            $(this).attr("data-index", k)
+//        }
+//    });
     function c() {
        //  var o = $(this).attr("href");
         var o = $(this).attr("addr");

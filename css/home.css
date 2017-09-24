@@ -198,9 +198,9 @@
 .page-account .widget .avatar {
     overflow: hidden;
 }
-.avatar img {
-    width: 130px;
-}
+/*.avatar img {*/
+    /*width: 130px;*/
+/*}*/
 .page-account .account-stat-count {
     display: block;
     margin-bottom: 3px;

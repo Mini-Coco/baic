@@ -27,7 +27,7 @@
             text-align: center;
             height:35px !important;
         }
-        .query_table tbody tr td:nth-of-type(1){
+        .linkage tbody tr td:nth-of-type(1){
             text-decoration: underline;
             cursor: pointer;
         }
@@ -78,17 +78,22 @@
             品牌：
             <select name="">
                 <option value="">轿车</option>
-                <option value="">12</option>
-                <option value="">1</option>
+                <option value="">微车</option>
             </select>
             &nbsp;&nbsp;
-            车系：
+            车型：
             <select name="">
-                <option value="">D50</option>
-                <option value="">X35</option>
-                <option value="">D20</option>
+                <option value="">BJ20</option>
+                <option value="">BJ40L</option>
+                <option value="">BJ80</option>
+                <option value="">绅宝D20</option>
+                <option value="">绅宝D50</option>
+                <option value="">绅宝D60</option>
+                <option value="">绅宝D70</option>
+                <option value="">绅宝D80</option>
+                <option value="">绅宝X25</option>
+                <option value="">绅宝X35</option>
             </select>
-            &nbsp;&nbsp;
             款式：
             <select name="">
                 <option value="">车型整体</option>
@@ -216,7 +221,8 @@
         <div class="ibox_title">
             <h5>单项评价</h5>
         </div>
-        <div id="evaluate" class="div_box" style="width: 29vw;"></div>
+        <div id="evaluate" class="div_box" style="width: 29vw;height:32vh;"></div>
+        <footer style="margin-right: 10px;font-size:12px;">点击可查看详情</footer>
     </div>
     <div class="ibox_content" style="width:47.64vw;height:50vh;overflow: hidden;">
         <div class="ibox_title">
@@ -234,7 +240,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td style="color: #f00;">绅宝X35</td>
+                        <td style="color: #f00;">BJ20</td>
                         <td style="color: #f00;">4.29分</td>
                     </tr>
                     <tr>
@@ -262,14 +268,14 @@
                        style="width: 18vw;margin-left: 25px;margin-bottom: 0px;">
                     <thead>
                     <tr>
-                        <th colspan="3" style="padding-bottom: 10px;">单项评分及排名</th>
+                        <th colspan="3" style="padding-bottom: 10px;text-align: center;">单项评分及排名</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <td>空间</td>
                         <td>4.70分</td>
-                        <td>第2名</td>
+                        <td style="width: 40px;">第2名</td>
                     </tr>
                     <tr>
                         <td>动力</td>
@@ -811,7 +817,8 @@
             },
             grid:{
                 x:25,
-                y:20
+                y:20,
+                y2:50
             },
             xAxis : [
                 {

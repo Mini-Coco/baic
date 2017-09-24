@@ -48,7 +48,7 @@
     </nav>
     <div class="ibox_content">
         <div class="ibox_title">
-            <h5>投诉总量</h5>
+            <h5>投诉量分析</h5>
         </div>
         <div id="tousu"></div>
     </div>
@@ -59,10 +59,6 @@
     function tousu(data1,data2,data3,data4,data5) {
         var tousu=echarts.init(document.getElementById('tousu'));
         var tousu_option = {
-//            title : {
-//                text:'投诉总量',
-//                x:'center'
-//            },
             tooltip : {
                 trigger: 'axis'
             },
