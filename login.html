@@ -31,7 +31,6 @@
             cursor: pointer;
         }
         .ui.mini.getcode{
-            width:100px;
             text-align: center;
         }
         .code.message{
@@ -48,14 +47,26 @@
             display: none;
         }
         #regBox,#forgetBox{
-            font-size:12px;
+            font-size:14px;
         }
         #regBox input,
         #regBox button,
         #forgetBox input,
         #forgetBox button{
+            height:36px;
+            font-size:14px;
+            font-weight:100;
+        }
+        #regBox button.getcode,
+        #forgetBox button.getcode{
             height:34px;
-            font-size:12px;
+        }
+        .ui.checkbox input[type=checkbox],
+        .ui.checkbox input[type=radio],
+        #regBox input[type=checkbox]{
+            top: -4px;
+            left: 20px;
+            height: 17px;
         }
     </style>
 </head>
@@ -110,10 +121,9 @@
                             </div>
                         </div>
                         <div class="form-group clearfix">
-                            <div class="pull-left">
-                                <input type="checkbox" id="remember" name="remember"
-                                       style="width:20px;height:20px;opacity:1;position: relative;top: 5px;">
-                                <label for="remember">自动登录</label>
+                            <div class="pull-left ui checkbox" style="margin: 5px 0 0;font-size: 14px;">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember" style="color: #76838f;">自动登录</label>
                             </div>
                             <div class="pull-right">
                                 <a style="cursor: pointer;" onclick="register()">注册账号</a>
@@ -174,7 +184,7 @@
                     <div class="field">
                         <div class="ui checkbox">
                             <input type="checkbox" name="agreement" id="agreement" checked="checked" />
-                            <label style="font-size:12px;" for="agreement">我同意《<a href="about.html" target="_blank">Smart Data 相关条款</a>》</label>
+                            <label style="font-size:14px;" for="agreement">我同意《<a href="about.html" target="_blank">Smart Data 相关条款</a>》</label>
                         </div>
                     </div>
                     <input type="hidden" name="type" value="register" />
@@ -312,14 +322,6 @@
         $('#forgetBox').show('slow');
         $('.getcode').html('获取验证码');
     }
-    //直接登录
-    function goLogin() {
-        $('.mask').hide();
-        $('#regBox').hide('slow');
-        $('#forgetBox').hide('slow');
-        clearInterval(countDown);
-        $('.code.message').html('');
-    }
     //获取验证码
     function getCode(flag) {
         var num=60;
@@ -337,6 +339,14 @@
                 num=60;
             }
         }
+    }
+    //直接登录
+    function goLogin() {
+        $('.mask').hide();
+        $('#regBox').hide('slow');
+        $('#forgetBox').hide('slow');
+        clearInterval(countDown);
+        $('.code.message').html('');
     }
 </script>
 </body>
