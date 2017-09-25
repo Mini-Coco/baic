@@ -82,11 +82,10 @@
             </select>
             &nbsp;&nbsp;
             车型：
-            <select name="">
+            <select id="cartype" name="">
                 <option value="">BJ20</option>
                 <option value="">BJ40L</option>
                 <option value="">BJ80</option>
-                <option value="">绅宝D20</option>
                 <option value="">绅宝D50</option>
                 <option value="">绅宝D60</option>
                 <option value="">绅宝D70</option>
@@ -222,7 +221,7 @@
             <h5>单项评价</h5>
         </div>
         <div id="evaluate" class="div_box" style="width: 29vw;height:32vh;"></div>
-        <footer style="margin-right: 10px;font-size:12px;">点击可查看详情</footer>
+        <footer style="margin-right: 10px;font-size:12px;font-weight:600;">点击可查看详情</footer>
     </div>
     <div class="ibox_content" style="width:47.64vw;height:50vh;overflow: hidden;">
         <div class="ibox_title">
@@ -240,7 +239,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td style="color: #f00;">BJ20</td>
+                        <td class="crt_cartype" style="color: #f00;">BJ20</td>
                         <td style="color: #f00;">4.29分</td>
                     </tr>
                     <tr>
@@ -1150,6 +1149,10 @@
         evaluate(data5);
 
         discuss();
+
+        //根据车型内容切换表格内车型
+        var crt_cartype=$("#cartype").find("option:selected").text();
+        $('.crt_cartype').text(crt_cartype);
     }
     setGraph();
 
