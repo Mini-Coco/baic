@@ -5,27 +5,33 @@
     <title>车主画像</title>
     <link rel="stylesheet" href="../css/boList_e.css">
     <style>
+        .ibox_title {
+            min-height: 39px;
+        }
+        .ibox_title h5 {
+            line-height: 35px;
+        }
         .box{
             padding: 20px 37px 0;
         }
         .box>div{
             display: inline-block;
             width:18vw;
-            height:45vh;
+            /*height:45vh;*/
             overflow: hidden;
         }
         .ibox_content:nth-of-type(1),
         .ibox_content:nth-of-type(2){
-            height:53vh;
+            height:48vh;
         }
         .div_box{
             width:18vw;
-            height:35vh;
+            height:32vh;
         }
         .ibox_content:nth-of-type(2){width:73vw;}
         #area{
             width:73vw;
-            height: 45vh;
+            height: 42vh;
         }
         .ibox_content:nth-of-type(4),
         #age{width:36vw;}
@@ -102,8 +108,8 @@
         <div class="ibox_title">
             <h5>实销车主</h5>
         </div>
-        <img width="110" style="margin-top: 20px;" src="../img/admin_logo.png" alt="">
-        <h1 style="margin: 12px 0px;font-size:40px;color:rgb(68,172,224);"></h1>
+        <img width="110" style="margin-top: 15px;" src="../img/admin_logo.png" alt="">
+        <h1 style="margin: 8px 0px;font-size:40px;color:rgb(68,172,224);"></h1>
         <div style="font-size: 14px;">全国统计</div>
     </div>
     <div class="ibox_content">
@@ -258,7 +264,10 @@
 //                x:'center'
 //            },
             grid:{
-                y:30
+                x:60,
+                y:25,
+                x2:40,
+                y2:50
             },
             tooltip : {
                 trigger: 'axis'
